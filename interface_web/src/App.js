@@ -1,9 +1,12 @@
 import { Component, Fragment } from 'react';
 import './App.css';
-import { MenuItem } from 'semantic-ui-react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Menu, MenuItem } from 'semantic-ui-react';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import Connexion from './Composants/Connexion';
 import AccountCreation from './Composants/AccountCreation';
+import Popular from './Composants/Popular';
+import Home from './Composants/Home';
+import Page404 from './Composants/Page404';
 
 class App extends Component{
   render() {
