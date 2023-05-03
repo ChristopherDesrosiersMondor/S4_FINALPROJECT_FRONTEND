@@ -68,7 +68,7 @@
 #### Bouton
     Voir la section 1
 #### Texte
-    Source : 
+    Source : [Text widget]([https://](https://www.javatpoint.com/flutter-text))
 
     ```dart
     class MyTextPage extends StatelessWidget {  
