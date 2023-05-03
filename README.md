@@ -1,5 +1,17 @@
 # S4_FINALPROJECT_FRONTEND
- 
+
+- [S4\_FINALPROJECT\_FRONTEND](#s4_finalproject_frontend)
+  - [Pour avoir plusieurs projets dans le meme repo qui ont chacun leurs devcontainer](#pour-avoir-plusieurs-projets-dans-le-meme-repo-qui-ont-chacun-leurs-devcontainer)
+  - [Les taches pour examen pratique en mobile - MVP mobile app hublot](#les-taches-pour-examen-pratique-en-mobile---mvp-mobile-app-hublot)
+    - [Présentation examen](#présentation-examen)
+    - [Flutter](#flutter)
+      - [Champs d'entrée - Form widget](#champs-dentrée---form-widget)
+      - [Bouton](#bouton)
+      - [Texte](#texte)
+      - [Plusieurs pages](#plusieurs-pages)
+      - [Api calls](#api-calls)
+
+
 ## Pour avoir plusieurs projets dans le meme repo qui ont chacun leurs devcontainer
 <https://code.visualstudio.com/remote/advancedcontainers/change-default-source-mount>
 
@@ -9,7 +21,7 @@
 2. Description de ce qu'on va remettre pour la partie dans un markdown
 
 ### Flutter
-1. Champs d'entrée - Form widget
+#### Champs d'entrée - Form widget
     Source : [Form class](https://api.flutter.dev/flutter/widgets/Form-class.html)
 
     ```dart
@@ -53,9 +65,9 @@
     }
     }
     ```
-2. Bouton
+#### Bouton
     Voir la section 1
-3. Texte
+#### Texte
     Source : 
 
     ```dart
@@ -73,7 +85,7 @@
     }  
     }  
     ```
-4. Plusieurs pages
+#### Plusieurs pages
     Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 
     ```dart
@@ -159,7 +171,7 @@
     }
     }
     ```
-5. Api calls
+#### Api calls
     Source: [Exemple de fetch data en flutter](https://docs.flutter.dev/cookbook/networking/fetch-data)
 
     ```dart
