@@ -9,7 +9,7 @@ class CreationCompte extends StatelessWidget {
       appBar: AppBar(
         title: const Text('CreationCompte'),
       ),
-      body: const Center(child: CreationCompteForm()),
+      body: const SingleChildScrollView(child: CreationCompteForm()),
     );
   }
 }
@@ -64,12 +64,6 @@ class CreationCompteFormState extends State<CreationCompteForm> {
               return null;
             },
           ),
-          DatePickerDialog(
-            initialEntryMode: DatePickerEntryMode.calendarOnly,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
-          ),
           TextFormField(
             decoration: const InputDecoration(
               hintText: 'Pseudo',
@@ -94,6 +88,13 @@ class CreationCompteFormState extends State<CreationCompteForm> {
               }
               return null;
             },
+          ),
+          const Text("\nDate de naissance:"),
+          DatePickerDialog(
+            initialEntryMode: DatePickerEntryMode.calendarOnly,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
