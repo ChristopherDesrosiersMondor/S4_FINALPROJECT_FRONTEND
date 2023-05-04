@@ -19,6 +19,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.26.0",
+		"mdsvex": "^0.10.6",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
@@ -32,6 +33,7 @@
 		"@fontsource/jetbrains-mono": "^4.5.12",
 		"@fontsource/manrope": "^4.5.13",
 		"lucide-svelte": "^0.206.0",
-		"open-props": "^1.5.8"
+		"open-props": "^1.5.8",
+		"shiki": "^0.14.2"
 	}
 }
