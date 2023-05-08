@@ -1,12 +1,5 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-// Sources:
-// How to use alert dialogs
-// https://www.javatpoint.com/flutter-alert-dialogs
+import 'package:interface_mobile/utilities.dart';
 
 class ConnexionPage extends StatelessWidget {
   const ConnexionPage({super.key});
@@ -83,7 +76,9 @@ class ConnexionFormState extends State<ConnexionForm> {
                 // Validate will return true if the form is valid, or false if
                 // the form is invalid.
                 if (_formKey.currentState!.validate()) {
-                  connect();
+                  var pseudo = pseudoController.text;
+                  var password = passwordController.text;
+                  userConnect(context, pseudo, password);
                 }
               },
               child: const Text('Submit'),
@@ -91,86 +86,6 @@ class ConnexionFormState extends State<ConnexionForm> {
           ),
         ],
       ),
-    );
-  }
-
-  void connect() async {
-    var pseudo = pseudoController.text;
-    var password = passwordController.text;
-
-    final response = await http.get(Uri.parse(
-        'http://10.0.2.2:8082/accounts/view/by_pseudo/$pseudo/$password'));
-
-    if (response.statusCode == 200) {
-      showAlertDialog(true);
-    } else {
-      showAlertDialog(false);
-    }
-  }
-
-  // showAlertDialog(String status) {
-  //   // Create button
-  //   Widget okButton = ElevatedButton(
-  //     child: const Text("OK"),
-  //     onPressed: () {
-  //       Navigator.of(context).pop();
-  //     },
-  //   );
-
-  //   // Create AlertDialog
-  //   AlertDialog alert;
-  //   alert = AlertDialog(
-  //     title: Text(status),
-  //     content: const Text("Success"),
-  //     actions: [
-  //       okButton,
-  //     ],
-  //   );
-
-  //   // show the dialog
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return alert;
-  //     },
-  //   );
-  // }
-
-  showAlertDialog(bool connection) {
-    // Create button
-    Widget okButton = ElevatedButton(
-      child: const Text("OK"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-
-    // Create AlertDialog
-    AlertDialog alert;
-    if (connection) {
-      alert = AlertDialog(
-        title: const Text("Connection True"),
-        content: const Text("Success"),
-        actions: [
-          okButton,
-        ],
-      );
-    } else {
-      alert = AlertDialog(
-        title: const Text("Connection False"),
-        content: const Text("Error"),
-        actions: [
-          okButton,
-        ],
-      );
-    }
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
     );
   }
 }

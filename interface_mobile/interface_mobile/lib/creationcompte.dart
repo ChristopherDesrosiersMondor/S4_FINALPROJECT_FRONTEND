@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+//Sources
+//Datepicker in Flutter
+// https://www.fluttercampus.com/guide/39/how-to-show-date-picker-on-textfield-tap-and-get-formatted-date/
 
 class CreationCompte extends StatelessWidget {
   const CreationCompte({super.key});
@@ -28,7 +33,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  // trouver comment récupérer la date
+  final TextEditingController birthdayController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +100,40 @@ class CreationCompteFormState extends State<CreationCompteForm> {
               return null;
             },
           ),
-          const Text("\nDate de naissance:"),
-          DatePickerDialog(
-            initialEntryMode: DatePickerEntryMode.calendarOnly,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
+          TextFormField(
+            controller:
+                birthdayController, //editing controller of this TextField
+            decoration: const InputDecoration(
+                icon: Icon(Icons.calendar_today), //icon of text field
+                labelText: "Enter Date" //label text of field
+                ),
+            readOnly:
+                true, //set it true, so that user will not able to edit text
+            onTap: () async {
+              DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(
+                      2000), //DateTime.now() - not to allow to choose before today.
+                  lastDate: DateTime(2101));
+
+              if (pickedDate != null) {
+                print(
+                    pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+                String formattedDate =
+                    DateFormat('yyyy-MM-dd').format(pickedDate);
+                print(
+                    formattedDate); //formatted date output using intl package =>  2021-03-16
+                //you can implement different kind of Date Format here according to your requirement
+
+                setState(() {
+                  birthdayController.text =
+                      formattedDate; //set output date to TextField value.
+                });
+              } else {
+                print("Date is not selected");
+              }
+            },
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
