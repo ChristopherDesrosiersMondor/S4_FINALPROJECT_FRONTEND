@@ -43,11 +43,25 @@ class ConnexionFormState extends State<ConnexionForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          const Text(
+            'Hey sailor! Welcome back to Hublot!',
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
           TextFormField(
-            style: const TextStyle(color: Colors.white),
             controller: pseudoController,
-            decoration: const InputDecoration(
-                hintText: 'Pseudo', hintStyle: TextStyle(color: Colors.grey)),
+            cursorColor: Colors.black,
+            style: const TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              hintStyle: const TextStyle(color: Colors.white60),
+              hintText: "Pseudo",
+              filled: true,
+              fillColor: Colors.grey.shade700,
+              border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(50)),
+            ),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -56,7 +70,7 @@ class ConnexionFormState extends State<ConnexionForm> {
             },
           ),
           TextFormField(
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white60),
             controller: passwordController,
             obscureText: true,
             enableSuggestions: false,
