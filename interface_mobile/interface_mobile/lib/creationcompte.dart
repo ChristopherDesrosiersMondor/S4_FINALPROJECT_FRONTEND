@@ -23,6 +23,10 @@ class CreationCompteForm extends StatefulWidget {
 
 class CreationCompteFormState extends State<CreationCompteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController pseudoController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
