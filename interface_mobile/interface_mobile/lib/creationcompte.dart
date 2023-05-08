@@ -25,8 +25,10 @@ class CreationCompteFormState extends State<CreationCompteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  // trouver comment récupérer la date
 
   @override
   Widget build(BuildContext context) {
