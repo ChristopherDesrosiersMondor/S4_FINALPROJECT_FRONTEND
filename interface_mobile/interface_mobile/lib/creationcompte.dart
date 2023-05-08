@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/utilities.dart';
 import 'package:intl/intl.dart';
 
-//Sources
-//Datepicker in Flutter
+// Sources
+// Datepicker in Flutter
 // https://www.fluttercampus.com/guide/39/how-to-show-date-picker-on-textfield-tap-and-get-formatted-date/
 
 class CreationCompte extends StatelessWidget {
@@ -11,6 +12,7 @@ class CreationCompte extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         title: const Text('CreationCompte'),
       ),
@@ -43,9 +45,10 @@ class CreationCompteFormState extends State<CreationCompteForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
+            style: const TextStyle(color: Colors.white),
+            controller: lastNameController,
             decoration: const InputDecoration(
-              hintText: 'Nom',
-            ),
+                hintText: 'Nom', hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -54,9 +57,10 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           TextFormField(
+            style: const TextStyle(color: Colors.white),
+            controller: firstNameController,
             decoration: const InputDecoration(
-              hintText: 'Prénom',
-            ),
+                hintText: 'Prénom', hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -65,9 +69,10 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           TextFormField(
+            style: const TextStyle(color: Colors.white),
+            controller: emailController,
             decoration: const InputDecoration(
-              hintText: 'Courriel',
-            ),
+                hintText: 'Courriel', hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -76,9 +81,10 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           TextFormField(
+            style: const TextStyle(color: Colors.white),
+            controller: pseudoController,
             decoration: const InputDecoration(
-              hintText: 'Pseudo',
-            ),
+                hintText: 'Pseudo', hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -87,12 +93,14 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           TextFormField(
+            style: const TextStyle(color: Colors.white),
+            controller: passwordController,
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(
-              hintText: 'Mot de passe',
-            ),
+                hintText: 'Mot de passe',
+                hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -101,12 +109,12 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           TextFormField(
-            controller:
-                birthdayController, //editing controller of this TextField
+            style: const TextStyle(color: Colors.white),
+            controller: birthdayController,
             decoration: const InputDecoration(
-                icon: Icon(Icons.calendar_today), //icon of text field
-                labelText: "Enter Date" //label text of field
-                ),
+                icon: Icon(Icons.calendar_today),
+                hintText: "Date de naissance",
+                hintStyle: TextStyle(color: Colors.grey)),
             readOnly:
                 true, //set it true, so that user will not able to edit text
             onTap: () async {
@@ -114,8 +122,8 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime(
-                      2000), //DateTime.now() - not to allow to choose before today.
-                  lastDate: DateTime(2101));
+                      1900), //DateTime.now() - not to allow to choose before today.
+                  lastDate: DateTime.now());
 
               if (pickedDate != null) {
                 String formattedDate =
@@ -125,7 +133,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                       formattedDate; //set output date to TextField value.
                 });
               } else {
-                print("Date is not selected");
+                showAlertDialog(context, "Veuillez sélectionner une date.");
               }
             },
           ),
@@ -136,7 +144,14 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                 // Validate will return true if the form is valid, or false if
                 // the form is invalid.
                 if (_formKey.currentState!.validate()) {
-                  // Process data.
+                  var lastName = lastNameController.text;
+                  var firstName = firstNameController.text;
+                  var email = emailController.text;
+                  var pseudo = pseudoController.text;
+                  var password = passwordController.text;
+                  var birthday = birthdayController.text;
+                  createUser(context, lastName, firstName, email, pseudo,
+                      password, birthday);
                 }
               },
               child: const Text('Submit'),

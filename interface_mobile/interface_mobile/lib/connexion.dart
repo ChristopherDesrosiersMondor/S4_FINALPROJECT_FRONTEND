@@ -7,6 +7,7 @@ class ConnexionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         title: const Text('ConnexionPage'),
       ),
@@ -43,10 +44,10 @@ class ConnexionFormState extends State<ConnexionForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
+            style: const TextStyle(color: Colors.white),
             controller: pseudoController,
             decoration: const InputDecoration(
-              hintText: 'Pseudo',
-            ),
+                hintText: 'Pseudo', hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -55,13 +56,14 @@ class ConnexionFormState extends State<ConnexionForm> {
             },
           ),
           TextFormField(
+            style: const TextStyle(color: Colors.white),
             controller: passwordController,
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(
-              hintText: 'Mot de passe',
-            ),
+                hintText: 'Mot de passe',
+                hintStyle: TextStyle(color: Colors.grey)),
             validator: (String? value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
@@ -81,7 +83,7 @@ class ConnexionFormState extends State<ConnexionForm> {
                   userConnect(context, pseudo, password);
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Se connecter'),
             ),
           ),
         ],
