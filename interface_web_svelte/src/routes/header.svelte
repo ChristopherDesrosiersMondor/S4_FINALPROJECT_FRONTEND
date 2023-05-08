@@ -1,0 +1,145 @@
+<script lang="ts">
+	import * as config from '$lib/config';
+	import Login from '$lib/login.svelte';
+	import '../app.css';
+	import { Search } from 'lucide-svelte';
+</script>
+
+<nav>
+	<!-- Title -->
+	<a href="/" class="title">
+		<b>{config.title}</b>
+	</a>
+
+	<!-- Search bar -->
+	<div class="search-container">
+		<div id="SearchDropdown" class="search-level-one rounded-box-container rounded-box">
+			<div class="search-level-two">
+				<form action="" method="get" role="search" class="search-form">
+					<label for="header-search-bar" class="label-search">
+						<div class="icon-container">
+							<Search />
+						</div>
+					</label>
+					<input
+						type="search"
+						class="header-search-input"
+						id="header-search-bar"
+						placeholder="Search Hublot"
+						value
+					/>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Login -->
+	<Login />
+</nav>
+
+<style>
+	nav {
+		color: var(--text-2);
+		align-items: center;
+		display: inline-flex;
+		flex-direction: row;
+		flex-grow: 1;
+		padding-block: var(--size-2);
+		position: fixed;
+		top: 0;
+		width: 100%;
+		height: 6%;
+		padding-left: 1%;
+		padding-right: 1%;
+		border-bottom: 1px solid var(--gray-7);
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.search-container {
+		fill: aqua;
+		flex-grow: 1;
+		margin: 0 auto;
+		max-width: 690px;
+		padding-bottom: 6px;
+	}
+
+	.search-level-one {
+		fill: aqua;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		margin-left: 16px;
+		margin-right: 16px;
+		width: auto;
+		height: auto;
+	}
+
+	.rounded-box-container {
+		border: 1px solid transparent;
+		border-radius: 4px;
+		box-sizing: border-box;
+		height: 36px;
+		position: relative;
+		min-width: 72px;
+	}
+
+	.search-level-two {
+		-ms-flex-align: center;
+		align-items: center;
+		box-sizing: border-box;
+		background-color: var(--gray-9);
+		border: 1px solid var(--gray-7);
+		border-radius: 1.25em;
+		box-shadow: none;
+		height: 40px;
+	}
+
+	.search-form {
+		width: 100%;
+		height: 100%;
+		display: flex;
+	}
+
+	.label-search {
+		display: flex;
+		cursor: default;
+	}
+
+	.header-search-input {
+		appearance: none;
+		color: var(--text-1);
+		font-size: 14px;
+		line-height: 14px;
+		margin-right: 16px;
+		outline: none;
+		width: 100%;
+		background-color: var(--gray-9);
+	}
+
+	.search-level-two:hover,
+	.header-search-input:hover {
+		background-color: var(--gray-11);
+	}
+
+	.search-level-two:hover {
+		border: 1px solid var(--gray-5);
+	}
+
+	.icon-container {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-align: center;
+		align-items: center;
+		padding: 0 9px 0 15px;
+	}
+
+	@media (min-width: 768px) {
+		nav {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+</style>
