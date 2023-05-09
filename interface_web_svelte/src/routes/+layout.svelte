@@ -29,7 +29,6 @@
 	}
 
 	main {
-		margin-top: 5%;
 		padding-block: var(--size-9);
 	}
 </style>
