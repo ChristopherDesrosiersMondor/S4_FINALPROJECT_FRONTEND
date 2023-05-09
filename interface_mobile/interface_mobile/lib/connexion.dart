@@ -44,33 +44,45 @@ class ConnexionFormState extends State<ConnexionForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Padding(
-              padding: EdgeInsets.all(15),
+          Padding(
+              padding: const EdgeInsets.all(15),
               child: Center(
                 child: Text(
                   'Hey sailor! Log in to Hublot!',
-                  style: GoogleFonts.abrilFatface(),
+                  style: GoogleFonts.signika(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: .5,
+                          fontSize: 20)),
                 ),
               )),
-          TextFormField(
-            controller: pseudoController,
-            cursorColor: Colors.black,
-            style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              hintStyle: const TextStyle(color: Colors.white60),
-              hintText: "Pseudo",
-              filled: true,
-              fillColor: Colors.grey.shade700,
-              border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(50)),
+          Container(
+            alignment: Alignment.center,
+            child: SizedBox(
+              height: 50,
+              width: 250,
+              child: TextFormField(
+                controller: pseudoController,
+                cursorColor: Colors.black,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintStyle: const TextStyle(color: Colors.white60),
+                  hintText: "Pseudo",
+                  filled: true,
+                  fillColor: Colors.grey.shade700,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(50)),
+                ),
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+              ),
             ),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
           ),
           TextFormField(
             style: const TextStyle(color: Colors.white60),
