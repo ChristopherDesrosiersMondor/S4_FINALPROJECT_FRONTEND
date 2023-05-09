@@ -10,12 +10,21 @@ class ConnexionPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 30, 30),
       appBar: AppBar(
-        leading: const Icon(
-          Icons.anchor,
-          color: Color(0xffff6633),
+        // devrait être la flèche, ensuite ajouter un button avec icon
+        leading: const Align(
+          alignment: Alignment.center,
+          child: Icon(
+            Icons.anchor,
+            color: Color(0xffff6633),
+          ),
         ),
         backgroundColor: const Color.fromARGB(255, 31, 30, 30),
-        title: const Text('Sign up'),
+        title: const Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            "Sign up",
+          ),
+        ),
       ),
       body: const Center(child: ConnexionForm()),
     );
