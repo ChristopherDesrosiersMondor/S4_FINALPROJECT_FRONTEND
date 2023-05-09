@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,61 +50,87 @@ class ConnexionFormState extends State<ConnexionForm> {
               padding: const EdgeInsets.all(15),
               child: Center(
                 child: Text(
-                  'Hey sailor! Log in to Hublot!',
+                  'Log in to Hublot',
                   style: GoogleFonts.signika(
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           letterSpacing: .5,
-                          fontSize: 20)),
+                          fontSize: 25)),
                 ),
               )),
-          Container(
-            alignment: Alignment.center,
-            child: SizedBox(
-              height: 50,
-              width: 250,
-              child: TextFormField(
-                controller: pseudoController,
-                cursorColor: Colors.black,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  hintStyle: const TextStyle(color: Colors.white60),
-                  hintText: "Pseudo",
-                  filled: true,
-                  fillColor: Colors.grey.shade700,
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(50)),
-                ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: TextFormField(
+              controller: pseudoController,
+              cursorColor: Colors.black,
+              style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                hintStyle: const TextStyle(color: Colors.white60),
+                hintText: "Username",
+                filled: true,
+                fillColor: Colors.grey.shade700,
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(50)),
               ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
             ),
           ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white60),
-            controller: passwordController,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration: const InputDecoration(
-                hintText: 'Mot de passe',
-                hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: TextFormField(
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              controller: passwordController,
+              cursorColor: Colors.black,
+              style: const TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                hintStyle: const TextStyle(color: Colors.white60),
+                hintText: "Password",
+                filled: true,
+                fillColor: Colors.grey.shade700,
+                border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(50)),
+              ),
+              validator: (String? value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              'Forgot password',
+              style: GoogleFonts.signika(
+                  textStyle: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                      letterSpacing: .5,
+                      fontSize: 16)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50.0),
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.grey,
+                minimumSize: Size(MediaQuery.of(context).size.width, 36),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                ),
+              ),
               onPressed: () {
                 // Validate will return true if the form is valid, or false if
                 // the form is invalid.
@@ -112,7 +140,7 @@ class ConnexionFormState extends State<ConnexionForm> {
                   userConnect(context, pseudo, password);
                 }
               },
-              child: const Text('Se connecter'),
+              child: const Text('Continue'),
             ),
           ),
         ],
