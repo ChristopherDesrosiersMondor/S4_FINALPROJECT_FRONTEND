@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/utilities.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConnexionPage extends StatelessWidget {
   const ConnexionPage({super.key});
@@ -43,12 +44,14 @@ class ConnexionFormState extends State<ConnexionForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Text(
-            'Hey sailor! Welcome back to Hublot!',
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+          const Padding(
+              padding: EdgeInsets.all(15),
+              child: Center(
+                child: Text(
+                  'Hey sailor! Log in to Hublot!',
+                  style: GoogleFonts.abrilFatface(),
+                ),
+              )),
           TextFormField(
             controller: pseudoController,
             cursorColor: Colors.black,
