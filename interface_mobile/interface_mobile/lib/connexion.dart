@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,9 +8,14 @@ class ConnexionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: const Color.fromARGB(255, 31, 30, 30),
       appBar: AppBar(
-        title: const Text('ConnexionPage'),
+        leading: const Icon(
+          Icons.anchor,
+          color: Color(0xffff6633),
+        ),
+        backgroundColor: const Color.fromARGB(255, 31, 30, 30),
+        title: const Text('Sign up'),
       ),
       body: const Center(child: ConnexionForm()),
     );
@@ -61,51 +64,65 @@ class ConnexionFormState extends State<ConnexionForm> {
               )),
           Padding(
             padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              controller: pseudoController,
-              cursorColor: Colors.black,
-              style: const TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                hintStyle: const TextStyle(color: Colors.white60),
-                hintText: "Username",
-                filled: true,
-                fillColor: Colors.grey.shade700,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(50)),
+            child: Container(
+              alignment: Alignment.center,
+              child: SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: TextFormField(
+                  controller: pseudoController,
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintStyle: const TextStyle(color: Colors.white60),
+                    hintText: "Username",
+                    filled: true,
+                    fillColor: Colors.grey.shade700,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
               ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8),
-            child: TextFormField(
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-              controller: passwordController,
-              cursorColor: Colors.black,
-              style: const TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                hintStyle: const TextStyle(color: Colors.white60),
-                hintText: "Password",
-                filled: true,
-                fillColor: Colors.grey.shade700,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(50)),
+            child: Container(
+              alignment: Alignment.center,
+              child: SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: TextFormField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  controller: passwordController,
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintStyle: const TextStyle(color: Colors.white60),
+                    hintText: "Password",
+                    filled: true,
+                    fillColor: Colors.grey.shade700,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
               ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
             ),
           ),
           Padding(
@@ -115,32 +132,35 @@ class ConnexionFormState extends State<ConnexionForm> {
               style: GoogleFonts.signika(
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      color: Color(0xffff6633),
                       letterSpacing: .5,
                       fontSize: 16)),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 50.0),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.grey,
-                minimumSize: Size(MediaQuery.of(context).size.width, 36),
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            child: Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey.shade800,
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * 0.95, 45),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  ),
                 ),
+                onPressed: () {
+                  // Validate will return true if the form is valid, or false if
+                  // the form is invalid.
+                  if (_formKey.currentState!.validate()) {
+                    var pseudo = pseudoController.text;
+                    var password = passwordController.text;
+                    userConnect(context, pseudo, password);
+                  }
+                },
+                child: const Text('Continue'),
               ),
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState!.validate()) {
-                  var pseudo = pseudoController.text;
-                  var password = passwordController.text;
-                  userConnect(context, pseudo, password);
-                }
-              },
-              child: const Text('Continue'),
             ),
           ),
         ],
