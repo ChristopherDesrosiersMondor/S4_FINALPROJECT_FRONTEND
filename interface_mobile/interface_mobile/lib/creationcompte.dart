@@ -1,6 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:intl/intl.dart';
+
+import 'connexion.dart';
 
 // Sources
 // Datepicker in Flutter
@@ -12,9 +16,36 @@ class CreationCompte extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Configuration.appDarkBackgroundColor,
       appBar: AppBar(
-        title: const Text('CreationCompte'),
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
+            onPressed: () {}),
+        title: const Icon(
+          Icons.anchor,
+          color: Configuration.orangeColor,
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
+            child: Text.rich(TextSpan(children: [
+              TextSpan(
+                  style: Configuration.textForApp(Colors.white, 18),
+                  text: "Log in",
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ConnexionPage()),
+                      );
+                    }),
+            ])),
+          )
+        ],
+        backgroundColor: Configuration.appDarkBackgroundColor,
       ),
       body: const SingleChildScrollView(child: CreationCompteForm()),
     );
@@ -44,70 +75,11 @@ class CreationCompteFormState extends State<CreationCompteForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: lastNameController,
-            decoration: const InputDecoration(
-                hintText: 'Nom', hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: firstNameController,
-            decoration: const InputDecoration(
-                hintText: 'Prénom', hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: emailController,
-            decoration: const InputDecoration(
-                hintText: 'Courriel', hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: pseudoController,
-            decoration: const InputDecoration(
-                hintText: 'Pseudo', hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: passwordController,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration: const InputDecoration(
-                hintText: 'Mot de passe',
-                hintStyle: TextStyle(color: Colors.grey)),
-            validator: (String? value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
-          ),
+          Configuration.inputField(lastNameController, "Last Name"),
+          Configuration.inputField(firstNameController, "First Name"),
+          Configuration.inputField(emailController, "Email"),
+          Configuration.inputField(pseudoController, "Username"),
+          Configuration.passwordInput(passwordController, "Password"),
           TextFormField(
             style: const TextStyle(color: Colors.white),
             controller: birthdayController,
@@ -140,6 +112,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: ElevatedButton(
+              style: Configuration.formButtonStyle(context),
               onPressed: () {
                 // Validate will return true if the form is valid, or false if
                 // the form is invalid.
@@ -154,7 +127,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                       password, birthday);
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Create Account'),
             ),
           ),
         ],
