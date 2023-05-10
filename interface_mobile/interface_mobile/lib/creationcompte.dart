@@ -23,9 +23,11 @@ class CreationCompte extends StatelessWidget {
               Icons.arrow_back,
             ),
             onPressed: () {}),
-        title: const Icon(
-          Icons.anchor,
-          color: Configuration.orangeColor,
+        title: const Center(
+          child: Icon(
+            Icons.anchor,
+            color: Configuration.orangeColor,
+          ),
         ),
         actions: <Widget>[
           Padding(
@@ -75,11 +77,30 @@ class CreationCompteFormState extends State<CreationCompteForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Configuration.inputField(context, lastNameController, "Last Name"),
-          Configuration.inputField(context, firstNameController, "First Name"),
-          Configuration.inputField(context, emailController, "Email"),
-          Configuration.inputField(context, pseudoController, "Username"),
-          Configuration.passwordInput(context, passwordController, "Password"),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Configuration.inputField(
+                context, lastNameController, "Last Name"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Configuration.inputField(
+                context, firstNameController, "First Name"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Configuration.inputField(context, emailController, "Email"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child:
+                Configuration.inputField(context, pseudoController, "Username"),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Configuration.passwordInput(
+                context, passwordController, "Password"),
+          ),
           TextFormField(
             style: const TextStyle(color: Colors.white),
             controller: birthdayController,
@@ -110,26 +131,27 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             },
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              style: Configuration.formButtonStyle(context),
-              onPressed: () {
-                // Validate will return true if the form is valid, or false if
-                // the form is invalid.
-                if (_formKey.currentState!.validate()) {
-                  var lastName = lastNameController.text;
-                  var firstName = firstNameController.text;
-                  var email = emailController.text;
-                  var pseudo = pseudoController.text;
-                  var password = passwordController.text;
-                  var birthday = birthdayController.text;
-                  createUser(context, lastName, firstName, email, pseudo,
-                      password, birthday);
-                }
-              },
-              child: const Text('Create Account'),
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Center(
+                child: ElevatedButton(
+                  style: Configuration.formButtonStyle(context),
+                  onPressed: () {
+                    // Validate will return true if the form is valid, or false if
+                    // the form is invalid.
+                    if (_formKey.currentState!.validate()) {
+                      var lastName = lastNameController.text;
+                      var firstName = firstNameController.text;
+                      var email = emailController.text;
+                      var pseudo = pseudoController.text;
+                      var password = passwordController.text;
+                      var birthday = birthdayController.text;
+                      createUser(context, lastName, firstName, email, pseudo,
+                          password, birthday);
+                    }
+                  },
+                  child: const Text('Create Account'),
+                ),
+              )),
         ],
       ),
     );
