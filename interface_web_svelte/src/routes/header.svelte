@@ -2,7 +2,6 @@
 	import * as config from '$lib/config';
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
-	import Sidebar from '$lib/sidebar.svelte';
 	import '../app.css';
 </script>
 

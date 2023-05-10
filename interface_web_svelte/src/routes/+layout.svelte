@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Header from './header.svelte';
+	import Footer from './footer.svelte';
 
 	import 'open-props/style';
 	import 'open-props/normalize';
@@ -22,6 +23,10 @@
 
 		<slot />
 	</main>
+</div>
+
+<div class="footer">
+	<Footer />
 </div>
 
 <style>
@@ -52,5 +57,9 @@
 		padding-left: 10px;
 		padding-top: 20px;
 		background-color: #1a1a1b;
+	}
+
+	.footer {
+		text-align: center;
 	}
 </style>
