@@ -2,14 +2,15 @@
 	import * as config from '$lib/config';
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
+	import Sidebar from '$lib/sidebar.svelte';
 	import '../app.css';
-	import { Search } from 'lucide-svelte';
 </script>
 
 <nav>
 	<!-- Title -->
 	<a href="/" class="title">
 		<b>{config.title}</b>
+		<!-- <p>{config.description}</p> -->
 	</a>
 
 	<!-- Search bar -->

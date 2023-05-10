@@ -43,7 +43,7 @@ html {
 	--border: var(--border-dark);
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
 	:root {
 		color-scheme: light;
 
