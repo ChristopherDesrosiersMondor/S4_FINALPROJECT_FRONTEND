@@ -62,7 +62,6 @@ class ConnexionFormState extends State<ConnexionForm> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     pseudoController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -103,8 +102,7 @@ class ConnexionFormState extends State<ConnexionForm> {
               child: ElevatedButton(
                 style: Configuration.formButtonStyle(context),
                 onPressed: () {
-                  // Validate will return true if the form is valid, or false if
-                  // the form is invalid.
+                  // si le formulaire est validé
                   if (_formKey.currentState!.validate()) {
                     var pseudo = pseudoController.text;
                     var password = passwordController.text;

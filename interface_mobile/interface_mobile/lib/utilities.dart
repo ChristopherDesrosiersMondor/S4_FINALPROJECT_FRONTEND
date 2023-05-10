@@ -42,6 +42,7 @@ showAlertDialog(BuildContext context, String text) {
   );
 }
 
+// connecter un utilisateur
 Future<Account> userConnect(
     BuildContext context, String pseudo, String password) async {
   final response = await http.get(Uri.parse(
@@ -56,6 +57,7 @@ Future<Account> userConnect(
   }
 }
 
+// créer un nouvel utilisateur
 Future<Account> createUser(
     BuildContext context,
     String lastName,
