@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Header from './header.svelte';
-	import Footer from './footer.svelte';
 
 	import 'open-props/style';
 	import 'open-props/normalize';
@@ -25,10 +24,6 @@
 	</main>
 </div>
 
-<div class="footer">
-	<Footer />
-</div>
-
 <style>
 	.layout {
 		height: 100%;
@@ -36,7 +31,6 @@
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
 		padding-inline: var(--size-0);
-		background-color: #030303;
 	}
 
 	main {
@@ -46,20 +40,19 @@
 		display: flex;
 		position: fixed;
 		z-index: 0;
+		background-color: var(--background);
 	}
 
 	.header {
 		z-index: 1;
+		background-color: var(--header-background);
 	}
 
 	.sidebar {
 		width: 15%;
+		height: 100%;
 		padding-left: 10px;
 		padding-top: 20px;
-		background-color: #1a1a1b;
-	}
-
-	.footer {
-		text-align: center;
+		background-color: var(--sidebar-background);
 	}
 </style>

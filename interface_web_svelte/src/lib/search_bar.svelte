@@ -1,5 +1,6 @@
 <script>
 	import '../app.css';
+	import * as config from '$lib/config';
 	import { Search } from 'lucide-svelte';
 </script>
 
@@ -58,7 +59,6 @@
 		-ms-flex-align: center;
 		align-items: center;
 		box-sizing: border-box;
-		background-color: var(--gray-9);
 		border: 1px solid var(--gray-7);
 		border-radius: 1.25em;
 		box-shadow: none;
@@ -84,16 +84,15 @@
 		margin-right: 16px;
 		outline: none;
 		width: 100%;
-		background-color: var(--gray-9);
 	}
 
 	.search-level-two:hover,
 	.header-search-input:hover {
-		background-color: var(--gray-11);
+		background-color: var(--searchbar-background-color);
 	}
 
 	.search-level-two:hover {
-		border: 1px solid var(--gray-5);
+		border: 1px solid var(--searchbar-background-color);
 	}
 
 	.icon-container {

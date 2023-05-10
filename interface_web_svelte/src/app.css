@@ -14,8 +14,12 @@ html {
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
 	--surface-4-dark: var(--gray-9);
-	--background-dark: var(--gradient-8);
+	--background-dark: black;
+	--header-background-dark: #1a1a1b;
 	--border-dark: var(--gray-9);
+	--sidebar-background-dark: #1a1a1b;
+	--searchbar-background-color-dark: #272729;
+
 
 	/* light */
 	--brand-light: var(--orange-10);
@@ -25,8 +29,13 @@ html {
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);
 	--surface-4-light: var(--gray-3);
-	--background-light: none;
+	--background-light: #dae0e6;
+	--header-background-light: white;
 	--border-light: var(--gray-4);
+	--sidebar-background-light: white;
+	--searchbar-background-color-light: white;
+
+	
 }
 
 :root {
@@ -41,6 +50,9 @@ html {
 	--surface-4: var(--surface-4-dark);
 	--background: var(--background-dark);
 	--border: var(--border-dark);
+	--sidebar-background: var(--sidebar-background-dark);
+	--header-background: var(--header-background-dark);
+	--searchbar-background-color: var(--searchbar-background-color-dark)
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +68,10 @@ html {
 		--surface-4: var(--surface-4-light);
 		--background: var(--background-light);
 		--border: var(--border-light);
+		--sidebar-background: var(--sidebar-background-light);
+		--header-background: var(--header-background-light);
+		--searchbar-background-color: var(--searchbar-background-color-light)
+
 	}
 }
 
@@ -71,6 +87,9 @@ html {
 	--surface-4: var(--surface-4-dark);
 	--background: var(--background-dark);
 	--border: var(--border-dark);
+	--sidebar-background: var(--sidebar-background-dark);
+	--header-background: var(--header-background-dark);
+	--searchbar-background-color: var(--searchbar-background-color-dark)
 }
 
 [color-scheme='light'] {
@@ -85,6 +104,10 @@ html {
 	--surface-4: var(--surface-4-light);
 	--background: var(--background-light);
 	--border: var(--border-light);
+	--sidebar-background: var(--sidebar-background-light);
+	--header-background: var(--header-background-light);
+	--searchbar-background-color: var(--searchbar-background-color-light)
+
 }
 
 html,

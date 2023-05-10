@@ -36,6 +36,7 @@
 		padding-left: 1%;
 		padding-right: 1%;
 		border-bottom: 1px solid var(--gray-7);
+		background-color: var(--header-background);
 	}
 
 	a {
