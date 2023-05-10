@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,7 +36,11 @@ class ConnexionPage extends StatelessWidget {
                   text: "Sign up",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
-                      //on tap code here, you can navigate to other page or URL
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CreationCompte()),
+                      );
                     }),
             ])),
           )
