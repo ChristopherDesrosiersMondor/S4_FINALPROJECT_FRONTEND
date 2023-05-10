@@ -2,14 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/creationcompteNext.dart';
-import 'package:interface_mobile/utilities.dart';
-import 'package:intl/intl.dart';
 
 import 'connexion.dart';
-
-// Sources
-// Datepicker in Flutter
-// https://www.fluttercampus.com/guide/39/how-to-show-date-picker-on-textfield-tap-and-get-formatted-date/
 
 class CreationCompte extends StatelessWidget {
   const CreationCompte({super.key});
@@ -64,12 +58,15 @@ class CreationCompteForm extends StatefulWidget {
 
 class CreationCompteFormState extends State<CreationCompteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController birthdayController = TextEditingController();
+
+  @override
+  void dispose() {
+    pseudoController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

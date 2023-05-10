@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:interface_mobile/utilities.dart';
-import 'package:intl/intl.dart';
 
 class Configuration {
   static const appDarkBackgroundColor = Color.fromARGB(255, 31, 30, 30);

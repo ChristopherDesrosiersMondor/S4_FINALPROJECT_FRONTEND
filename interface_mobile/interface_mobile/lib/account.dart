@@ -17,6 +17,7 @@ class Account {
     required this.userBirthday,
   });
 
+  // permet de transformer une entité en format json pour la communication avec l'API
   factory Account.fromJson(Map<String, dynamic> json) {
     return Account(
         userId: json['userId'],
