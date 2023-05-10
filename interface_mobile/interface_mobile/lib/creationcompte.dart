@@ -101,34 +101,53 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             child: Configuration.passwordInput(
                 context, passwordController, "Password"),
           ),
-          TextFormField(
-            style: const TextStyle(color: Colors.white),
-            controller: birthdayController,
-            decoration: const InputDecoration(
-                icon: Icon(Icons.calendar_today),
-                hintText: "Date de naissance",
-                hintStyle: TextStyle(color: Colors.grey)),
-            readOnly:
-                true, //set it true, so that user will not able to edit text
-            onTap: () async {
-              DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(
-                      1900), //DateTime.now() - not to allow to choose before today.
-                  lastDate: DateTime.now());
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Container(
+              alignment: Alignment.center,
+              child: SizedBox(
+                height: 50,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: TextFormField(
+                  style: const TextStyle(color: Colors.white),
+                  controller: birthdayController,
+                  decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.calendar_today,
+                        color: Colors.grey.shade700,
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.shade700,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)),
+                      hintText: "Birthday",
+                      hintStyle: const TextStyle(color: Colors.grey)),
+                  readOnly:
+                      true, //set it true, so that user will not able to edit text
+                  onTap: () async {
+                    DateTime? pickedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(
+                            1900), //DateTime.now() - not to allow to choose before today.
+                        lastDate: DateTime.now());
 
-              if (pickedDate != null) {
-                String formattedDate =
-                    DateFormat('yyyy-MM-dd').format(pickedDate);
-                setState(() {
-                  birthdayController.text =
-                      formattedDate; //set output date to TextField value.
-                });
-              } else {
-                showAlertDialog(context, "Veuillez sélectionner une date.");
-              }
-            },
+                    if (pickedDate != null) {
+                      String formattedDate =
+                          DateFormat('yyyy-MM-dd').format(pickedDate);
+                      setState(() {
+                        birthdayController.text =
+                            formattedDate; //set output date to TextField value.
+                      });
+                    } else {
+                      showAlertDialog(
+                          context, "Veuillez sélectionner une date.");
+                    }
+                  },
+                ),
+              ),
+            ),
           ),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 16.0),
