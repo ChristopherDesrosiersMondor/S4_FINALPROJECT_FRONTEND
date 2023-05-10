@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,21 +11,36 @@ class ConnexionPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 30, 30),
       appBar: AppBar(
-        // devrait être la flèche, ensuite ajouter un button avec icon
-        leading: const Align(
-          alignment: Alignment.center,
-          child: Icon(
-            Icons.anchor,
-            color: Color(0xffff6633),
-          ),
+        leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
+            onPressed: () {}),
+        title: const Icon(
+          Icons.anchor,
+          color: Color(0xffff6633),
         ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
+            child: Text.rich(TextSpan(children: [
+              TextSpan(
+                  style: GoogleFonts.roboto(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          letterSpacing: .5,
+                          fontSize: 18)),
+                  //make link blue and underline
+                  text: "Sign up",
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      //on tap code here, you can navigate to other page or URL
+                    }),
+            ])),
+          )
+        ],
         backgroundColor: const Color.fromARGB(255, 31, 30, 30),
-        title: const Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            "Sign up",
-          ),
-        ),
       ),
       body: const Center(child: ConnexionForm()),
     );
@@ -63,7 +79,7 @@ class ConnexionFormState extends State<ConnexionForm> {
               child: Center(
                 child: Text(
                   'Log in to Hublot',
-                  style: GoogleFonts.signika(
+                  style: GoogleFonts.roboto(
                       textStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -138,7 +154,7 @@ class ConnexionFormState extends State<ConnexionForm> {
             padding: const EdgeInsets.all(8),
             child: Text(
               'Forgot password',
-              style: GoogleFonts.signika(
+              style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color(0xffff6633),
