@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ConnexionPage extends StatelessWidget {
   const ConnexionPage({super.key});
@@ -18,9 +17,11 @@ class ConnexionPage extends StatelessWidget {
               Icons.arrow_back,
             ),
             onPressed: () {}),
-        title: const Icon(
-          Icons.anchor,
-          color: Configuration.orangeColor,
+        title: const Center(
+          child: Icon(
+            Icons.anchor,
+            color: Configuration.orangeColor,
+          ),
         ),
         actions: <Widget>[
           Padding(
@@ -81,27 +82,13 @@ class ConnexionFormState extends State<ConnexionForm> {
                     style: Configuration.textForApp(Colors.white, 25)),
               )),
           Padding(
-            padding: const EdgeInsets.all(8),
-            child: Container(
-              alignment: Alignment.center,
-              child: SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child:
-                      Configuration.inputField(pseudoController, "Username")),
-            ),
-          ),
+              padding: const EdgeInsets.all(8),
+              child: Configuration.inputField(
+                  context, pseudoController, "Username")),
           Padding(
             padding: const EdgeInsets.all(8),
-            child: Container(
-              alignment: Alignment.center,
-              child: SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width * 0.9,
-                child:
-                    Configuration.passwordInput(passwordController, "Password"),
-              ),
-            ),
+            child: Configuration.passwordInput(
+                context, passwordController, "Password"),
           ),
           Padding(
             padding: const EdgeInsets.all(8),

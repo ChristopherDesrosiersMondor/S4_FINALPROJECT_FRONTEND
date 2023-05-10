@@ -14,54 +14,67 @@ class Configuration {
             fontSize: fontSize));
   }
 
-  static TextFormField inputField(
-      TextEditingController controller, String hintText) {
-    return TextFormField(
-      controller: controller,
-      cursorColor: Colors.black,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        hintStyle: const TextStyle(color: Colors.white60),
-        hintText: hintText,
-        filled: true,
-        fillColor: Colors.grey.shade700,
-        border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(20)),
-      ),
-      validator: (String? value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },
+  static Container inputField(
+      BuildContext context, TextEditingController controller, String hintText) {
+    return Container(
+      alignment: Alignment.center,
+      child: SizedBox(
+          height: 50,
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: TextFormField(
+            controller: controller,
+            cursorColor: Colors.black,
+            style: const TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              hintStyle: const TextStyle(color: Colors.white60),
+              hintText: hintText,
+              filled: true,
+              fillColor: Colors.grey.shade700,
+              border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(20)),
+            ),
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+          )),
     );
   }
 
-  static TextFormField passwordInput(
-      TextEditingController controller, String hintText) {
-    return TextFormField(
-      obscureText: true,
-      enableSuggestions: false,
-      autocorrect: false,
-      controller: controller,
-      cursorColor: Colors.black,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        hintStyle: const TextStyle(color: Colors.white60),
-        hintText: hintText,
-        filled: true,
-        fillColor: Colors.grey.shade700,
-        border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(20)),
+  static Container passwordInput(
+      BuildContext context, TextEditingController controller, String hintText) {
+    return Container(
+      alignment: Alignment.center,
+      child: SizedBox(
+        height: 50,
+        width: MediaQuery.of(context).size.width * 0.9,
+        child: TextFormField(
+          obscureText: true,
+          enableSuggestions: false,
+          autocorrect: false,
+          controller: controller,
+          cursorColor: Colors.black,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintStyle: const TextStyle(color: Colors.white60),
+            hintText: hintText,
+            filled: true,
+            fillColor: Colors.grey.shade700,
+            border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(20)),
+          ),
+          validator: (String? value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+        ),
       ),
-      validator: (String? value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter some text';
-        }
-        return null;
-      },
     );
   }
 

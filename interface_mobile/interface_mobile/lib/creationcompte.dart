@@ -75,11 +75,11 @@ class CreationCompteFormState extends State<CreationCompteForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Configuration.inputField(lastNameController, "Last Name"),
-          Configuration.inputField(firstNameController, "First Name"),
-          Configuration.inputField(emailController, "Email"),
-          Configuration.inputField(pseudoController, "Username"),
-          Configuration.passwordInput(passwordController, "Password"),
+          Configuration.inputField(context, lastNameController, "Last Name"),
+          Configuration.inputField(context, firstNameController, "First Name"),
+          Configuration.inputField(context, emailController, "Email"),
+          Configuration.inputField(context, pseudoController, "Username"),
+          Configuration.passwordInput(context, passwordController, "Password"),
           TextFormField(
             style: const TextStyle(color: Colors.white),
             controller: birthdayController,
