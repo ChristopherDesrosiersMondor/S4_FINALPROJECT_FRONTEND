@@ -43,7 +43,7 @@ class ConnexionPage extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const Center(child: ConnexionForm()),
+      body: const SingleChildScrollView(child: ConnexionForm()),
     );
   }
 }

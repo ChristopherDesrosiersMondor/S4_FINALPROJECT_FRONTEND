@@ -150,7 +150,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 50.0),
               child: Center(
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),
