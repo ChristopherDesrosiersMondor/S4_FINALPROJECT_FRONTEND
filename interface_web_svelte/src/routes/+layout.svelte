@@ -19,8 +19,9 @@
 		<div class="sidebar">
 			<Sidebar />
 		</div>
-
-		<slot />
+		<div class="content">
+			<slot />
+		</div>
 	</main>
 </div>
 
@@ -34,13 +35,12 @@
 	}
 
 	main {
-		padding-block: var(--size-9);
 		width: 100%;
 		height: 100%;
 		display: flex;
-		position: fixed;
 		z-index: 0;
 		background-color: var(--background);
+		padding-top: 5%;
 	}
 
 	.header {
@@ -50,9 +50,19 @@
 
 	.sidebar {
 		width: 15%;
-		height: 100%;
 		padding-left: 10px;
 		padding-top: 20px;
 		background-color: var(--sidebar-background);
+		position: fixed;
+		bottom: 0;
+		height: 100%;
+		top: 7%;
+		z-index: 1;
+	}
+
+	.content {
+		width: 100%;
+		height: 100%;
+		margin-left: 15%;
 	}
 </style>

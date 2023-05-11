@@ -59,10 +59,11 @@
 		-ms-flex-align: center;
 		align-items: center;
 		box-sizing: border-box;
-		border: 1px solid var(--gray-7);
+		border: 1px solid var(--reg-border-color);
 		border-radius: 1.25em;
 		box-shadow: none;
 		height: 40px;
+		background-color: var(--searchbar-background-color);
 	}
 
 	.search-form {
@@ -78,21 +79,22 @@
 
 	.header-search-input {
 		appearance: none;
-		color: var(--text-1);
+		color: var(--text-2);
 		font-size: 14px;
 		line-height: 14px;
 		margin-right: 16px;
 		outline: none;
 		width: 100%;
+		background-color: var(--searchbar-background-color);
 	}
 
 	.search-level-two:hover,
 	.header-search-input:hover {
-		background-color: var(--searchbar-background-color);
+		background-color: white;
 	}
 
 	.search-level-two:hover {
-		border: 1px solid var(--searchbar-background-color);
+		border: 1px solid var(--hover-border-color);
 	}
 
 	.icon-container {

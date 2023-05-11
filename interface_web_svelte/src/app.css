@@ -19,6 +19,8 @@ html {
 	--border-dark: var(--gray-9);
 	--sidebar-background-dark: #1a1a1b;
 	--searchbar-background-color-dark: #272729;
+	--reg-border-color-dark: grey;
+	--hover-border-color-dark: white;
 
 
 	/* light */
@@ -33,7 +35,9 @@ html {
 	--header-background-light: white;
 	--border-light: var(--gray-4);
 	--sidebar-background-light: white;
-	--searchbar-background-color-light: white;
+	--searchbar-background-color-light: #f6f7f8;
+	--reg-border-color-light: grey;
+	--hover-border-color-light: #0079d3;
 
 	
 }
@@ -52,10 +56,12 @@ html {
 	--border: var(--border-dark);
 	--sidebar-background: var(--sidebar-background-dark);
 	--header-background: var(--header-background-dark);
-	--searchbar-background-color: var(--searchbar-background-color-dark)
+	--searchbar-background-color: var(--searchbar-background-color-dark);
+	--reg-border-color: var(--reg-border-color-dark);
+	--hover-border-color: var(--hover-border-color-dark);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
 	:root {
 		color-scheme: light;
 
@@ -70,8 +76,9 @@ html {
 		--border: var(--border-light);
 		--sidebar-background: var(--sidebar-background-light);
 		--header-background: var(--header-background-light);
-		--searchbar-background-color: var(--searchbar-background-color-light)
-
+		--searchbar-background-color: var(--searchbar-background-color-light);
+		--reg-border-color: var(--reg-border-color-light);
+		--hover-border-color: var(--hover-border-color-light)
 	}
 }
 

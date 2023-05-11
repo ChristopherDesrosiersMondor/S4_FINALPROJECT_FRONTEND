@@ -1,7 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
+<h1>Welcoooome to SvelteKit</h1>
 
 <style>
 	h1 {
-		padding: 3%;
+		color: blueviolet;
+		margin: auto;
 	}
 </style>
