@@ -50,7 +50,8 @@
 
 	.sidebar {
 		width: 15%;
-		padding-left: 10px;
+		padding-left: 15px;
+		padding-right: 15px;
 		padding-top: 20px;
 		background-color: var(--sidebar-background);
 		position: fixed;

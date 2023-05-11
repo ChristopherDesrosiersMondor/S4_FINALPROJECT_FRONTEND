@@ -90,7 +90,7 @@
 
 	.search-level-two:hover,
 	.header-search-input:hover {
-		background-color: white;
+		background-color: var(--header-background);
 	}
 
 	.search-level-two:hover {
