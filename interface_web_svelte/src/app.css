@@ -9,7 +9,7 @@ html {
 	/* dark */
 	--brand-dark: var(--orange-3);
 	--text-1-dark: var(--gray-3);
-	--text-2-dark: var(--gray-5);
+	--text-2-dark: #757575;
 	--surface-1-dark: var(--gray-12);
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
@@ -22,13 +22,14 @@ html {
 	--reg-border-color-dark: grey;
 	--hover-border-color-dark: white;
 	--hover-sidebar-dark: #232324;
+	
 
 
 
 	/* light */
 	--brand-light: var(--orange-10);
 	--text-1-light: var(--gray-8);
-	--text-2-light: var(--gray-7);
+	--text-2-light: #757575;
 	--surface-1-light: var(--gray-0);
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);

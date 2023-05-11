@@ -88,6 +88,10 @@
 		background-color: var(--searchbar-background-color);
 	}
 
+	::placeholder {
+		color: var(--text-2);
+	}
+
 	.search-level-two:hover,
 	.header-search-input:hover {
 		background-color: var(--header-background);
