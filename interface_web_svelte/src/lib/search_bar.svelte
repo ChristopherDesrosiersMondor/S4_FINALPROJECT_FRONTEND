@@ -4,6 +4,8 @@
 	import { Search } from 'lucide-svelte';
 </script>
 
+<!-- ajouter icone anchor + checker pour changer couleur en css selon le mode light ou dark -->
+
 <div class="search-container">
 	<div id="SearchDropdown" class="search-level-one rounded-box-container rounded-box">
 		<div class="search-level-two">
