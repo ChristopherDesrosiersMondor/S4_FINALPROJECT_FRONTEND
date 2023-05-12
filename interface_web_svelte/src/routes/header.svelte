@@ -5,49 +5,49 @@
 	import '../app.css';
 </script>
 
-<nav>
-	<!-- Title -->
-	<a href="/" class="title">
-		<b>{config.title}</b>
-		<!-- <p>{config.description}</p> -->
-	</a>
+<header
+	class="flex-grow-0 flex-shrink-0
+		   z-[80] right-0 left-0 top-0
+		   align-items-center display-inline-flex
+		   flex-direction-row fixed"
+>
+	<div
+		class="header-content-container
+				align-items-center display-inline-flex
+				flex-direction-row flex-grow-1"
+	>
+		<div
+			class="align-items-center display-inline-flex
+				   flex-direction-row flex-grow-1"
+		>
+			<a href="./">Hublot</a>
+			<SearchBar />
+		</div>
 
-	<!-- Search bar -->
-	<SearchBar />
-
-	<!-- Login -->
-	<Login />
-</nav>
+		<div
+			class="align-items-center display-inline-flex
+		flex-direction-row flex-grow-0"
+		>
+			<div>
+				<Login />
+			</div>
+		</div>
+	</div>
+</header>
 
 <!-- Source: https://www.reddit.com -->
 
 <style>
-	nav {
-		color: var(--text-2);
-		align-items: center;
-		display: inline-flex;
-		flex-direction: row;
-		flex-grow: 1;
-		padding-block: var(--size-2);
-		position: fixed;
-		top: 0;
-		width: 100%;
-		height: 7%;
-		padding-left: 1%;
-		padding-right: 1%;
-		border-bottom: 1px solid var(--gray-7);
-		background-color: var(--header-background);
+	header {
+		margin-top: 0;
+		height: 48px;
 	}
 
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	@media (min-width: 768px) {
-		nav {
-			display: flex;
-			justify-content: space-between;
-		}
+	.header-content-container {
+		background-color: var(--hublot-body);
+		border-bottom: 1px solid var(--hublot-line);
+		color: var(--text-1);
+		box-sizing: border-box;
+		padding: 0 20px;
 	}
 </style>
