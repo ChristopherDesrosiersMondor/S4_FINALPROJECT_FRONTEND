@@ -3,9 +3,15 @@
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
 	import '../app.css';
+	import Toggle from './toggle.svelte';
+	import { AlarmMinus, Anchor } from 'lucide-svelte';
 </script>
 
 <nav>
+	<a href="/">
+		<Anchor />
+	</a>
+
 	<!-- Title -->
 	<a href="/" class="title">
 		<b>{config.title}</b>
@@ -17,6 +23,9 @@
 
 	<!-- Login -->
 	<Login />
+
+	<!-- Toggle theme -->
+	<Toggle />
 </nav>
 
 <!-- Source: https://www.reddit.com -->
@@ -37,6 +46,10 @@
 		padding-right: 1%;
 		border-bottom: 1px solid var(--gray-7);
 		background-color: var(--header-background);
+	}
+
+	.title {
+		padding-left: 10px;
 	}
 
 	a {
