@@ -30,8 +30,9 @@ class PostWidget extends StatelessWidget {
       child: Column(children: [
         Row(
           children: [],
-        )
-      ], const Image(image: NetworkImage(postSource))),
+        ),
+        const Image(image: NetworkImage(postSource))
+      ]),
     );
   }
 }
