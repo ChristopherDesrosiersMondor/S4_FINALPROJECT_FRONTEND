@@ -31,7 +31,7 @@
 </a>
 <div class="l">
 	<hr />
-	<p>Créez un compte pour suivre vos communautés préférées et participer aux conversations.</p>
+	<p>Create an account to follow your favorite communities and participate in conversations.</p>
 
 	<br />
 

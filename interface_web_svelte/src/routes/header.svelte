@@ -3,6 +3,7 @@
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
 	import '../app.css';
+	import Toggle from './toggle.svelte';
 </script>
 
 <nav>
@@ -17,6 +18,9 @@
 
 	<!-- Login -->
 	<Login />
+
+	<!-- Toggle theme -->
+	<Toggle />
 </nav>
 
 <!-- Source: https://www.reddit.com -->
