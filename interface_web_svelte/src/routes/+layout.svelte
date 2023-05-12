@@ -8,6 +8,7 @@
 
 	import '../app.css';
 	import Sidebar from '../lib/sidebar.svelte';
+	import BackToTopButton from '../lib/backToTopButton.svelte';
 </script>
 
 <div class="layout">
@@ -21,6 +22,9 @@
 		</div>
 		<div class="content">
 			<slot />
+			<div class="back_to_top_btn">
+				<BackToTopButton />
+			</div>
 		</div>
 	</main>
 </div>
@@ -65,5 +69,11 @@
 		width: 100%;
 		height: 100%;
 		margin-left: 15%;
+	}
+
+	.back_to_top_btn {
+		margin-left: 1100px;
+		margin-top: 730px;
+		position: fixed;
 	}
 </style>

@@ -22,6 +22,8 @@ html {
 	--reg-border-color-dark: grey;
 	--hover-border-color-dark: white;
 	--hover-sidebar-dark: #232324;
+	--back-to-top-btn-dark: white;
+	--back-to-top-btn-hover-dark: #e4e6e7;
 	
 
 
@@ -42,6 +44,8 @@ html {
 	--reg-border-color-light: grey;
 	--hover-border-color-light: #0079d3;
 	--hover-sidebar-light: #f5f5f5;
+	--back-to-top-btn-light: white;
+	--back-to-top-btn-hover-light: #e4e6e7;
 
 
 	
@@ -64,7 +68,9 @@ html {
 	--searchbar-background-color: var(--searchbar-background-color-dark);
 	--reg-border-color: var(--reg-border-color-dark);
 	--hover-border-color: var(--hover-border-color-dark);
-	--hover-sidebar: var(--hover-sidebar-dark: ) 
+	--hover-sidebar: var(--hover-sidebar-dark); 
+	--back-to-top-btn : var(--back-to-top-btn-dark);
+	--back-to-top-btn-hover: var(--back-to-top-btn-hover-dark) ;
 }
 
 @media (prefers-color-scheme: light) {
@@ -85,7 +91,9 @@ html {
 		--searchbar-background-color: var(--searchbar-background-color-light);
 		--reg-border-color: var(--reg-border-color-light);
 		--hover-border-color: var(--hover-border-color-light);
-		--hover-sidebar: var(--hover-sidebar-light: ) 
+		--hover-sidebar: var(--hover-sidebar-light);
+		--back-to-top-btn : var(--back-to-top-btn-light);
+		--back-to-top-btn-hover: var(--back-to-top-btn-hover-light) ;
 	}
 }
 
@@ -104,7 +112,7 @@ html {
 	--sidebar-background: var(--sidebar-background-dark);
 	--header-background: var(--header-background-dark);
 	--searchbar-background-color: var(--searchbar-background-color-dark);
-	--hover-sidebar: var(--hover-sidebar-dark: ) 
+	--hover-sidebar: var(--hover-sidebar-dark) 
 }
 
 [color-scheme='light'] {
@@ -122,7 +130,7 @@ html {
 	--sidebar-background: var(--sidebar-background-light);
 	--header-background: var(--header-background-light);
 	--searchbar-background-color: var(--searchbar-background-color-light);
-	--hover-sidebar: var(--hover-sidebar-light: ) 
+	--hover-sidebar: var(--hover-sidebar-light) 
 
 }
 

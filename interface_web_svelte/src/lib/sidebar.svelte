@@ -62,6 +62,10 @@
 		padding-right: 6px;
 	}
 
+	.title-container:hover {
+		background-color: var(--hover-sidebar);
+	}
+
 	a,
 	a:focus,
 	a:active {
@@ -77,8 +81,5 @@
 	hr {
 		margin-top: 550px;
 		margin-bottom: 20px;
-	}
-
-	.lower-content {
 	}
 </style>
