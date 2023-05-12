@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
-import 'package:interface_mobile/creationcompte.dart';
+import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
 
 class ConnexionPage extends StatelessWidget {

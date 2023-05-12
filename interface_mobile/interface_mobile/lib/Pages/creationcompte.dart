@@ -1,8 +1,7 @@
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
-import 'package:interface_mobile/creationcompteNext.dart';
+import 'package:interface_mobile/Pages/creationcompteNext.dart';
 
 import 'connexion.dart';
 
