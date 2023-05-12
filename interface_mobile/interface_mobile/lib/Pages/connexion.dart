@@ -1,12 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
-import 'package:interface_mobile/creationcompteNext.dart';
+import 'package:interface_mobile/Pages/creationcompte.dart';
+import 'package:interface_mobile/utilities.dart';
 
-import 'connexion.dart';
-
-class CreationCompte extends StatelessWidget {
-  const CreationCompte({super.key});
+class ConnexionPage extends StatelessWidget {
+  const ConnexionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +29,13 @@ class CreationCompte extends StatelessWidget {
             child: Text.rich(TextSpan(children: [
               TextSpan(
                   style: Configuration.textForApp(Colors.white, 18),
-                  text: "Log in",
+                  text: "Sign up",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ConnexionPage()),
+                            builder: (context) => const CreationCompte()),
                       );
                     }),
             ])),
@@ -44,19 +43,19 @@ class CreationCompte extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: CreationCompteForm()),
+      body: const SingleChildScrollView(child: ConnexionForm()),
     );
   }
 }
 
-class CreationCompteForm extends StatefulWidget {
-  const CreationCompteForm({super.key});
+class ConnexionForm extends StatefulWidget {
+  const ConnexionForm({super.key});
 
   @override
-  State<CreationCompteForm> createState() => CreationCompteFormState();
+  State<ConnexionForm> createState() => ConnexionFormState();
 }
 
-class CreationCompteFormState extends State<CreationCompteForm> {
+class ConnexionFormState extends State<ConnexionForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -76,36 +75,44 @@ class CreationCompteFormState extends State<CreationCompteForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(8),
-            child:
-                Configuration.inputField(context, pseudoController, "Username"),
-          ),
+              padding: const EdgeInsets.all(15),
+              child: Center(
+                child: Text('Log in to Hublot',
+                    style: Configuration.textForApp(Colors.white, 25)),
+              )),
+          Padding(
+              padding: const EdgeInsets.all(8),
+              child: Configuration.inputField(
+                  context, pseudoController, "Username")),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Configuration.passwordInput(
                 context, passwordController, "Password"),
           ),
           Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
-              child: Center(
-                child: ElevatedButton(
-                  style: Configuration.formButtonStyle(context),
-                  onPressed: () {
-                    // Validate will return true if the form is valid, or false if
-                    // the form is invalid.
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreationCompteNext(
-                                username: pseudoController.text,
-                                password: passwordController.text)),
-                      );
-                    }
-                  },
-                  child: const Text('Next'),
-                ),
-              )),
+            padding: const EdgeInsets.all(8),
+            child: Text(
+              'Forgot password',
+              style: Configuration.textForApp(Configuration.orangeColor, 16),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50.0),
+            child: Center(
+              child: ElevatedButton(
+                style: Configuration.formButtonStyle(context),
+                onPressed: () {
+                  // si le formulaire est validé
+                  if (_formKey.currentState!.validate()) {
+                    var pseudo = pseudoController.text;
+                    var password = passwordController.text;
+                    userConnect(context, pseudo, password);
+                  }
+                },
+                child: const Text('Continue'),
+              ),
+            ),
+          ),
         ],
       ),
     );

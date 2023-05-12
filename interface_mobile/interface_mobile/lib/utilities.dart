@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart' hide Key;
 import 'package:http/http.dart' as http;
-import 'package:interface_mobile/account.dart';
+import 'package:interface_mobile/Entities/account.dart';
 
 // Sources:
 // How to use alert dialogs

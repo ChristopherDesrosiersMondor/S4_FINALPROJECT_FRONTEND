@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/connexion.dart';
-import 'package:interface_mobile/creationcompte.dart';
-import 'package:interface_mobile/home.dart';
+import 'package:interface_mobile/Pages/connexion.dart';
+import 'package:interface_mobile/Pages/creationcompte.dart';
+import 'package:interface_mobile/Pages/home.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 

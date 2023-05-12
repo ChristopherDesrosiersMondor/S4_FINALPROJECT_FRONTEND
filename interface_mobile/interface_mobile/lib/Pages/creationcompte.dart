@@ -1,11 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
-import 'package:interface_mobile/creationcompte.dart';
-import 'package:interface_mobile/utilities.dart';
+import 'package:interface_mobile/Pages/creationcompteNext.dart';
 
-class ConnexionPage extends StatelessWidget {
-  const ConnexionPage({super.key});
+import 'connexion.dart';
+
+class CreationCompte extends StatelessWidget {
+  const CreationCompte({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +30,13 @@ class ConnexionPage extends StatelessWidget {
             child: Text.rich(TextSpan(children: [
               TextSpan(
                   style: Configuration.textForApp(Colors.white, 18),
-                  text: "Sign up",
+                  text: "Log in",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CreationCompte()),
+                            builder: (context) => const ConnexionPage()),
                       );
                     }),
             ])),
@@ -43,19 +44,19 @@ class ConnexionPage extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: ConnexionForm()),
+      body: const SingleChildScrollView(child: CreationCompteForm()),
     );
   }
 }
 
-class ConnexionForm extends StatefulWidget {
-  const ConnexionForm({super.key});
+class CreationCompteForm extends StatefulWidget {
+  const CreationCompteForm({super.key});
 
   @override
-  State<ConnexionForm> createState() => ConnexionFormState();
+  State<CreationCompteForm> createState() => CreationCompteFormState();
 }
 
-class ConnexionFormState extends State<ConnexionForm> {
+class CreationCompteFormState extends State<CreationCompteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -75,44 +76,36 @@ class ConnexionFormState extends State<ConnexionForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-              padding: const EdgeInsets.all(15),
-              child: Center(
-                child: Text('Log in to Hublot',
-                    style: Configuration.textForApp(Colors.white, 25)),
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8),
-              child: Configuration.inputField(
-                  context, pseudoController, "Username")),
+            padding: const EdgeInsets.all(8),
+            child:
+                Configuration.inputField(context, pseudoController, "Username"),
+          ),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Configuration.passwordInput(
                 context, passwordController, "Password"),
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              'Forgot password',
-              style: Configuration.textForApp(Configuration.orangeColor, 16),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50.0),
-            child: Center(
-              child: ElevatedButton(
-                style: Configuration.formButtonStyle(context),
-                onPressed: () {
-                  // si le formulaire est validé
-                  if (_formKey.currentState!.validate()) {
-                    var pseudo = pseudoController.text;
-                    var password = passwordController.text;
-                    userConnect(context, pseudo, password);
-                  }
-                },
-                child: const Text('Continue'),
-              ),
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(vertical: 50.0),
+              child: Center(
+                child: ElevatedButton(
+                  style: Configuration.formButtonStyle(context),
+                  onPressed: () {
+                    // Validate will return true if the form is valid, or false if
+                    // the form is invalid.
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreationCompteNext(
+                                username: pseudoController.text,
+                                password: passwordController.text)),
+                      );
+                    }
+                  },
+                  child: const Text('Next'),
+                ),
+              )),
         ],
       ),
     );
