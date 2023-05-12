@@ -13,7 +13,7 @@
 <div id="2x-container">
 	<div class="theme">
 		<div tabindex="-1">
-			<div id="shorcut-focus" tabindex="-1">
+			<div class="shortcut-focus" tabindex="-1">
 				<div class="">
 					<!-- Header -->
 					<Header />
@@ -41,5 +41,9 @@
 		padding-left: 270px;
 		transition: margin-top 0.3s ease;
 		padding-top: 48px;
+	}
+
+	.shortcut-focus {
+		outline: none;
 	}
 </style>
