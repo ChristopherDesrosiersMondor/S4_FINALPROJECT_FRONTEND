@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget(
@@ -11,28 +12,43 @@ class PostWidget extends StatelessWidget {
       required this.postDate,
       required this.postUpVote,
       required this.postDownVote,
-      required this.postIdUser,
-      required this.postIdCom});
+      required this.username,
+      required this.communityName});
 
-  final Long postId;
+  final int postId;
   final String postTitle;
   final String postContent;
   final String postSource;
-  final DateTime postDate;
+  final String postDate;
   final int postUpVote;
   final int postDownVote;
-  final Long postIdUser;
-  final int postIdCom;
+  final String username;
+  final String communityName;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(children: [
-        Row(
-          children: [],
-        ),
-        const Image(image: NetworkImage(postSource))
-      ]),
-    );
+    return Column(children: [
+      Row(
+        children: [
+          const Icon(Icons.account_circle),
+          Text(communityName),
+          Text(postDate)
+        ],
+      ),
+      Text(postTitle),
+      Text(postContent),
+      Image(image: NetworkImage(postSource)),
+      Row(
+        children: [
+          const Icon(Icons.arrow_upward_rounded),
+          Text(postUpVote.toString()),
+          const Icon(Icons.arrow_downward_rounded),
+          Text(postDownVote.toString()),
+          const Icon(Icons.comment),
+          const Icon(Icons.share),
+          const Text("Share")
+        ],
+      )
+    ]);
   }
 }
