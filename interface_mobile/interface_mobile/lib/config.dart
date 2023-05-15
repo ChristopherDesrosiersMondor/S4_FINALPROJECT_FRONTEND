@@ -6,11 +6,11 @@ class Configuration {
   static const orangeColor = Color(0xffff6633);
 
   static TextStyle textForApp(Color color, double fontSize) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.arimo(
         textStyle: TextStyle(
             fontWeight: FontWeight.bold,
             color: color,
-            letterSpacing: .5,
+            //letterSpacing: .5,
             fontSize: fontSize));
   }
 
