@@ -2,7 +2,7 @@
 
 <style>
 	h1 {
-		color: blueviolet;
+		color: var(--main-text);
 		margin: auto;
 	}
 </style>
