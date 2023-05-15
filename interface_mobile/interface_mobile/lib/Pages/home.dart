@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/Pages/connexion.dart';
 import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
 
@@ -24,7 +25,13 @@ class Home extends StatelessWidget {
             IconButton(icon: const Icon(Icons.search), onPressed: () {}),
             IconButton(
               icon: const Icon(Icons.account_circle),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ConnexionPage()),
+                );
+              },
             )
           ],
           backgroundColor: Configuration.appDarkBackgroundColor,

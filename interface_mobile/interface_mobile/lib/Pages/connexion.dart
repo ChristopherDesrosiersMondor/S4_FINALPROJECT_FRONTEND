@@ -16,7 +16,9 @@ class ConnexionPage extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         title: const Center(
           child: Icon(
             Icons.anchor,
