@@ -6,66 +6,53 @@
 
 <!-- ajouter icone anchor + checker pour changer couleur en css selon le mode light ou dark -->
 
-<div class="search-container">
-	<div id="SearchDropdown" class="search-level-one rounded-box-container rounded-box">
-		<div class="search-level-two">
-			<form action="" method="get" role="search" class="search-form">
-				<label for="header-search-bar" class="label-search">
-					<div class="icon-container">
-						<Search />
-					</div>
-				</label>
-				<input
-					type="search"
-					class="header-search-input"
-					id="header-search-bar"
-					placeholder="Search Hublot"
-					value
-				/>
-			</form>
-		</div>
+<div id="SearchDropdown" class="search-level-one">
+	<div class="search-level-two">
+		<form action="" method="get" role="search" class="search-form">
+			<label for="header-search-bar" class="label-search">
+				<div class="icon-container">
+					<Search />
+				</div>
+			</label>
+			<input
+				type="search"
+				class="header-search-input"
+				id="header-search-bar"
+				placeholder="Search Hublot"
+				value
+			/>
+		</form>
 	</div>
 </div>
 
 <!-- Source: https://www.reddit.com -->
 
 <style>
-	.search-container {
-		fill: aqua;
-		flex-grow: 1;
-		margin: 0 auto;
-		max-width: 690px;
-		padding-bottom: 6px;
-	}
-
 	.search-level-one {
-		fill: aqua;
+		fill: var(--text-2);
 		-ms-flex-positive: 1;
 		flex-grow: 1;
 		margin-left: 16px;
 		margin-right: 16px;
 		width: auto;
 		height: auto;
-	}
 
-	.rounded-box-container {
 		border: 1px solid transparent;
 		border-radius: 4px;
 		box-sizing: border-box;
-		height: 36px;
 		position: relative;
 		min-width: 72px;
 	}
 
 	.search-level-two {
-		-ms-flex-align: center;
+		display: flex;
 		align-items: center;
 		box-sizing: border-box;
-		border: 1px solid var(--reg-border-color);
-		border-radius: 1.25em;
 		box-shadow: none;
+		border-radius: 1.25em;
 		height: 40px;
-		background-color: var(--searchbar-background-color);
+		background-color: var(--new-hublot-field);
+		border: 1px solid var(--new-hublot-line);
 	}
 
 	.search-form {
@@ -80,14 +67,16 @@
 	}
 
 	.header-search-input {
+		-webkit-appearance: none;
 		appearance: none;
-		color: var(--text-2);
+		color: var(--newRedditTheme-bodyText);
 		font-size: 14px;
 		line-height: 14px;
 		margin-right: 16px;
 		outline: none;
 		width: 100%;
-		background-color: var(--searchbar-background-color);
+		background-color: var(--new-hublot-field);
+		box-sizing: border-box;
 	}
 
 	::placeholder {

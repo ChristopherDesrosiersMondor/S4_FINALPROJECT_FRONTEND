@@ -7,60 +7,68 @@
 	import { AlarmMinus, Anchor } from 'lucide-svelte';
 </script>
 
-<nav>
-	<a href="/">
-		<Anchor />
-	</a>
+<header>
+	<div
+		class="header-content-container
+				align-items-center display-inline-flex
+				flex-direction-row flex-grow-1"
+	>
+		<div
+			class="align-items-center display-inline-flex
+				   flex-direction-row flex-grow-1"
+		>
+			<a href="./" class="">Hublot</a>
+			<div class="search-margin-container">
+				<SearchBar />
+			</div>
+		</div>
 
-	<!-- Title -->
-	<a href="/" class="title">
-		<b>{config.title}</b>
-		<!-- <p>{config.description}</p> -->
-	</a>
-
-	<!-- Search bar -->
-	<SearchBar />
-
-	<!-- Login -->
-	<Login />
-
-	<!-- Toggle theme -->
-	<Toggle />
-</nav>
+		<div
+			class="align-items-center display-inline-flex
+		flex-direction-row flex-grow-0"
+		>
+			<div>
+				<Login />
+					<!-- Toggle theme -->
+				<Toggle />
+			</div>
+		</div>
+	</div>
+</header>
 
 <!-- Source: https://www.reddit.com -->
 
 <style>
-	nav {
-		color: var(--text-2);
+	header {
+		margin-top: 0;
+		height: 48px;
 		align-items: center;
+		display: -ms-inline-flexbox;
 		display: inline-flex;
 		flex-direction: row;
-		flex-grow: 1;
-		padding-block: var(--size-2);
-		position: fixed;
+		flex-grow: 0;
+		flex-shrink: 0;
+		z-index: 80;
+		right: 0;
 		top: 0;
-		width: 100%;
-		height: 7%;
-		padding-left: 1%;
-		padding-right: 1%;
-		border-bottom: 1px solid var(--gray-7);
-		background-color: var(--header-background);
+		left: 0;
+		position: fixed;
+		background-color: var(--hublot-body);
 	}
 
-	.title {
-		padding-left: 10px;
+	.header-content-container {
+		background-color: var(--hublot-body);
+		border-bottom: 1px solid var(--hublot-line);
+		color: var(--text-1);
+		box-sizing: border-box;
+		padding: 0 20px;
+		height: 100%;
 	}
 
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
-
-	@media (min-width: 768px) {
-		nav {
-			display: flex;
-			justify-content: space-between;
-		}
+	.search-margin-container {
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		margin: 0 auto;
+		max-width: 690px;
 	}
 </style>
