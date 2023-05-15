@@ -8,7 +8,6 @@
 
 	import '../app.css';
 	import Sidebar from '../lib/sidebar.svelte';
-	import BackToTopButton from '../lib/backToTopButton.svelte';
 </script>
 
 <div id="2x-container">

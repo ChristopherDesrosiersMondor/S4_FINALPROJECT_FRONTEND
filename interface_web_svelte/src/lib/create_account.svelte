@@ -1,22 +1,14 @@
 <script lang="ts">
 	import '../app.css';
+	import Modal from '$lib/modal_create_account.svelte';
+	let modal: Modal;
 </script>
 
 <!-- Create account -->
-<div class="create-account-container">
-	<a
-		role="button"
-		tabindex="0"
-		href="https://www.reddit.com/login/?dest=https%3A%2F%2Fwww.reddit.com%2F"
-		class="create-account-color">Join Hublot</a
-	>
-</div>
+<button on:click={() => modal.show()} class="create-account-container">Create account</button>
+<Modal bind:this={modal} />
 
 <style>
-	a:link {
-		color: white;
-	}
-
 	.create-account-container {
 		display: flex;
 		align-items: center;
@@ -27,13 +19,8 @@
 		box-shadow: none;
 		box-sizing: border-box;
 		height: 36px;
-		min-width: 72px;
-	}
-
-	.create-account-color {
-		display: flex;
+		width: 100%;
 		color: white;
 		font-weight: bold;
-		text-decoration: none;
 	}
 </style>

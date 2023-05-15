@@ -1,6 +1,5 @@
 <script>
 	import { Home } from 'lucide-svelte';
-	import { ArrowUpRight } from 'lucide-svelte';
 	import { TrendingUp } from 'lucide-svelte';
 	import { Gamepad2 } from 'lucide-svelte';
 	import { Trophy } from 'lucide-svelte';
@@ -57,11 +56,8 @@
 	<div class="sidebar-footer-container">
 		<div class="simple-divider-line-container" />
 		<div class="l">
-			<hr />
 			<p>Créez un compte pour suivre vos communautés préférées et participer aux conversations.</p>
-
 			<br />
-
 			<AccountCreation />
 		</div>
 	</div>

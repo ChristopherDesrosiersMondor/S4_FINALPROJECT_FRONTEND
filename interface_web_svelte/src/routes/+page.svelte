@@ -1,13 +1,12 @@
 <script>
+	// @ts-nocheck
+
 	import BackToTopButton from '$lib/backToTopButton.svelte';
 </script>
 
-<h1>Welcoooome to SvelteKit</h1>
-<BackToTopButton />
+<main>
+	<BackToTopButton />
+</main>
 
 <style>
-	h1 {
-		color: var(--main-text);
-		margin: auto;
-	}
 </style>
