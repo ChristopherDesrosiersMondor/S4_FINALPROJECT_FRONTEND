@@ -46,5 +46,6 @@
 		color: white;
 		font-weight: bold;
 		text-decoration: none;
+		margin-top: 6px;
 	}
 </style>

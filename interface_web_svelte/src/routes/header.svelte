@@ -17,6 +17,9 @@
 			class="align-items-center display-inline-flex
 				   flex-direction-row flex-grow-1"
 		>
+			<a href="./" class="anchor-icon">
+				<Anchor />
+			</a>
 			<a href="./" class="title">Hublot</a>
 			<div class="search-margin-container">
 				<SearchBar />
@@ -88,5 +91,10 @@
 	.title {
 		color: var(--title);
 		font-weight: bold;
+	}
+
+	.anchor-icon {
+		padding-right: 10px;
+		color: var(--title)
 	}
 </style>
