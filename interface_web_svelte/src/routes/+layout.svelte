@@ -35,18 +35,6 @@
 			</div>
 		</div>
 	</div>
-
-	<main>
-		<div class="sidebar">
-			<Sidebar />
-		</div>
-		<div class="content">
-			<slot />
-			<div class="back_to_top_btn">
-				<BackToTopButton />
-			</div>
-		</div>
-	</main>
 </div>
 
 <style>
@@ -58,11 +46,5 @@
 
 	.shortcut-focus {
 		outline: none;
-	}
-
-	.back_to_top_btn {
-		margin-left: 1100px;
-		margin-top: 730px;
-		position: fixed;
 	}
 </style>

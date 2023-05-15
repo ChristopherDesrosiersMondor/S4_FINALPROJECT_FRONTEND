@@ -29,6 +29,7 @@
 		height: 36px;
 		position: relative;
 		min-width: 72px;
+		width: 120px;
 	}
 
 	.log-in-color {

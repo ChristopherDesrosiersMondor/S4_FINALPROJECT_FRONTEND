@@ -152,7 +152,9 @@ html {
 	--sidebar-background: var(--sidebar-background-light);
 	--header-background: var(--header-background-light);
 	--searchbar-background-color: var(--searchbar-background-color-light);
-	--hover-sidebar: var(--hover-sidebar-light) 
+	--hover-sidebar: var(--hover-sidebar-light);
+	--new-hublot-field: var(--new-hublot-field-light);
+	--new-hublot-line: var(--new-hublot-line-light);
 
 	--hover-sidebar: var(--hover-sidebar-light);
 	--hublot-body: var(--hublot-body-light);

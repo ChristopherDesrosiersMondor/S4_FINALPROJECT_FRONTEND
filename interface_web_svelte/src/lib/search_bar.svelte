@@ -69,7 +69,7 @@
 	.header-search-input {
 		-webkit-appearance: none;
 		appearance: none;
-		color: var(--newRedditTheme-bodyText);
+		color: var(--text-1);
 		font-size: 14px;
 		line-height: 14px;
 		margin-right: 16px;

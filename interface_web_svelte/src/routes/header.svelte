@@ -27,10 +27,12 @@
 			class="align-items-center display-inline-flex
 		flex-direction-row flex-grow-0"
 		>
-			<div>
-				<Login />
+			<div class="header-right-container-level-2">
+				<div class="header-right-container-level-3">
+					<Login />
 					<!-- Toggle theme -->
-				<Toggle />
+					<Toggle />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -39,6 +41,18 @@
 <!-- Source: https://www.reddit.com -->
 
 <style>
+	.header-right-container-level-2 {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+	}
+
+	.header-right-container-level-3 {
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+	}
+
 	header {
 		margin-top: 0;
 		height: 48px;

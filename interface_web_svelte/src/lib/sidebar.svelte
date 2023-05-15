@@ -65,30 +65,6 @@
 			<AccountCreation />
 		</div>
 	</div>
-</a>
-<br />
-<a href="https://www.reddit.com/">
-	<div class="title-container">
-		<div class="icon-container">
-			<ArrowUpRight />
-		</div>
-		<p class="categ">Popular</p>
-	</div>
-</a>
-<div class="l">
-	<hr />
-	<p>Create an account to follow your favorite communities and participate in conversations.</p>
-	<div class="sidebar-footer-container">
-		<div class="simple-divider-line-container" />
-		<div class="l">
-			<hr />
-			<p>Créez un compte pour suivre vos communautés préférées et participer aux conversations.</p>
-
-			<br />
-
-			<AccountCreation />
-		</div>
-	</div>
 </div>
 
 <!-- Source: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
