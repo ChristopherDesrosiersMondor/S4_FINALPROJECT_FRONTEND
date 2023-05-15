@@ -91,8 +91,9 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             child: Configuration.passwordInput(
                 context, passwordController, "Password"),
           ),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.3),
               child: Center(
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),

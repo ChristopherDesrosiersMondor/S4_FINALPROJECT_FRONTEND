@@ -151,8 +151,9 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
               ),
             ),
           ),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.25),
               child: Center(
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),
