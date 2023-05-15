@@ -15,6 +15,15 @@
 <style>
 	a:link {
 		color: white;
+		font-family: Noto Sans, Arial, sans-serif;
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: unset;
+		line-height: 17px;
+		text-transform: unset;
+		min-height: 32px;
+		min-width: 32px;
+		padding: 4px 16px;
 	}
 
 	.log-in-container {
@@ -26,7 +35,7 @@
 		border-radius: 1.25em;
 		box-shadow: none;
 		box-sizing: border-box;
-		height: 36px;
+		height: 32px;
 		position: relative;
 		min-width: 72px;
 		width: 120px;
