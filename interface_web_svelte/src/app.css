@@ -7,9 +7,11 @@ html {
 	--font-mono: Verdana, arial, 'JetBrains Mono', monospace;
 
 	/* dark */
+	--title-dark: #d7dadc;
 	--brand-dark: var(--orange-3);
 	--text-1-dark: var(--gray-3);
 	--text-2-dark: #757575;
+	--main-text-dark: white;
 	--surface-1-dark: var(--gray-12);
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
@@ -33,9 +35,11 @@ html {
 
 
 	/* light */
+	--title-light: black;
 	--brand-light: var(--orange-10);
 	--text-1-light: var(--gray-8);
 	--text-2-light: #757575;
+	--main-text-light: black;
 	--surface-1-light: var(--gray-0);
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);
@@ -62,9 +66,11 @@ html {
 :root {
 	color-scheme: dark;
 
+	--title: var(--title-dark);
 	--brand: var(--brand-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
+	--main-text: var(--main-text-dark);
 	--surface-1: var(--surface-1-dark);
 	--surface-2: var(--surface-2-dark);
 	--surface-3: var(--surface-3-dark);
@@ -89,10 +95,12 @@ html {
 @media (prefers-color-scheme: light) {
 	:root {
 		color-scheme: light;
-
+		
+		--title: var(--title-light);
 		--brand: var(--brand-light);
 		--text-1: var(--text-1-light);
 		--text-2: var(--text-2-light);
+		--main-text: var(--main-text-light);
 		--surface-1: var(--surface-1-light);
 		--surface-2: var(--surface-2-light);
 		--surface-3: var(--surface-3-light);
@@ -117,9 +125,11 @@ html {
 [color-scheme='dark'] {
 	color-scheme: dark;
 
+	--title: var(--title-dark);
 	--brand: var(--brand-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
+	--main-text: var(--main-text-dark);
 	--surface-1: var(--surface-1-dark);
 	--surface-2: var(--surface-2-dark);
 	--surface-3: var(--surface-3-dark);
@@ -128,8 +138,7 @@ html {
 	--border: var(--border-dark);
 	--sidebar-background: var(--sidebar-background-dark);
 	--header-background: var(--header-background-dark);
-	--searchbar-background-color: var(--searchbar-background-color-dark);
-	--hover-sidebar: var(--hover-sidebar-dark) 
+	--searchbar-background-color: var(--searchbar-background-color-dark); 
 	--hover-sidebar: var(--hover-sidebar-dark);
 	--hublot-body: var(--hublot-body-dark);
 	--hublot-line: var(--hublot-line-dark);
@@ -140,9 +149,11 @@ html {
 [color-scheme='light'] {
 	color-scheme: light;
 
+	--title: var(--title-light);
 	--brand: var(--brand-light);
 	--text-1: var(--text-1-light);
 	--text-2: var(--text-2-light);
+	--main-text: var(--main-text-light);
 	--surface-1: var(--surface-1-light);
 	--surface-2: var(--surface-2-light);
 	--surface-3: var(--surface-3-light);
@@ -155,7 +166,6 @@ html {
 	--hover-sidebar: var(--hover-sidebar-light);
 	--new-hublot-field: var(--new-hublot-field-light);
 	--new-hublot-line: var(--new-hublot-line-light);
-
 	--hover-sidebar: var(--hover-sidebar-light);
 	--hublot-body: var(--hublot-body-light);
 	--hublot-line: var(--hublot-line-light); 

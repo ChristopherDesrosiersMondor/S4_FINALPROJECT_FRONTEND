@@ -17,7 +17,7 @@
 			class="align-items-center display-inline-flex
 				   flex-direction-row flex-grow-1"
 		>
-			<a href="./" class="">Hublot</a>
+			<a href="./" class="title">Hublot</a>
 			<div class="search-margin-container">
 				<SearchBar />
 			</div>
@@ -73,7 +73,6 @@
 	.header-content-container {
 		background-color: var(--hublot-body);
 		border-bottom: 1px solid var(--hublot-line);
-		color: var(--text-1);
 		box-sizing: border-box;
 		padding: 0 20px;
 		height: 100%;
@@ -84,5 +83,10 @@
 		flex-grow: 1;
 		margin: 0 auto;
 		max-width: 690px;
+	}
+
+	.title {
+		color: var(--title);
+		font-weight: bold;
 	}
 </style>

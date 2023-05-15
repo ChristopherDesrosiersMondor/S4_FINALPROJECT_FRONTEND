@@ -91,7 +91,7 @@
 	}
 
 	.sidebar-menu-section-title {
-		color: var(--text-1);
+		color: var(--main-text);
 		font-size: 10px;
 		font-weight: 500;
 		line-height: 16px;
@@ -120,9 +120,11 @@
 		max-height: 20px;
 		max-width: 20px;
 		width: 20px;
+		color: var(--main-text);
 	}
 
 	.sidebar-items-text {
+		color: var(--main-text);
 		flex-grow: unset;
 		font-size: 14px;
 		line-height: 18px;
