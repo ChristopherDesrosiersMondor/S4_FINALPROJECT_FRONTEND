@@ -6,12 +6,24 @@ class Configuration {
   static const orangeColor = Color(0xffff6633);
 
   static TextStyle textForApp(Color color, double fontSize) {
-    return GoogleFonts.arimo(
+    return GoogleFonts.jost(
         textStyle: TextStyle(
             fontWeight: FontWeight.bold,
             color: color,
             //letterSpacing: .5,
             fontSize: fontSize));
+  }
+
+  static TextStyle mainContentTextForApp(Color color, double fontSize) {
+    return GoogleFonts.jost(
+        textStyle: TextStyle(
+            fontWeight: FontWeight.w400, color: color, fontSize: fontSize));
+  }
+
+  static TextStyle secondContentTextForApp(Color color, double fontSize) {
+    return GoogleFonts.jost(
+        textStyle: TextStyle(
+            fontWeight: FontWeight.w200, color: color, fontSize: fontSize));
   }
 
   static Container inputField(

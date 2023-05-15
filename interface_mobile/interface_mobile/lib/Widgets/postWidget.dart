@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:interface_mobile/config.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget(
@@ -30,23 +31,113 @@ class PostWidget extends StatelessWidget {
     return Column(children: [
       Row(
         children: [
-          const Icon(Icons.account_circle),
-          Text(communityName),
-          Text(postDate)
+          const Icon(
+            Icons.account_circle,
+            color: Colors.white,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
+            child: Text(
+              communityName,
+              style:
+                  Configuration.mainContentTextForApp(Colors.grey.shade400, 16),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
+            child: Text(
+              postDate,
+              style: Configuration.secondContentTextForApp(
+                  Colors.grey.shade400, 12),
+            ),
+          )
         ],
       ),
-      Text(postTitle),
-      Text(postContent),
+      Container(
+          padding: const EdgeInsets.only(top: 5),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              postTitle,
+              style: Configuration.textForApp(Colors.white, 16),
+            ),
+          )),
+      Container(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              postContent,
+              style: Configuration.mainContentTextForApp(Colors.white, 16),
+            ),
+          )),
       Image(image: NetworkImage(postSource)),
       Row(
         children: [
-          const Icon(Icons.arrow_upward_rounded),
-          Text(postUpVote.toString()),
-          const Icon(Icons.arrow_downward_rounded),
-          Text(postDownVote.toString()),
-          const Icon(Icons.comment),
-          const Icon(Icons.share),
-          const Text("Share")
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 5, 5),
+            child:
+                Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_upward_rounded,
+                  color: Colors.grey.shade500,
+                ),
+                onPressed: () {},
+              ),
+              Text(
+                postUpVote.toString(),
+                style: Configuration.mainContentTextForApp(
+                    Colors.grey.shade500, 14),
+              )
+            ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+            child:
+                Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+              IconButton(
+                icon: Icon(
+                  Icons.arrow_downward_rounded,
+                  color: Colors.grey.shade500,
+                ),
+                onPressed: () {},
+              ),
+              Text(
+                postDownVote.toString(),
+                style: Configuration.mainContentTextForApp(
+                    Colors.grey.shade500, 14),
+              )
+            ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+            child: IconButton(
+              icon: Icon(
+                Icons.comment,
+                color: Colors.grey.shade500,
+              ),
+              onPressed: () {},
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+            child:
+                Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: [
+              IconButton(
+                icon: Icon(
+                  Icons.share,
+                  color: Colors.grey.shade500,
+                ),
+                onPressed: () {},
+              ),
+              Text(
+                "Share",
+                style: Configuration.mainContentTextForApp(
+                    Colors.grey.shade500, 14),
+              )
+            ]),
+          ),
         ],
       )
     ]);

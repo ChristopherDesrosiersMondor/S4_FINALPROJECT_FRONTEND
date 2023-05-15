@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/Pages/connexion.dart';
-import 'package:interface_mobile/Pages/creationcompte.dart';
+import 'package:interface_mobile/Pages/addPost.dart';
+import 'package:interface_mobile/Pages/chat.dart';
+import 'package:interface_mobile/Pages/discover.dart';
 import 'package:interface_mobile/Pages/home.dart';
+import 'package:interface_mobile/Pages/inbox.dart';
+import 'package:interface_mobile/config.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 
@@ -32,8 +35,10 @@ class _HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     Home(),
-    ConnexionPage(),
-    CreationCompte(),
+    DiscoverPage(),
+    AddPostPage(),
+    ChatPage(),
+    InboxPage()
   ];
 
   void _onItemTapped(int index) {
@@ -49,22 +54,46 @@ class _HublotWidgetState extends State<HublotWidget> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Configuration.appDarkBackgroundColor,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.anchor),
-            label: 'Home',
-          ),
+              backgroundColor: Configuration.appDarkBackgroundColor,
+              icon: Icon(
+                Icons.home,
+                color: Colors.white,
+              ),
+              label: ""),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Connexion',
-          ),
+              backgroundColor: Configuration.appDarkBackgroundColor,
+              icon: Icon(
+                Icons.explore,
+                color: Colors.white,
+              ),
+              label: ""),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Création de compte',
-          ),
+              backgroundColor: Configuration.appDarkBackgroundColor,
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              label: ""),
+          BottomNavigationBarItem(
+              backgroundColor: Configuration.appDarkBackgroundColor,
+              icon: Icon(
+                Icons.chat,
+                color: Colors.white,
+              ),
+              label: ""),
+          BottomNavigationBarItem(
+              backgroundColor: Configuration.appDarkBackgroundColor,
+              icon: Icon(
+                Icons.notification_add,
+                color: Colors.white,
+              ),
+              label: ""),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Configuration.orangeColor,
         onTap: _onItemTapped,
       ),
     );

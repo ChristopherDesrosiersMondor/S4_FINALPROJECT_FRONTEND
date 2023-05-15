@@ -30,6 +30,7 @@ html {
 	--hublot-line-dark: #343536;
 	--new-hublot-field-dark: #272729;
 	--new-hublot-line-dark: #343536;
+	--new-hublot-votes-dark: rgba(18, 18, 19, 0.8);
 	
 
 
@@ -54,13 +55,11 @@ html {
 	--hover-sidebar-light: #f5f5f5;
 	--back-to-top-btn-light: white;
 	--back-to-top-btn-hover-light: #e4e6e7;
-
-
-	
 	--hublot-body-light: #ffffff;
 	--hublot-line-light: #edeff1;
 	--new-hublot-field-light: #f6f7f8;
 	--new-hublot-line-light: #edeff1;
+	--new-hublot-votes-light: rgba(255,255,255,0.8);
 }
 
 :root {
@@ -90,6 +89,7 @@ html {
 	--hublot-line: var(--hublot-line-dark);
 	--new-hublot-field: var(--new-hublot-field-dark);
 	--new-hublot-line: var(--new-hublot-line-dark);
+	--new-hublot-votes: var(--new-hublot-votes-dark);
 }
 
 @media (prefers-color-scheme: light) {
@@ -119,6 +119,7 @@ html {
 		--hublot-line: var(--hublot-line-light);
 		--new-hublot-field: var(--new-hublot-field-light);
 		--new-hublot-line: var(--new-hublot-line-light);
+		--new-hublot-votes: var(--new-hublot-votes-light);
 	}
 }
 
@@ -144,6 +145,7 @@ html {
 	--hublot-line: var(--hublot-line-dark);
 	--new-hublot-field: var(--new-hublot-field-dark);
 	--new-hublot-line: var(--new-hublot-line-dark);
+	--new-hublot-votes: var(--new-hublot-votes-dark);
 }
 
 [color-scheme='light'] {
@@ -166,6 +168,7 @@ html {
 	--hover-sidebar: var(--hover-sidebar-light);
 	--new-hublot-field: var(--new-hublot-field-light);
 	--new-hublot-line: var(--new-hublot-line-light);
+	--new-hublot-votes: var(--new-hublot-votes-light);
 	--hover-sidebar: var(--hover-sidebar-light);
 	--hublot-body: var(--hublot-body-light);
 	--hublot-line: var(--hublot-line-light); 

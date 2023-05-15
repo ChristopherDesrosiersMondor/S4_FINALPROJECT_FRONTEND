@@ -17,7 +17,9 @@ class CreationCompte extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         title: const Center(
           child: Icon(
             Icons.anchor,
@@ -29,7 +31,7 @@ class CreationCompte extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
             child: Text.rich(TextSpan(children: [
               TextSpan(
-                  style: Configuration.textForApp(Colors.white, 18),
+                  style: Configuration.textForApp(Colors.white, 16),
                   text: "Log in",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
@@ -76,6 +78,12 @@ class CreationCompteFormState extends State<CreationCompteForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
+              padding: const EdgeInsets.all(15),
+              child: Center(
+                child: Text('Hi new friend, welcome to Hublot',
+                    style: Configuration.textForApp(Colors.white, 22)),
+              )),
+          Padding(
             padding: const EdgeInsets.all(8),
             child:
                 Configuration.inputField(context, pseudoController, "Username"),
@@ -85,8 +93,9 @@ class CreationCompteFormState extends State<CreationCompteForm> {
             child: Configuration.passwordInput(
                 context, passwordController, "Password"),
           ),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.3),
               child: Center(
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),
