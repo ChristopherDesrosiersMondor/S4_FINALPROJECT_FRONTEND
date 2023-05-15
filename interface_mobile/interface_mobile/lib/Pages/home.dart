@@ -20,7 +20,13 @@ class Home extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: DropdownMenuApp(),
         ),
-        actions: const <Widget>[Icon(Icons.search), Icon(Icons.account_circle)],
+        actions: <Widget>[
+          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.account_circle),
+            onPressed: () {},
+          )
+        ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
       backgroundColor: Configuration.appDarkBackgroundColor,

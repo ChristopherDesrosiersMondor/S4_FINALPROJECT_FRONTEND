@@ -29,7 +29,7 @@ class CreationCompte extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
             child: Text.rich(TextSpan(children: [
               TextSpan(
-                  style: Configuration.textForApp(Colors.white, 18),
+                  style: Configuration.textForApp(Colors.white, 16),
                   text: "Log in",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
@@ -75,6 +75,12 @@ class CreationCompteFormState extends State<CreationCompteForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Padding(
+              padding: const EdgeInsets.all(15),
+              child: Center(
+                child: Text('Hi new friend, welcome to Hublot',
+                    style: Configuration.textForApp(Colors.white, 22)),
+              )),
           Padding(
             padding: const EdgeInsets.all(8),
             child:
