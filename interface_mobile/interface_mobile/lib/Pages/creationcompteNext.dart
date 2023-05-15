@@ -26,7 +26,9 @@ class CreationCompteNext extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         title: const Center(
           child: Icon(
             Icons.anchor,
@@ -151,8 +153,9 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
               ),
             ),
           ),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50.0),
+          Container(
+              margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.25),
               child: Center(
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),

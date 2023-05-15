@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../config.dart';
 
 /// Sources:
 /// https://api.flutter.dev/flutter/material/DropdownButton-class.html
@@ -12,9 +15,7 @@ class DropdownMenuApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: DropdownMenuExample(),
-    );
+    return const DropdownMenuExample();
   }
 }
 
@@ -30,27 +31,36 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
-      elevation: 16,
-      style: const TextStyle(color: Colors.white),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
-        setState(() {
-          dropdownValue = value!;
-        });
-      },
-      items: list.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
+    return Container(
+      height: 40,
+      padding: const EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 59, 58, 58),
+          borderRadius: BorderRadius.circular(10)),
+      child: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: const Color.fromARGB(255, 59, 58, 58),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: dropdownValue,
+              icon: const Icon(Icons.arrow_drop_down),
+              elevation: 16,
+              style: Configuration.textForApp(Colors.white, 16),
+              onChanged: (String? value) {
+                // This is called when the user selects an item.
+                setState(() {
+                  dropdownValue = value!;
+                });
+              },
+              items: list.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          )),
     );
   }
 }

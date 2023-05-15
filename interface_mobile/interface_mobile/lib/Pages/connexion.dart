@@ -16,7 +16,9 @@ class ConnexionPage extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         title: const Center(
           child: Icon(
             Icons.anchor,
@@ -28,7 +30,7 @@ class ConnexionPage extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
             child: Text.rich(TextSpan(children: [
               TextSpan(
-                  style: Configuration.textForApp(Colors.white, 18),
+                  style: Configuration.textForApp(Colors.white, 16),
                   text: "Sign up",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
@@ -78,7 +80,7 @@ class ConnexionFormState extends State<ConnexionForm> {
               padding: const EdgeInsets.all(15),
               child: Center(
                 child: Text('Log in to Hublot',
-                    style: Configuration.textForApp(Colors.white, 25)),
+                    style: Configuration.textForApp(Colors.white, 22)),
               )),
           Padding(
               padding: const EdgeInsets.all(8),
@@ -96,8 +98,9 @@ class ConnexionFormState extends State<ConnexionForm> {
               style: Configuration.textForApp(Configuration.orangeColor, 16),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 50.0),
+          Container(
+            margin:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.25),
             child: Center(
               child: ElevatedButton(
                 style: Configuration.formButtonStyle(context),
