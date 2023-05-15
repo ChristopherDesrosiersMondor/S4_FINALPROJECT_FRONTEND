@@ -16,7 +16,10 @@ class Home extends StatelessWidget {
               Icons.menu,
             ),
             onPressed: () {}),
-        title: const DropdownMenuApp(),
+        title: const Align(
+          alignment: Alignment.topLeft,
+          child: DropdownMenuApp(),
+        ),
         actions: const <Widget>[Icon(Icons.search), Icon(Icons.account_circle)],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
