@@ -1,6 +1,4 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:interface_mobile/config.dart';
 
 class PostWidget extends StatelessWidget {
