@@ -150,4 +150,8 @@
 		margin-bottom: 15px;
 	}
 
+	p {
+		color: var(--main-text);
+		font-size: 14px;
+	}
 </style>

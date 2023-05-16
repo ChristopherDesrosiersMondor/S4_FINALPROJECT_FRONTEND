@@ -17,16 +17,13 @@
 	<div class="modal-wrapper">
 		<div class="modal">
 			<span class="close" on:click={() => hide()}>&times;</span>
-			<p class="title">Create account</p>
+			<p class="title">Log In</p>
 			<p class="text">
 				By continuing, you are setting up an Hublot account and agree to our <a href="./"
 					>User Agreement</a
 				>
 				and <a href="./">Privacy Policy</a>.
 			</p>
-			<br />
-			<input type="checkbox" />
-			<span class="text"> I agree to get emails about cool stuff on Hublot.</span><br />
 			<div class="btn_container">
 				<button class="btn"><Mail />Continue with Google</button>
 				<button class="btn"><Apple />Continue with Apple</button>
@@ -36,9 +33,14 @@
 				<span class="ou">ou</span>
 				<span class="line" />
 			</div>
-			<input class="email_input" placeholder="Email address" />
-			<button class="btn" id="continue_btn">Continue</button><br />
-			<span class="text">Already a Hublotor ? <a href="./">Log in</a></span>
+			<input class="pseudo_input" placeholder="Pseudo" />
+			<input class="" type="password" placeholder="Password" />
+			<p class="text">
+				Forgot your pseudo or password ? Click <a href="./">here</a> to reinitialize.
+			</p>
+			<br />
+			<button class="btn" id="login_btn">Log In</button><br />
+			<span class="text">First time on Hublot ? <a href="./">Create account</a></span>
 		</div>
 	</div>
 {/if}
@@ -75,7 +77,7 @@
 	}
 
 	.btn,
-	.email_input {
+	input {
 		border: grey 1px solid;
 		width: 100%;
 		font-size: small;
@@ -124,7 +126,7 @@
 		cursor: pointer;
 	}
 
-	#continue_btn {
+	#login_btn {
 		background-color: #ff4500;
 		color: white;
 		font-weight: bold;
