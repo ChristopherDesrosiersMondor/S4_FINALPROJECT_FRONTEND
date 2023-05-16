@@ -56,7 +56,7 @@
 	<div class="sidebar-footer-container">
 		<div class="simple-divider-line-container" />
 		<div class="l">
-			<p>Créez un compte pour suivre vos communautés préférées et participer aux conversations.</p>
+			<p>Create an account to follow your favorite communities and participate in conversations.</p>
 			<br />
 			<AccountCreation />
 		</div>
@@ -149,4 +149,5 @@
 		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 		margin-bottom: 15px;
 	}
+
 </style>

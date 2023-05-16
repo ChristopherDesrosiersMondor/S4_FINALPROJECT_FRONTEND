@@ -65,7 +65,7 @@
 		flex-direction: row;
 		flex-grow: 0;
 		flex-shrink: 0;
-		z-index: 80;
+		z-index: 4;
 		right: 0;
 		top: 0;
 		left: 0;
