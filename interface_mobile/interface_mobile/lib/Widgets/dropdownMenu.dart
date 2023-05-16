@@ -44,7 +44,7 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: dropdownValue,
-              icon: const Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.keyboard_arrow_down_rounded),
               elevation: 16,
               style: Configuration.textForApp(Colors.white, 16),
               onChanged: (String? value) {
