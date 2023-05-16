@@ -18,24 +18,6 @@ class AddCommunityToPost extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             }),
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
-            child: Text.rich(TextSpan(children: [
-              TextSpan(
-                  style: Configuration.textForApp(Colors.white, 16),
-                  text: "Sign up",
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddPostPage()),
-                      );
-                    }),
-            ])),
-          )
-        ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
       body: const SingleChildScrollView(child: AddCommunityToPostForm()),
@@ -53,6 +35,6 @@ class AddCommunityToPostForm extends StatefulWidget {
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
   @override
   Widget build(BuildContext context) {
-    return const Text('Add a community');
+    return Configuration.communityChoices("communityName");
   }
 }

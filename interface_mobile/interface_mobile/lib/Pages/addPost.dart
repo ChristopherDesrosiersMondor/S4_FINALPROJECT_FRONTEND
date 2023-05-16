@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/addPostCommunity.dart';
+import 'package:interface_mobile/Pages/home.dart';
+import 'package:interface_mobile/main.dart';
 
 import '../config.dart';
 
@@ -15,25 +17,49 @@ class AddPostPage extends StatelessWidget {
         leading: IconButton(
             icon: const Icon(Icons.close),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HublotWidget()),
+              );
             }),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 15, 20, 0),
-            child: Text.rich(TextSpan(children: [
-              TextSpan(
-                  style: Configuration.textForApp(Colors.white, 16),
-                  text: "Next",
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddCommunityToPost()),
-                      );
-                    }),
-            ])),
-          )
+              padding: const EdgeInsets.all(10),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 51, 50, 50),
+                  minimumSize: const Size(80, 20),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddCommunityToPost()),
+                  );
+                },
+                child: Text(
+                  'Next',
+                  style: Configuration.textForApp(Colors.white60, 14),
+                ),
+              )
+
+              //  Text.rich(
+              //   TextSpan(
+              //       style: Configuration.textForApp(Colors.white, 16),
+              //       text: "Next",
+              //       recognizer: TapGestureRecognizer()
+              //         ..onTap = () async {
+              //           Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) => const AddCommunityToPost()),
+              //           );
+              //         }),
+              // ),
+              )
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),

@@ -100,4 +100,30 @@ class Configuration {
       ),
     );
   }
+
+  static InkWell communityChoices(String communityName) {
+    return InkWell(
+        onTap: () {},
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Row(children: [
+            const Icon(
+              Icons.anchor,
+              color: Colors.white,
+            ),
+            Column(
+              children: [
+                Text(
+                  communityName,
+                  style: textForApp(Colors.white, 16),
+                ),
+                Text(
+                  "1K Online - Subscribed",
+                  style: mainContentTextForApp(Colors.white60, 14),
+                )
+              ],
+            )
+          ]),
+        ));
+  }
 }
