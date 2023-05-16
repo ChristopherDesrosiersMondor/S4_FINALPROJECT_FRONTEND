@@ -1,10 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import '../config.dart';
+import 'addPost.dart';
 
-class AddPostPage extends StatelessWidget {
-  const AddPostPage({super.key});
+class AddCommunityToPost extends StatelessWidget {
+  const AddCommunityToPost({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,9 @@ class AddPostPage extends StatelessWidget {
       backgroundColor: Configuration.appDarkBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
-            icon: const Icon(Icons.exit_to_app),
+            icon: const Icon(
+              Icons.arrow_back,
+            ),
             onPressed: () {
               Navigator.pop(context);
             }),
@@ -22,13 +24,13 @@ class AddPostPage extends StatelessWidget {
             child: Text.rich(TextSpan(children: [
               TextSpan(
                   style: Configuration.textForApp(Colors.white, 16),
-                  text: "Next",
+                  text: "Sign up",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AddCommunityToPost()),
+                            builder: (context) => const AddPostPage()),
                       );
                     }),
             ])),
@@ -36,22 +38,21 @@ class AddPostPage extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: AddPostForm()),
+      body: const SingleChildScrollView(child: AddCommunityToPostForm()),
     );
   }
 }
 
-class AddPostForm extends StatefulWidget {
-  const AddPostForm({super.key});
+class AddCommunityToPostForm extends StatefulWidget {
+  const AddCommunityToPostForm({super.key});
 
   @override
-  State<AddPostForm> createState() => AddPostFormState();
+  State<AddCommunityToPostForm> createState() => AddCommunityToPostFormState();
 }
 
-class AddPostFormState extends State<AddPostForm> {
+class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return const Text('Add a community');
   }
 }
