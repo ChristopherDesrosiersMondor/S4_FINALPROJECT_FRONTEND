@@ -95,6 +95,6 @@
 
 	.anchor-icon {
 		padding-right: 10px;
-		color: var(--title)
+		color: var(--title);
 	}
 </style>

@@ -1,31 +1,15 @@
 <script lang="ts">
 	import '../app.css';
+	import ModalLogin from '$lib/modal_login.svelte';
+	let modal_login: ModalLogin;
 </script>
 
 <!-- Login -->
-<div class="log-in-container">
-	<a
-		role="button"
-		tabindex="0"
-		href="https://www.reddit.com/login/?dest=https%3A%2F%2Fwww.reddit.com%2F"
-		class="log-in-color">Log In</a
-	>
-</div>
+
+<button on:click={() => modal_login.show()} class="log-in-container" tabindex="0">Log In</button>
+<ModalLogin bind:this={modal_login} />
 
 <style>
-	a:link {
-		color: white;
-		font-family: Noto Sans, Arial, sans-serif;
-		font-size: 14px;
-		font-weight: 700;
-		letter-spacing: unset;
-		line-height: 17px;
-		text-transform: unset;
-		min-height: 32px;
-		min-width: 32px;
-		padding: 4px 16px;
-	}
-
 	.log-in-container {
 		display: flex;
 		align-items: center;
@@ -39,13 +23,7 @@
 		position: relative;
 		min-width: 72px;
 		width: 120px;
-	}
-
-	.log-in-color {
-		display: flex;
 		color: white;
 		font-weight: bold;
-		text-decoration: none;
-		margin-top: 6px;
 	}
 </style>
