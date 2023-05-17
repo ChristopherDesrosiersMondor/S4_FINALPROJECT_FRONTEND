@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
         ),
         backgroundColor: Configuration.appDarkBackgroundColor,
         body: FutureBuilder(
-          future: getAllPost(),
+          future: getAllPost(context),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List<Post> posts = snapshot.data;

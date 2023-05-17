@@ -97,12 +97,13 @@ Future<Account> createUser(
   }
 }
 
-Future<List<Post>> getAllPost() async {
+Future<List<Post>> getAllPost(BuildContext context) async {
   String url = 'http://10.0.2.2:8083/posts/view/all';
   Response res = await http.get(Uri.parse(url));
   log("message1");
 
   if (res.statusCode == 200) {
+    log("message2");
     List<dynamic> body = jsonDecode(res.body);
     List<Post> posts = body
         .map(
