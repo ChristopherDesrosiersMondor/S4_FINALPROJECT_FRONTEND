@@ -19,4 +19,17 @@ class Community {
       required this.communityAmmountOfMembers,
       required this.communityAmmountOfPosts,
       required this.communityCreatorId});
+
+  factory Community.fromJson(Map<String, dynamic> json) {
+    return Community(
+        id: json['id'],
+        communityName: json['communityName'],
+        communityDescription: json['communityDescription'],
+        communityLogo: json['communityLogo'],
+        communityHeaderImage: json['communityHeaderImage'],
+        communityCreatedOnDate: json['communityCreatedOnDate'],
+        communityAmmountOfMembers: json['communityAmmountOfMembersy'],
+        communityAmmountOfPosts: json['communityAmmountOfPosts'],
+        communityCreatorId: json['communityCreatorId']);
+  }
 }

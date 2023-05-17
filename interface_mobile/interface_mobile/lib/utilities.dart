@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart' hide Key;
 import 'package:http/http.dart' as http;
 import 'package:interface_mobile/Entities/account.dart';
+import 'package:interface_mobile/Entities/community.dart';
+import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 
 // Sources:
 // How to use alert dialogs
@@ -10,6 +12,7 @@ import 'package:interface_mobile/Entities/account.dart';
 // Http request with flutter
 // https://docs.flutter.dev/cookbook/networking/send-data
 // https://docs.flutter.dev/cookbook/networking/fetch-data
+// https://www.geeksforgeeks.org/http-get-response-in-flutter/
 
 // Hash text
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
@@ -87,4 +90,29 @@ Future<Account> createUser(
   } else {
     throw Exception('Failed to create user.');
   }
+}
+
+Future<List<Community>> getAllCommunities() async {
+  String url = 'http://10.0.2.2:8081/communities/view/all';
+  final response = await http.get(Uri.parse(url));
+  var responseData = json.decode(response.body);
+
+  List<Community> listCommunities = [];
+
+  for (var com in responseData) {
+    Community community = Community(
+        id: com["id"],
+        communityName: com["communityName"],
+        communityDescription: com["communityDescription"],
+        communityLogo: com["communityLogo"],
+        communityHeaderImage: com["communityHeaderImage"],
+        communityCreatedOnDate: com["communityCreatedOnDate"],
+        communityAmmountOfMembers: com["communityAmmountOfMembers"],
+        communityAmmountOfPosts: com["communityAmmountOfPosts"],
+        communityCreatorId: com["communityCreatorId"]);
+
+    listCommunities.add(community);
+  }
+
+  return listCommunities;
 }
