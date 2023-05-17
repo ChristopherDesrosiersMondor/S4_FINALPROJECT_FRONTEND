@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/connexion.dart';
 import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
+import 'package:interface_mobile/utilities.dart';
 
+import '../Entities/post.dart';
 import '../config.dart';
 
 class Home extends StatelessWidget {
@@ -37,21 +39,25 @@ class Home extends StatelessWidget {
           backgroundColor: Configuration.appDarkBackgroundColor,
         ),
         backgroundColor: Configuration.appDarkBackgroundColor,
-        body: const SingleChildScrollView(
-            child: Padding(
-          padding: EdgeInsets.all(15),
-          child: PostWidget(
-              postId: 1,
-              postTitle: "Post Title",
-              postContent:
-                  "postContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContentpostContent",
-              postSource:
-                  "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
-              postDate: "2023/05/12",
-              postUpVote: 5,
-              postDownVote: 1,
-              username: "username",
-              communityName: "communityName"),
-        )));
+        body: FutureBuilder(
+          future: getAllPost(context),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              List<Post> posts = snapshot.data;
+              return ListView(
+                children: posts
+                    .map(
+                      (Post post) => ListTile(
+                        title: Text(post.postTitle),
+                        subtitle: Text(post.postContent),
+                      ),
+                    )
+                    .toList(),
+              );
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ));
   }
 }
