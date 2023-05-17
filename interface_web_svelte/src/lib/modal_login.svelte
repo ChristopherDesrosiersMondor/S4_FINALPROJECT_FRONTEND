@@ -16,6 +16,7 @@
 {#if shown}
 	<div class="modal-wrapper">
 		<div class="modal">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span class="close" on:click={() => hide()}>&times;</span>
 			<p class="title">Log In</p>
 			<p class="text">
@@ -47,12 +48,13 @@
 
 <style>
 	.modal-wrapper {
-		width: 100%;
+		width: auto !important;
 		position: fixed;
 		top: 0;
 		left: 0;
-		height: 100%;
-		z-index: 80;
+		bottom: 0;
+		right: 0;
+		z-index: 1;
 		background-color: rgba(0, 0, 0, 0.4);
 	}
 
