@@ -21,4 +21,17 @@ class Post {
       required this.postDownVote,
       required this.postIdUser,
       required this.postIdCom});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+        postId: json['postId'],
+        postTitle: json['postTitle'],
+        postContent: json['postContent'],
+        postSource: json['postSource'],
+        postDate: json['postDate'],
+        postUpVote: json['postUpVote'],
+        postDownVote: json['postDownVote'],
+        postIdUser: json['postIdUser'],
+        postIdCom: json['postIdCom']);
+  }
 }
