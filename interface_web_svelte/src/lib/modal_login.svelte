@@ -1,4 +1,6 @@
 <script>
+	// @ts-nocheck
+
 	import { Mail } from 'lucide-svelte';
 	import { Apple } from 'lucide-svelte';
 
@@ -9,6 +11,17 @@
 	export function hide() {
 		shown = false;
 	}
+
+	let pseudo_input;
+	let pwd_input;
+	let data;
+
+	const handleClick = async () => {
+		data = await fetch(
+			`http://localhost:8082/accounts/view/by_pseudo/${pseudo_input}/${pwd_input}`
+		).then((response) => response.json());
+		console.log(data);
+	};
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -33,13 +46,18 @@
 				<span class="ou">ou</span>
 				<span class="line" />
 			</div>
-			<input class="pseudo_input" placeholder="Pseudo" />
-			<input class="" type="password" placeholder="Password" />
+			<input class="pseudo_input" placeholder="Pseudo" bind:value={pseudo_input} />
+			<input class="pwd_input" type="password" placeholder="Password" bind:value={pwd_input} />
+
+			<!-- <input class="pseudo_input" placeholder="Pseudo" />
+			<input class="pwd_input" type="password" placeholder="Password" /> -->
+
 			<p class="text">
 				Forgot your pseudo or password ? Click <a href="./">here</a> to reinitialize.
 			</p>
 			<br />
-			<button class="btn" id="login_btn">Log In</button><br />
+			<!-- c'est ici que doit se faire l'appel a l'API pour checker si pseudo et mot de passe ok -->
+			<button on:click={() => handleClick()} class="btn" id="login_btn">Log In</button><br />
 			<span class="text">First time on Hublot ? <a href="./">Create account</a></span>
 		</div>
 	</div>
@@ -52,7 +70,7 @@
 		top: 0;
 		left: 0;
 		height: 100%;
-		z-index: 80;
+
 		background-color: rgba(0, 0, 0, 0.4);
 	}
 
@@ -65,6 +83,7 @@
 		left: 45%;
 		border-radius: 2%;
 		padding: 4%;
+		z-index: 80;
 	}
 
 	.text {
