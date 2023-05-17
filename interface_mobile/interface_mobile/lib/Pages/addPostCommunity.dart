@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/Entities/community.dart';
 import 'package:interface_mobile/Widgets/communityWidget.dart';
 import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/utilities.dart';
@@ -22,7 +23,7 @@ class AddCommunityToPost extends StatelessWidget {
             }),
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: AddCommunityToPostForm()),
+      body: const AddCommunityToPostForm(),
     );
   }
 }
@@ -37,14 +38,28 @@ class AddCommunityToPostForm extends StatefulWidget {
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: getAllCommunities(context),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          List<Community> communities = snapshot.data;
+          return ListView(
+            children: communities
+                .map(
+                  (Community community) => ListTile(
+                    title: Text(community.communityName),
+                    subtitle: Text("${community.id}"),
+                  ),
+                )
+                .toList(),
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+    );
     // return SafeArea(
     //   child: Scaffold(
-    //     appBar: AppBar(
-    //       title: Text("Http Get Request."),
-    //       leading: Icon(
-    //         Icons.get_app,
-    //       ),
-    //     ),
     //     body: Container(
     //       padding: EdgeInsets.all(16.0),
     //       child: FutureBuilder(
@@ -71,27 +86,27 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
     //     ),
     //   ),
     // );
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: FutureBuilder(
-        future: getAllCommunities(),
-        builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (ctx, index) => CommunityWidget(
-                communityId: snapshot.data[index].id,
-                communityName: snapshot.data[index].communityName,
-              ),
-            );
-          }
-        },
-      ),
-    );
+    // return Container(
+    //   padding: const EdgeInsets.all(10),
+    //   child: FutureBuilder(
+    //     future: getAllCommunities(),
+    //     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
+    //       if (snapshot.data == null) {
+    //         return const Center(
+    //           child: CircularProgressIndicator(),
+    //         );
+    //       } else {
+    //         return ListView.builder(
+    //           itemCount: snapshot.data.length,
+    //           itemBuilder: (ctx, index) => CommunityWidget(
+    //             communityId: snapshot.data[index].id,
+    //             communityName: snapshot.data[index].communityName,
+    //           ),
+    //         );
+    //       }
+    //     },
+    //   ),
+    // );
     // return Configuration.communityChoices("communityName");
   }
 }

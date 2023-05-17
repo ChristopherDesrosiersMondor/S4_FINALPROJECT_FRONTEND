@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 class Account {
-  final Long userId;
+  final Long id;
   final String userLastName;
   final String userFirstName;
   final String userEmail;
@@ -10,7 +10,7 @@ class Account {
   final DateTime userBirthday;
 
   const Account({
-    required this.userId,
+    required this.id,
     required this.userLastName,
     required this.userFirstName,
     required this.userEmail,
@@ -22,7 +22,7 @@ class Account {
   // permet de transformer une entité en format json pour la communication avec l'API
   factory Account.fromJson(Map<String, dynamic> json) {
     return Account(
-        userId: json['userId'],
+        id: json['id'],
         userLastName: json['userLastName'],
         userFirstName: json['userFirstName'],
         userEmail: json['userEmail'],

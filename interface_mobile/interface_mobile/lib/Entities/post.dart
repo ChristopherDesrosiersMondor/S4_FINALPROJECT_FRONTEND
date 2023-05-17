@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 class Post {
-  final Long postId;
+  final Long id;
   final String postTitle;
   final String postContent;
   final String postSource;
@@ -12,7 +12,7 @@ class Post {
   final int postIdCom;
 
   const Post(
-      {required this.postId,
+      {required this.id,
       required this.postTitle,
       required this.postContent,
       required this.postSource,
@@ -24,7 +24,7 @@ class Post {
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-        postId: json['postId'],
+        id: json['id'],
         postTitle: json['postTitle'],
         postContent: json['postContent'],
         postSource: json['postSource'],
