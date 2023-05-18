@@ -1,12 +1,16 @@
 <script lang="ts">
 	import '../app.css';
-	import Modal from '$lib/modal_create_account.svelte';
-	let modal: Modal;
+
+	import { create_account_modal_shown } from '../stores.js';
 </script>
 
 <!-- Create account -->
-<button on:click={() => modal.show()} class="create-account-container">Create account</button>
-<Modal bind:this={modal} />
+<button
+	on:click={() => ($create_account_modal_shown = !$create_account_modal_shown)}
+	class="create-account-container"
+>
+	Create account
+</button>
 
 <style>
 	.create-account-container {

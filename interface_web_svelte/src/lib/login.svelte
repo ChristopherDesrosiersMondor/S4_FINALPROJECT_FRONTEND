@@ -1,13 +1,16 @@
 <script lang="ts">
 	import '../app.css';
-	import ModalLogin from '$lib/modal_login.svelte';
-	let modal_login: ModalLogin;
+
+	import { login_modal_shown } from '../stores.js';
 </script>
 
 <!-- Login -->
 
-<button on:click={() => modal_login.show()} class="log-in-container" tabindex="0">Log In</button>
-<ModalLogin bind:this={modal_login} />
+<button
+	on:click={() => ($login_modal_shown = !$login_modal_shown)}
+	class="log-in-container"
+	tabindex="0">Log In</button
+>
 
 <style>
 	.log-in-container {

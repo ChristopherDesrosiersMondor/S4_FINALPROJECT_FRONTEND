@@ -3,13 +3,16 @@
 
 	import { Mail } from 'lucide-svelte';
 	import { Apple } from 'lucide-svelte';
+	import '../app.css';
+	import './modals.css';
 
-	let shown = false;
+	import { login_modal_shown } from '../stores.js';
+
 	export function show() {
-		shown = true;
+		$login_modal_shown = true;
 	}
 	export function hide() {
-		shown = false;
+		$login_modal_shown = false;
 	}
 
 	let pseudo_input;
@@ -26,7 +29,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-{#if shown}
+{#if $login_modal_shown}
 	<div class="modal-wrapper">
 		<div class="modal">
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -65,37 +68,6 @@
 {/if}
 
 <style>
-	.modal-wrapper {
-		width: auto !important;
-		position: fixed;
-		top: 0;
-		left: 0;
-		height: 100%;
-
-		background-color: rgba(0, 0, 0, 0.4);
-	}
-
-	.modal {
-		background-color: white;
-		width: 400px;
-		height: 640px;
-		position: fixed;
-		top: 15%;
-		left: 45%;
-		border-radius: 2%;
-		padding: 4%;
-		z-index: 80;
-	}
-
-	.text {
-		font-size: small;
-	}
-
-	.title {
-		font-weight: bold;
-		margin-bottom: 3%;
-	}
-
 	.btn,
 	input {
 		border: grey 1px solid;
@@ -110,40 +82,6 @@
 		border-radius: 2.1em;
 		height: 36px;
 		font-weight: 500;
-	}
-
-	.btn:hover {
-		background-color: #f8fbff;
-	}
-
-	.btn_container {
-		margin-top: 15%;
-		margin-bottom: 12%;
-	}
-
-	.dividing-line {
-		-webkit-box-align: center;
-		align-items: center;
-		display: flex;
-		margin: 28px 0px;
-		-webkit-box-pack: justify;
-		justify-content: space-between;
-	}
-
-	.line {
-		border-top: 1px solid #edeff1;
-		width: 40%;
-	}
-
-	.ou {
-		color: #a3a6aa;
-	}
-
-	.close {
-		position: fixed;
-		top: 150px;
-		left: 1098px;
-		cursor: pointer;
 	}
 
 	#login_btn {

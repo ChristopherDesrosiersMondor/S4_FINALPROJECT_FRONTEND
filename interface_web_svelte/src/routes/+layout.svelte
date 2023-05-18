@@ -8,12 +8,18 @@
 
 	import '../app.css';
 	import Sidebar from '../lib/sidebar.svelte';
+	import ModalCreateAccount from '$lib/modal_create_account.svelte';
+	import ModalLogin from '$lib/modal_login.svelte';
 </script>
 
 <div id="2x-container">
 	<div class="theme">
 		<div tabindex="-1">
 			<div class="shortcut-focus" tabindex="-1">
+				<div class="modals">
+					<ModalCreateAccount />
+					<ModalLogin />
+				</div>
 				<div class="">
 					<!-- Header -->
 					<Header />
@@ -37,6 +43,10 @@
 </div>
 
 <style>
+	.modals {
+		position: fixed;
+		z-index: 109;
+	}
 	.main-container {
 		padding-left: 270px;
 		transition: margin-top 0.3s ease;
@@ -44,6 +54,7 @@
 	}
 
 	.shortcut-focus {
+		z-index: 1;
 		outline: none;
 	}
 </style>

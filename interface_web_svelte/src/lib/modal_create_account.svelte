@@ -1,21 +1,25 @@
 <script>
 	import { Mail } from 'lucide-svelte';
 	import { Apple } from 'lucide-svelte';
+	import '../app.css';
+	import './modals.css';
 
-	let shown = false;
+	import { create_account_modal_shown } from '../stores.js';
+
 	export function show() {
-		shown = true;
+		$create_account_modal_shown = true;
 	}
 	export function hide() {
-		shown = false;
+		$create_account_modal_shown = false;
 	}
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-{#if shown}
+{#if $create_account_modal_shown}
 	<div class="modal-wrapper">
 		<div class="modal">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span class="close" on:click={() => hide()}>&times;</span>
 			<p class="title">Create account</p>
 			<p class="text">
@@ -42,92 +46,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.modal-wrapper {
-		width: 100%;
-		position: fixed;
-		top: 0;
-		left: 0;
-		height: 100%;
-		z-index: 80;
-		background-color: rgba(0, 0, 0, 0.4);
-	}
-
-	.modal {
-		background-color: white;
-		width: 400px;
-		height: 640px;
-		position: fixed;
-		top: 15%;
-		left: 45%;
-		border-radius: 2%;
-		padding: 4%;
-	}
-
-	.text {
-		font-size: small;
-	}
-
-	.title {
-		font-weight: bold;
-		margin-bottom: 3%;
-	}
-
-	.btn,
-	.email_input {
-		border: grey 1px solid;
-		width: 100%;
-		font-size: small;
-		padding: 6%;
-		border-radius: 10%;
-		margin-bottom: 4%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 2.1em;
-		height: 36px;
-		font-weight: 500;
-	}
-
-	.btn:hover {
-		background-color: #f8fbff;
-	}
-
-	.btn_container {
-		margin-top: 15%;
-		margin-bottom: 12%;
-	}
-
-	.dividing-line {
-		-webkit-box-align: center;
-		align-items: center;
-		display: flex;
-		margin: 28px 0px;
-		-webkit-box-pack: justify;
-		justify-content: space-between;
-	}
-
-	.line {
-		border-top: 1px solid #edeff1;
-		width: 40%;
-	}
-
-	.ou {
-		color: #a3a6aa;
-	}
-
-	.close {
-		position: fixed;
-		top: 150px;
-		left: 1098px;
-		cursor: pointer;
-	}
-
-	#continue_btn {
-		background-color: #ff4500;
-		color: white;
-		font-weight: bold;
-		border: 1px solid transparent;
-	}
-</style>

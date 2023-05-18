@@ -1,0 +1,87 @@
+.modal-wrapper {
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 110;
+}
+
+.modal {
+    background-color: white;
+    width: 400px;
+    height: 640px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2%;
+    padding: 4%;
+}
+
+.text {
+    font-size: small;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 3%;
+}
+
+.btn,
+.email_input {
+    border: grey 1px solid;
+    width: 100%;
+    font-size: small;
+    padding: 6%;
+    border-radius: 10%;
+    margin-bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.1em;
+    height: 36px;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: #f8fbff;
+}
+
+.btn_container {
+    margin-top: 15%;
+    margin-bottom: 12%;
+}
+
+.dividing-line {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    margin: 28px 0px;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.line {
+    border-top: 1px solid #edeff1;
+    width: 40%;
+}
+
+.ou {
+    color: #a3a6aa;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#continue_btn {
+    background-color: #ff4500;
+    color: white;
+    font-weight: bold;
+    border: 1px solid transparent;
+}

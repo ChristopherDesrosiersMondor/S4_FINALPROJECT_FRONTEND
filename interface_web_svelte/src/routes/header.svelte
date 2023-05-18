@@ -91,6 +91,7 @@
 	.title {
 		color: var(--title);
 		font-weight: bold;
+		margin-bottom: 0;
 	}
 
 	.anchor-icon {
