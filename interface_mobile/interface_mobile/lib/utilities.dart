@@ -110,7 +110,7 @@ Future<List<Post>> getAllPost(BuildContext context) async {
           (dynamic item) => Post.fromJson(item),
         )
         .toList();
-    log("posts.toString()");
+    log("message3");
     return posts;
   } else {
     throw "Unable to retrieve posts";
