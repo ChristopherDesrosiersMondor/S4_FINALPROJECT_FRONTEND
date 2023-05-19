@@ -3,7 +3,7 @@
 	import { Apple } from 'lucide-svelte';
 	import '../app.css';
 	import './modals.css';
-
+	import { create_account_next_modal_shown } from '../stores.js';
 	import { create_account_modal_shown } from '../stores.js';
 
 	export function show() {
@@ -41,7 +41,11 @@
 				<span class="line" />
 			</div>
 			<input class="email_input" placeholder="Email address" />
-			<button class="btn" id="continue_btn">Continue</button><br />
+			<button
+				on:click={() => ($create_account_next_modal_shown = !$create_account_next_modal_shown)}
+				class="btn"
+				id="continue_btn">Continue</button
+			><br />
 			<span class="text">Already a Hublotor ? <a href="./">Log in</a></span>
 		</div>
 	</div>
