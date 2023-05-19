@@ -37,7 +37,7 @@ class PostWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
             child: Text(
-              communityName,
+              username,
               style:
                   Configuration.mainContentTextForApp(Colors.grey.shade400, 16),
             ),

@@ -1,13 +1,13 @@
 import 'dart:ffi';
 
 class Account {
-  final Long id;
+  final int id;
   final String userLastName;
   final String userFirstName;
   final String userEmail;
   final String userPseudo;
   final String userPassword;
-  final DateTime userBirthday;
+  final String userBirthday;
 
   const Account({
     required this.id,

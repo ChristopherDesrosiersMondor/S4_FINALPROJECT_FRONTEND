@@ -100,22 +100,14 @@ Future<Account> createUser(
 Future<List<Post>> getAllPost(BuildContext context) async {
   String url = 'http://10.0.2.2:8083/posts/view/all';
   Response res = await http.get(Uri.parse(url));
-  log("message1");
 
   if (res.statusCode == 200) {
-    log("message2");
     List<dynamic> body = jsonDecode(res.body);
-    log("message3");
-    // List<Post> posts = [];
-    // for (var post in posts) {
-    //   posts.add(Post.fromJson(post as Map<String, dynamic>));
-    // }
     List<Post> posts = body
         .map(
           (dynamic item) => Post.fromJson(item),
         )
         .toList();
-    log("message4");
     return posts;
   } else {
     throw "Unable to retrieve posts";
@@ -181,4 +173,20 @@ Future<Community> getCommunityById(int id) async {
 String getCommunityNameById(int id) {
   Community community = getCommunityById(id) as Community;
   return community.communityName;
+}
+
+Future<Account> getAccountById(int id) async {
+  String url = 'http://10.0.2.2:8082/accounts/view/$id';
+  Response res = await http.get(Uri.parse(url));
+
+  if (res.statusCode == 200) {
+    return Account.fromJson(jsonDecode(res.body));
+  } else {
+    throw Exception('Failed to find account');
+  }
+}
+
+Future<String> getUsernameById(int id) async {
+  Account account = await getAccountById(id);
+  return account.userPseudo;
 }
