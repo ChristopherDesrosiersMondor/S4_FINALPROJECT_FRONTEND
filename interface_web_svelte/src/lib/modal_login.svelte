@@ -7,6 +7,7 @@
 	import './modals.css';
 
 	import { login_modal_shown } from '../stores.js';
+	import { create_account_modal_shown } from '../stores.js';
 
 	export function show() {
 		$login_modal_shown = true;
@@ -59,7 +60,15 @@
 			<br />
 
 			<button on:click={() => handleClick()} class="btn" id="login_btn">Log In</button><br />
-			<span class="text">First time on Hublot ? <a href="./">Create account</a></span>
+			<span class="text"
+				>First time on Hublot ? <a
+					href="./"
+					on:click={() => {
+						$login_modal_shown = false;
+						$create_account_modal_shown = !$create_account_modal_shown;
+					}}>Create account</a
+				></span
+			>
 		</div>
 	</div>
 {/if}

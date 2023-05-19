@@ -5,6 +5,7 @@
 	import './modals.css';
 	import { create_account_next_modal_shown } from '../stores.js';
 	import { create_account_modal_shown } from '../stores.js';
+	import { login_modal_shown } from '../stores.js';
 
 	export function show() {
 		$create_account_modal_shown = true;
@@ -40,13 +41,20 @@
 				<span class="ou">ou</span>
 				<span class="line" />
 			</div>
-			<input class="email_input" placeholder="Email address" />
 			<button
 				on:click={() => ($create_account_next_modal_shown = !$create_account_next_modal_shown)}
 				class="btn"
 				id="continue_btn">Continue</button
 			><br />
-			<span class="text">Already a Hublotor ? <a href="./">Log in</a></span>
+			<span class="text"
+				>Already a Hublotor ? <a
+					href="./"
+					on:click={() => {
+						$create_account_modal_shown = false;
+						$login_modal_shown = !$login_modal_shown;
+					}}>Log in</a
+				></span
+			>
 		</div>
 	</div>
 {/if}
