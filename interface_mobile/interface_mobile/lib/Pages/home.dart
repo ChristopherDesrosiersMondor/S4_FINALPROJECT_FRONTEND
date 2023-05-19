@@ -44,18 +44,33 @@ class Home extends StatelessWidget {
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List<Post> posts = snapshot.data;
-              return ListView(
-                children: posts
-                    .map(
-                      (Post post) => ListTile(
-                        title: Text(post.postTitle),
-                        subtitle: Text(post.postContent),
-                      ),
-                    )
-                    .toList(),
-              );
+              return ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: posts.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return PostWidget(
+                        postId: posts[index].id,
+                        postTitle: posts[index].postTitle,
+                        postContent: posts[index].postContent,
+                        postSource: posts[index].postSource,
+                        postDate: posts[index].postDate.toString(),
+                        postUpVote: posts[index].postUpVote,
+                        postDownVote: posts[index].postDownVote,
+                        username: posts[index].postIdUser.toString(),
+                        communityName: posts[index].postIdCom.toString());
+                  });
+              // return ListView(
+              //   children: posts
+              //       .map(
+              //         (Post post) => ListTile(
+              //           title: Text(post.postTitle),
+              //           subtitle: Text(post.postContent),
+              //         ),
+              //       )
+              //       .toList(),
+              // );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
           },
         ));

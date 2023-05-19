@@ -105,12 +105,17 @@ Future<List<Post>> getAllPost(BuildContext context) async {
   if (res.statusCode == 200) {
     log("message2");
     List<dynamic> body = jsonDecode(res.body);
+    log("message3");
+    // List<Post> posts = [];
+    // for (var post in posts) {
+    //   posts.add(Post.fromJson(post as Map<String, dynamic>));
+    // }
     List<Post> posts = body
         .map(
           (dynamic item) => Post.fromJson(item),
         )
         .toList();
-    log("message3");
+    log("message4");
     return posts;
   } else {
     throw "Unable to retrieve posts";
