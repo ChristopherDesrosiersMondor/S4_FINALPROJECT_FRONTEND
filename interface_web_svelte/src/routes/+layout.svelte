@@ -10,6 +10,7 @@
 	import Sidebar from '../lib/sidebar.svelte';
 	import ModalCreateAccount from '$lib/modal_create_account.svelte';
 	import ModalLogin from '$lib/modal_login.svelte';
+	import ModalCreateAccountNext from '$lib/modal_create_account_next.svelte';
 </script>
 
 <div id="2x-container">
@@ -19,6 +20,7 @@
 				<div class="modals">
 					<ModalCreateAccount />
 					<ModalLogin />
+					<ModalCreateAccountNext />
 				</div>
 				<div class="">
 					<!-- Header -->

@@ -30,7 +30,9 @@
 }
 
 .btn,
-.email_input {
+.email_input,
+.pseudo_input,
+.pwd_input {
     border: grey 1px solid;
     width: 100%;
     font-size: small;

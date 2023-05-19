@@ -53,14 +53,11 @@
 			<input class="pseudo_input" placeholder="Pseudo" bind:value={pseudo_input} />
 			<input class="pwd_input" type="password" placeholder="Password" bind:value={pwd_input} />
 
-			<!-- <input class="pseudo_input" placeholder="Pseudo" />
-			<input class="pwd_input" type="password" placeholder="Password" /> -->
-
 			<p class="text">
 				Forgot your pseudo or password ? Click <a href="./">here</a> to reinitialize.
 			</p>
 			<br />
-			<!-- c'est ici que doit se faire l'appel a l'API pour checker si pseudo et mot de passe ok -->
+
 			<button on:click={() => handleClick()} class="btn" id="login_btn">Log In</button><br />
 			<span class="text">First time on Hublot ? <a href="./">Create account</a></span>
 		</div>
