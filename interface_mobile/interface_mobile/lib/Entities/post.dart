@@ -1,14 +1,14 @@
 import 'dart:ffi';
 
 class Post {
-  final Long id;
+  final int id;
   final String postTitle;
   final String postContent;
   final String postSource;
-  final DateTime postDate;
+  final String postDate;
   final int postUpVote;
   final int postDownVote;
-  final Long postIdUser;
+  final int postIdUser;
   final int postIdCom;
 
   const Post(
@@ -23,15 +23,21 @@ class Post {
       required this.postIdCom});
 
   factory Post.fromJson(Map<String, dynamic> json) {
+    if (json['postUpVote'] == null) {
+      json['postUpVote'] = 0;
+    }
+    if (json['postDownVote'] == null) {
+      json['postDownVote'] = 0;
+    }
     return Post(
-        id: json['id'],
-        postTitle: json['postTitle'],
-        postContent: json['postContent'],
-        postSource: json['postSource'],
-        postDate: json['postDate'],
-        postUpVote: json['postUpVote'],
-        postDownVote: json['postDownVote'],
-        postIdUser: json['postIdUser'],
-        postIdCom: json['postIdCom']);
+        id: json['id'] as int,
+        postTitle: json['postTitle'] as String,
+        postContent: json['postContent'] as String,
+        postSource: json['postSource'] as String,
+        postDate: json['postDate'] as String,
+        postUpVote: json['postUpVote'] as int,
+        postDownVote: json['postDownVote'] as int,
+        postIdUser: json['postIdUser'] as int,
+        postIdCom: json['postIdCom'] as int);
   }
 }
