@@ -59,16 +59,6 @@ class Home extends StatelessWidget {
                         username: posts[index].postIdUser.toString(),
                         communityName: posts[index].postIdCom.toString());
                   });
-              // return ListView(
-              //   children: posts
-              //       .map(
-              //         (Post post) => ListTile(
-              //           title: Text(post.postTitle),
-              //           subtitle: Text(post.postContent),
-              //         ),
-              //       )
-              //       .toList(),
-              // );
             } else {
               return const Center(child: CircularProgressIndicator());
             }
