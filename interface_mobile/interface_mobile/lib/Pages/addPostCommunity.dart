@@ -43,70 +43,19 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           List<Community> communities = snapshot.data;
-          return ListView(
-            children: communities
-                .map(
-                  (Community community) => ListTile(
-                    title: Text(community.communityName),
-                    subtitle: Text("${community.id}"),
-                  ),
-                )
-                .toList(),
+          return ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: communities.length,
+            itemBuilder: (context, index) {
+              return CommunityWidget(
+                  communityId: communities[index].id,
+                  communityName: communities[index].communityName);
+            },
           );
         } else {
           return const Center(child: CircularProgressIndicator());
         }
       },
     );
-    // return SafeArea(
-    //   child: Scaffold(
-    //     body: Container(
-    //       padding: EdgeInsets.all(16.0),
-    //       child: FutureBuilder(
-    //         future: getAllCommunities(),
-    //         builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-    //           if (snapshot.data == null) {
-    //             return Container(
-    //               child: Center(
-    //                 child: CircularProgressIndicator(),
-    //               ),
-    //             );
-    //           } else {
-    //             return ListView.builder(
-    //               itemCount: snapshot.data.length,
-    //               itemBuilder: (ctx, index) => ListTile(
-    //                 title: Text(snapshot.data[index].communityName),
-    //                 subtitle: Text(snapshot.data[index].id),
-    //                 contentPadding: EdgeInsets.only(bottom: 20.0),
-    //               ),
-    //             );
-    //           }
-    //         },
-    //       ),
-    //     ),
-    //   ),
-    // );
-    // return Container(
-    //   padding: const EdgeInsets.all(10),
-    //   child: FutureBuilder(
-    //     future: getAllCommunities(),
-    //     builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-    //       if (snapshot.data == null) {
-    //         return const Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       } else {
-    //         return ListView.builder(
-    //           itemCount: snapshot.data.length,
-    //           itemBuilder: (ctx, index) => CommunityWidget(
-    //             communityId: snapshot.data[index].id,
-    //             communityName: snapshot.data[index].communityName,
-    //           ),
-    //         );
-    //       }
-    //     },
-    //   ),
-    // );
-    // return Configuration.communityChoices("communityName");
   }
 }

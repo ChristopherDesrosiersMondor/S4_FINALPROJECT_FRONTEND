@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 import 'package:flutter/material.dart' hide Key;
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -21,6 +22,8 @@ import 'Entities/post.dart';
 
 // Hash text
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
+
+bool iOS = true;
 
 showAlertDialog(BuildContext context, String text) {
   // Create button
@@ -53,8 +56,13 @@ showAlertDialog(BuildContext context, String text) {
 // connecter un utilisateur
 Future<Account> userConnect(
     BuildContext context, String pseudo, String password) async {
-  final response = await http.get(Uri.parse(
-      'http://10.0.2.2:8082/accounts/view/by_pseudo/$pseudo/$password'));
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/accounts/view/by_pseudo/$pseudo/$password';
+  } else {
+    url = 'http://10.0.2.2:8082/accounts/view/by_pseudo/$pseudo/$password';
+  }
+  final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
     showAlertDialog(context, "Connexion réussie");
@@ -74,8 +82,14 @@ Future<Account> createUser(
     String pseudo,
     String password,
     String birthday) async {
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/accounts/add';
+  } else {
+    url = 'http://10.0.2.2:8082/accounts/add';
+  }
   final response = await http.post(
-    Uri.parse('http://10.0.2.2:8082/accounts/add'),
+    Uri.parse(url),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -98,7 +112,12 @@ Future<Account> createUser(
 }
 
 Future<List<Post>> getAllPost(BuildContext context) async {
-  String url = 'http://10.0.2.2:8083/posts/view/all';
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/posts/view/all';
+  } else {
+    url = 'http://10.0.2.2:8083/posts/view/all';
+  }
   Response res = await http.get(Uri.parse(url));
 
   if (res.statusCode == 200) {
@@ -115,7 +134,12 @@ Future<List<Post>> getAllPost(BuildContext context) async {
 }
 
 Future<List<Community>> getAllCommunities(BuildContext context) async {
-  String url = 'http://10.0.2.2:8081/communities/view/all';
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8081/communities/view/all';
+  } else {
+    url = 'http://10.0.2.2:8081/communities/view/all';
+  }
   Response res = await http.get(Uri.parse(url));
 
   if (res.statusCode == 200) {
@@ -127,40 +151,19 @@ Future<List<Community>> getAllCommunities(BuildContext context) async {
         )
         .toList();
 
-    showAlertDialog(context, communities.toString());
     return communities;
   } else {
     throw "Unable to retrieve communities";
   }
 }
 
-// Future<List<Community>> getAllCommunities() async {
-//   String url = 'http://10.0.2.2:8081/communities/view/all';
-//   final response = await http.get(Uri.parse(url));
-//   var responseData = json.decode(response.body);
-
-//   List<Community> listCommunities = [];
-
-//   for (var com in responseData) {
-//     Community community = Community(
-//         id: com["id"],
-//         communityName: com["communityName"],
-//         communityDescription: com["communityDescription"],
-//         // communityLogo: com["communityLogo"],
-//         // communityHeaderImage: com["communityHeaderImage"],
-//         communityCreatedOnDate: com["communityCreatedOnDate"],
-//         // communityAmmountOfMembers: com["communityAmmountOfMembers"],
-//         // communityAmmountOfPosts: com["communityAmmountOfPosts"],
-//         communityCreatorId: com["communityCreatorId"]);
-
-//     listCommunities.add(community);
-//   }
-
-//   return listCommunities;
-// }
-
 Future<Community> getCommunityById(int id) async {
-  String url = 'http://10.0.2.2:8081/communities/view/$id';
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8081/communities/view/$id';
+  } else {
+    url = 'http://10.0.2.2:8081/communities/view/$id';
+  }
   Response res = await http.get(Uri.parse(url));
 
   if (res.statusCode == 200) {
@@ -176,7 +179,12 @@ String getCommunityNameById(int id) {
 }
 
 Future<Account> getAccountById(int id) async {
-  String url = 'http://10.0.2.2:8082/accounts/view/$id';
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8082/accounts/view/$id';
+  } else {
+    url = 'http://10.0.2.2:8082/accounts/view/$id';
+  }
   Response res = await http.get(Uri.parse(url));
 
   if (res.statusCode == 200) {
