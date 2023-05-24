@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 
 	import { Mail } from 'lucide-svelte';
@@ -7,7 +7,7 @@
 	import './modals.css';
 
 	import { login_modal_shown } from '../stores.js';
-	import { create_account_modal_shown } from '../stores.js';
+	import { create_account_modal_shown, loggedIn, isVisible } from '../stores.js';
 
 	export function show() {
 		$login_modal_shown = true;
@@ -18,14 +18,31 @@
 
 	let pseudo_input;
 	let pwd_input;
-	let data;
+	let data = null;
+	let wrong_data = false;
 
-	const handleClick = async () => {
-		data = await fetch(
-			`http://localhost:8082/accounts/view/by_pseudo/${pseudo_input}/${pwd_input}`
-		).then((response) => response.json());
-		console.log(data);
-	};
+	async function handleClick() {
+		try {
+			const response = await fetch(
+				`http://localhost:8082/accounts/view/by_pseudo/${pseudo_input}/${pwd_input}`
+			);
+			let statusCode = response.status;
+			const jsonData = await response.json();
+			data = jsonData;
+			console.log('Status code:', statusCode);
+			if (statusCode == 200) {
+				console.log(data.userPseudo);
+				$loggedIn = true;
+			}
+		} catch (e) {
+			console.log('Error');
+			wrong_data = true;
+		}
+		if ($loggedIn) {
+			$login_modal_shown = false;
+			$isVisible = false;
+		}
+	}
 </script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -59,7 +76,10 @@
 			</p>
 			<br />
 
-			<button on:click={() => handleClick()} class="btn" id="login_btn">Log In</button><br />
+			<button on:click={() => handleClick()} class="btn" id="login_btn">Log In</button>
+			{#if wrong_data}
+				<div class="warning_msg">Pseudo ou mot de passe incorrect !</div>
+			{/if}
 			<span class="text"
 				>First time on Hublot ? <a
 					href="./"
@@ -95,5 +115,10 @@
 		color: white;
 		font-weight: bold;
 		border: 1px solid transparent;
+	}
+
+	.warning_msg {
+		color: red;
+		font-size: small;
 	}
 </style>

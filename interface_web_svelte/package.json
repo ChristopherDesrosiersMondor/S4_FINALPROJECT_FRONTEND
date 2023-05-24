@@ -33,6 +33,7 @@
 		"@fontsource/manrope": "^4.5.13",
 		"iconify-icon": "^1.0.7",
 		"lucide-svelte": "^0.214.0",
-		"open-props": "^1.5.8"
+		"open-props": "^1.5.8",
+		"svelte-icons-pack": "^2.1.0"
 	}
 }

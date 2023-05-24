@@ -3,6 +3,7 @@
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
 	import '../app.css';
+	import { isVisible } from '../stores';
 	import Toggle from './toggle.svelte';
 	import { AlarmMinus, Anchor } from 'lucide-svelte';
 </script>
@@ -32,7 +33,10 @@
 		>
 			<div class="header-right-container-level-2">
 				<div class="header-right-container-level-3">
-					<Login />
+					{#if $isVisible}
+						<Login />
+					{/if}
+
 					<!-- Toggle theme -->
 					<Toggle />
 				</div>
