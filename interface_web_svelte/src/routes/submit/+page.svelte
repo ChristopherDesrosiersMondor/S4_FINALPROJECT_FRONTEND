@@ -1,6 +1,8 @@
 <script>
 	import '../../app.css';
 	import { ChevronDown, FileText, Image, Info, Link, ListOrdered, Plus, Tag } from 'lucide-svelte';
+	import SubmitContent from '$lib/submit-components/submit_content.svelte';
+	let postType = 'post';
 </script>
 
 <div>
@@ -56,7 +58,9 @@
 								</button>
 							</div>
 						</div>
-						<div class="post-form-main-content">content</div>
+						<div class="post-form-main-content">
+							<SubmitContent propValue={postType} />
+						</div>
 						<div class="post-form-main-actions">
 							<div class="post-form-tags">
 								<div class="tag-container">
@@ -83,7 +87,7 @@
 								<div class="post-form-save-draft-outer">
 									<div class="post-form-save-draft-inner">
 										<div class="post-form-post-button-container">
-											<button class="tag-buttons"> Post </button>
+											<button class="tag-buttons btn-post"> Post </button>
 										</div>
 										<div class="post-form-post-button-container">
 											<button class="tag-buttons"> Save draft </button>
@@ -269,6 +273,10 @@
 		position: relative;
 		text-align: center;
 		width: auto;
+	}
+
+	.btn-post:hover {
+		background-color: var(--new-hublot-field);
 	}
 
 	.post-form-tags {
