@@ -43,6 +43,7 @@
 			</div>
 			<button
 				on:click={() => ($create_account_next_modal_shown = !$create_account_next_modal_shown)}
+				on:click={() => ($create_account_modal_shown = !$create_account_modal_shown)}
 				class="btn"
 				id="continue_btn">Continue</button
 			><br />

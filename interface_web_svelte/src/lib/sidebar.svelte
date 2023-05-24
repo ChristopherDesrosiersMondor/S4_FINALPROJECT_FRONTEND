@@ -9,6 +9,7 @@
 	import { Star } from 'lucide-svelte';
 	import AccountCreation from '$lib/create_account.svelte';
 	import '../app.css';
+	import { loggedIn, isVisible } from '../stores';
 </script>
 
 <div class="sidebar-container">
@@ -53,14 +54,19 @@
 			<span class="sidebar-items-text">Celebrity</span>
 		</a>
 	</div>
-	<div class="sidebar-footer-container">
-		<div class="simple-divider-line-container" />
-		<div class="l">
-			<p>Create an account to follow your favorite communities and participate in conversations.</p>
-			<br />
-			<AccountCreation />
+
+	{#if $isVisible}
+		<div class="sidebar-footer-container">
+			<div class="simple-divider-line-container" />
+			<div class="l">
+				<p>
+					Create an account to follow your favorite communities and participate in conversations.
+				</p>
+				<br />
+				<AccountCreation />
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
 
 <!-- Source: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
