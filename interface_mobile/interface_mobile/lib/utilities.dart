@@ -23,7 +23,7 @@ import 'Entities/post.dart';
 // Hash text
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
 
-bool iOS = true;
+bool iOS = false;
 
 showAlertDialog(BuildContext context, String text) {
   // Create button
@@ -127,6 +127,11 @@ Future<List<Post>> getAllPost(BuildContext context) async {
           (dynamic item) => Post.fromJson(item),
         )
         .toList();
+    for (var post in posts) {
+      await Future.wait([
+        getUsernameById(post.postIdUser).then((value) => post.username = value)
+      ]);
+    }
     return posts;
   } else {
     throw "Unable to retrieve posts";

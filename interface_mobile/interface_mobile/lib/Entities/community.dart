@@ -21,6 +21,18 @@ class Community {
       required this.communityCreatorId});
 
   factory Community.fromJson(Map<String, dynamic> json) {
+    if (json['communityLogo'] == null) {
+      json['communityLogo'] = "";
+    }
+    if (json['communityHeaderImage'] == null) {
+      json['communityHeaderImage'] = "";
+    }
+    if (json['communityAmmountOfMembers'] == null) {
+      json['communityAmmountOfMembers'] = 0;
+    }
+    if (json['communityAmmountOfPosts'] == null) {
+      json['communityAmmountOfPosts'] = 0;
+    }
     return Community(
         id: json['id'],
         communityName: json['communityName'],
