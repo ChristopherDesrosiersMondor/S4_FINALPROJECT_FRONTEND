@@ -10,8 +10,9 @@ class Post {
   final int postDownVote;
   final int postIdUser;
   final int postIdCom;
+  String username = "";
 
-  const Post(
+  Post(
       {required this.id,
       required this.postTitle,
       required this.postContent,
