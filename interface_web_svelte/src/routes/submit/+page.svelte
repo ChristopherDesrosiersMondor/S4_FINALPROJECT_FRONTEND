@@ -2,7 +2,12 @@
 	import '../../app.css';
 	import { ChevronDown, FileText, Image, Info, Link, ListOrdered, Plus, Tag } from 'lucide-svelte';
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
+	import { postBody, postTitle } from '../../stores';
 	let postType = 'post';
+	const printTest = async () => {
+		console.log($postBody);
+		console.log($postTitle);
+	};
 </script>
 
 <div>
@@ -87,7 +92,7 @@
 								<div class="post-form-save-draft-outer">
 									<div class="post-form-save-draft-inner">
 										<div class="post-form-post-button-container">
-											<button class="tag-buttons btn-post"> Post </button>
+											<button class="tag-buttons btn-post" on:click={printTest}> Post </button>
 										</div>
 										<div class="post-form-post-button-container">
 											<button class="tag-buttons"> Save draft </button>

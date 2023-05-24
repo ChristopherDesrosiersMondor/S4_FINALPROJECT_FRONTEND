@@ -1,13 +1,13 @@
 <script>
 	import '../../app.css';
+	import { postTitle } from '../../stores';
 	/**
-	 * @type {String}
+	 * @type {number}
 	 */
-	let title = '';
-	let charCounter = title.length;
+	let charCounter = 0;
 	// @ts-ignore
 	const changeCounter = () => {
-		charCounter = title.length;
+		charCounter = $postTitle.length;
 	};
 
 	/**
@@ -26,7 +26,7 @@
 				class="submit-title-text-area"
 				rows="1"
 				style="overflow-x: hidden; overflow-wrap: break-word; height: 39px;"
-				bind:value={title}
+				bind:value={$postTitle}
 				on:input={changeCounter}
 			/>
 

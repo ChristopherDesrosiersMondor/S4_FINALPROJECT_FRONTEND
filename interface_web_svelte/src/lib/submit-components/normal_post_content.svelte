@@ -1,6 +1,7 @@
 <script>
 	import { Bold } from 'lucide-svelte';
 	import '../../app.css';
+	import { postBody } from '../../stores';
 </script>
 
 <div>
@@ -8,7 +9,7 @@
 		<div class="normal-post-layout">
 			<!-- Main body for text entry -->
 			<div>
-				<textarea class="normal-post-text" />
+				<textarea class="normal-post-text" bind:value={$postBody} />
 			</div>
 		</div>
 	</div>

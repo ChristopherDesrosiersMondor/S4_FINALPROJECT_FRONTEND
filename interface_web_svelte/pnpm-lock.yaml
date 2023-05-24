@@ -16,6 +16,9 @@ dependencies:
   open-props:
     specifier: ^1.5.8
     version: 1.5.8
+  svelte-icons-pack:
+    specifier: ^2.1.0
+    version: 2.1.0
 
 devDependencies:
   '@sveltejs/adapter-auto':
@@ -1649,6 +1652,10 @@ packages:
     dependencies:
       svelte: 3.59.0
     dev: true
+
+  /svelte-icons-pack@2.1.0:
+    resolution: {integrity: sha512-6Il0vWi/6MW3wXSorZhCqhkJGH4Pcg1WTcdlfFMPXfJqafZVQgmKdhVFS1c2hXGvs4byttpLC9XmI3okV1uMWA==}
+    dev: false
 
   /svelte-preprocess@5.0.3(postcss@8.4.23)(svelte@3.59.0)(typescript@5.0.4):
     resolution: {integrity: sha512-GrHF1rusdJVbOZOwgPWtpqmaexkydznKzy5qIC2FabgpFyKN57bjMUUUqPRfbBXK5igiEWn1uO/DXsa2vJ5VHA==}
