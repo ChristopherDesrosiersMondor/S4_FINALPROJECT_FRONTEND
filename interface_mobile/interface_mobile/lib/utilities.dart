@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:ffi';
 import 'package:flutter/material.dart' hide Key;
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:interface_mobile/Entities/account.dart';
@@ -65,10 +66,10 @@ Future<Account> userConnect(
   final response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
-    showAlertDialog(context, "Connexion réussie");
+    Fluttertoast.showToast(msg: "Connexion réussie");
     return Account.fromJson(jsonDecode(response.body));
   } else {
-    showAlertDialog(context, "Erreur de connexion");
+    Fluttertoast.showToast(msg: "Erreur de connexion");
     throw Exception('Failed to connect');
   }
 }
@@ -104,7 +105,7 @@ Future<Account> createUser(
   );
 
   if (response.statusCode == 201) {
-    showAlertDialog(context, "Compte créé avec succès");
+    Fluttertoast.showToast(msg: "Compte créé avec succès");
     return Account.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to create user.');

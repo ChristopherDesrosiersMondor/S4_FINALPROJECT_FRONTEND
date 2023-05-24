@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:interface_mobile/Pages/addPostCommunity.dart';
 import 'package:interface_mobile/Pages/home.dart';
 import 'package:interface_mobile/main.dart';
@@ -7,7 +8,9 @@ import 'package:interface_mobile/main.dart';
 import '../config.dart';
 
 class AddPostPage extends StatelessWidget {
-  const AddPostPage({super.key});
+  final GlobalKey<AddPostFormState> _key = GlobalKey();
+
+  AddPostPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,43 +36,25 @@ class AddPostPage extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddCommunityToPost()),
-                  );
-                },
+                onPressed: () => _key.currentState!.validateForm(),
                 child: Text(
                   'Next',
                   style: Configuration.textForApp(Colors.white60, 14),
                 ),
-              )
-
-              //  Text.rich(
-              //   TextSpan(
-              //       style: Configuration.textForApp(Colors.white, 16),
-              //       text: "Next",
-              //       recognizer: TapGestureRecognizer()
-              //         ..onTap = () async {
-              //           Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //                 builder: (context) => const AddCommunityToPost()),
-              //           );
-              //         }),
-              // ),
-              )
+              ))
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: AddPostForm()),
+      body: SingleChildScrollView(
+          child: AddPostForm(
+        key: _key,
+      )),
     );
   }
 }
 
 class AddPostForm extends StatefulWidget {
-  const AddPostForm({super.key});
+  const AddPostForm({Key? key}) : super(key: key);
 
   @override
   State<AddPostForm> createState() => AddPostFormState();
@@ -132,5 +117,9 @@ class AddPostFormState extends State<AddPostForm> {
             )
           ],
         ));
+  }
+
+  validateForm() {
+    if (_formKey.currentState!.validate()) {}
   }
 }

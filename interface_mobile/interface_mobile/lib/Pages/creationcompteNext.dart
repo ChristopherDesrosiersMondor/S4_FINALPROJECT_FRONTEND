@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:intl/intl.dart';
@@ -145,8 +146,8 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
                             formattedDate; //set output date to TextField value.
                       });
                     } else {
-                      showAlertDialog(
-                          context, "Veuillez sélectionner une date.");
+                      Fluttertoast.showToast(
+                          msg: "Veuillez sélectionner une date.");
                     }
                   },
                 ),

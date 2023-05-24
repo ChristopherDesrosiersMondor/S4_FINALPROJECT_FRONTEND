@@ -33,7 +33,7 @@ class HublotWidget extends StatefulWidget {
 
 class _HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     Home(),
     DiscoverPage(),
     AddPostPage(),
