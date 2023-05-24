@@ -27,19 +27,29 @@ class AddCommunityToPost extends StatelessWidget {
             }),
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const AddCommunityToPostForm(),
+      body: AddCommunityToPostForm(title: title, body: body),
     );
   }
 }
 
 class AddCommunityToPostForm extends StatefulWidget {
-  const AddCommunityToPostForm({super.key});
+  const AddCommunityToPostForm(
+      {super.key, required this.title, required this.body});
+
+  final String title;
+  final String body;
 
   @override
-  State<AddCommunityToPostForm> createState() => AddCommunityToPostFormState();
+  State<AddCommunityToPostForm> createState() =>
+      AddCommunityToPostFormState(title, body);
 }
 
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
+  final String title;
+  final String body;
+
+  AddCommunityToPostFormState(this.title, this.body);
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -53,7 +63,9 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
             itemBuilder: (context, index) {
               return CommunityWidget(
                   communityId: communities[index].id,
-                  communityName: communities[index].communityName);
+                  communityName: communities[index].communityName,
+                  title: title,
+                  body: body);
             },
           );
         } else {

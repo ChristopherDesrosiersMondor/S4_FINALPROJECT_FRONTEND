@@ -7,49 +7,95 @@ import 'package:interface_mobile/main.dart';
 
 import '../config.dart';
 
+// Sources:
+// How to call a child method
+// https://stackoverflow.com/questions/48481590/how-to-set-update-state-of-statefulwidget-from-other-statefulwidget-in-flutter
+
 class AddPostPage extends StatelessWidget {
   final GlobalKey<AddPostFormState> _key = GlobalKey();
 
-  AddPostPage({super.key});
+  final int? communityId;
+  final String? communityName;
+
+  AddPostPage({super.key, this.communityId, this.communityName});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Configuration.appDarkBackgroundColor,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HublotWidget()),
-              );
-            }),
-        actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 51, 50, 50),
-                  minimumSize: const Size(80, 20),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                ),
-                onPressed: () => _key.currentState!.validateForm(),
-                child: Text(
-                  'Next',
-                  style: Configuration.textForApp(Colors.white60, 14),
-                ),
-              ))
-        ],
+    if (communityId != null && communityName != null) {
+      return Scaffold(
         backgroundColor: Configuration.appDarkBackgroundColor,
-      ),
-      body: SingleChildScrollView(
-          child: AddPostForm(
-        key: _key,
-      )),
-    );
+        appBar: AppBar(
+          leading: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HublotWidget()),
+                );
+              }),
+          actions: <Widget>[
+            Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 51, 50, 50),
+                    minimumSize: const Size(80, 20),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                  ),
+                  onPressed: () => _key.currentState!.validateForm(),
+                  child: Text(
+                    'Publish',
+                    style: Configuration.textForApp(Colors.white60, 14),
+                  ),
+                ))
+          ],
+          backgroundColor: Configuration.appDarkBackgroundColor,
+        ),
+        body: SingleChildScrollView(
+            child: AddPostForm(
+          key: _key,
+        )),
+      );
+    } else {
+      return Scaffold(
+        backgroundColor: Configuration.appDarkBackgroundColor,
+        appBar: AppBar(
+          leading: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HublotWidget()),
+                );
+              }),
+          actions: <Widget>[
+            Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 51, 50, 50),
+                    minimumSize: const Size(80, 20),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                  ),
+                  onPressed: () => _key.currentState!.validateForm(),
+                  child: Text(
+                    'Next',
+                    style: Configuration.textForApp(Colors.white60, 14),
+                  ),
+                ))
+          ],
+          backgroundColor: Configuration.appDarkBackgroundColor,
+        ),
+        body: SingleChildScrollView(
+            child: AddPostForm(
+          key: _key,
+        )),
+      );
+    }
   }
 }
 
@@ -91,7 +137,7 @@ class AddPostFormState extends State<AddPostForm> {
                 ),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
+                    return 'Please enter a title';
                   }
                   return null;
                 },

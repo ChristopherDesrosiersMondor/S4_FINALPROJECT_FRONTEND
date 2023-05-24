@@ -4,10 +4,16 @@ import '../config.dart';
 
 class CommunityWidget extends StatelessWidget {
   const CommunityWidget(
-      {super.key, required this.communityId, required this.communityName});
+      {super.key,
+      required this.communityId,
+      required this.communityName,
+      required this.title,
+      required this.body});
 
   final int communityId;
   final String communityName;
+  final String title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
