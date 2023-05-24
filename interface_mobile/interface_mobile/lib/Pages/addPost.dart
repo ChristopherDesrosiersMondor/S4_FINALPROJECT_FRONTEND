@@ -107,12 +107,6 @@ class AddPostFormState extends State<AddPostForm> {
                   hintStyle: TextStyle(color: Colors.white60),
                   hintText: "body (optional)",
                 ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
               ),
             )
           ],
@@ -120,6 +114,15 @@ class AddPostFormState extends State<AddPostForm> {
   }
 
   validateForm() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AddCommunityToPost(
+                  title: titleController.text,
+                  body: contentController.text,
+                )),
+      );
+    }
   }
 }

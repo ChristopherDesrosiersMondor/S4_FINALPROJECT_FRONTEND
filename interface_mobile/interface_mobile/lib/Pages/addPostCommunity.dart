@@ -7,7 +7,11 @@ import 'package:interface_mobile/utilities.dart';
 import '../config.dart';
 
 class AddCommunityToPost extends StatelessWidget {
-  const AddCommunityToPost({super.key});
+  const AddCommunityToPost(
+      {super.key, required this.title, required this.body});
+
+  final String title;
+  final String body;
 
   @override
   Widget build(BuildContext context) {
