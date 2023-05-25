@@ -56,6 +56,8 @@ class Home extends StatelessWidget {
                         postDate: posts[index].postDate.toString(),
                         postUpVote: posts[index].postUpVote,
                         postDownVote: posts[index].postDownVote,
+                        postUserId: posts[index].postIdUser,
+                        postCommId: posts[index].postIdCom,
                         username: posts[index].username,
                         communityName: posts[index].postIdCom.toString());
                   });

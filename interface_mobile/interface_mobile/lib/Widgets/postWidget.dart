@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
+import 'package:interface_mobile/utilities.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget(
@@ -12,7 +13,9 @@ class PostWidget extends StatelessWidget {
       required this.postUpVote,
       required this.postDownVote,
       required this.username,
-      required this.communityName})
+      required this.communityName,
+      required this.postUserId,
+      required this.postCommId})
       : super(key: keyPostWidget);
 
   final int postId;
@@ -22,6 +25,8 @@ class PostWidget extends StatelessWidget {
   final String postDate;
   final int postUpVote;
   final int postDownVote;
+  final int postUserId;
+  final int postCommId;
   final String username;
   final String communityName;
 
@@ -87,7 +92,18 @@ class PostWidget extends StatelessWidget {
                   Icons.arrow_upward_rounded,
                   color: Colors.grey.shade500,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  updatePost(
+                      postId,
+                      postTitle,
+                      postContent,
+                      postSource,
+                      postDate,
+                      postUpVote + 1,
+                      postDownVote,
+                      postUserId,
+                      postCommId);
+                },
               ),
               Text(
                 postUpVote.toString(),
@@ -105,7 +121,18 @@ class PostWidget extends StatelessWidget {
                   Icons.arrow_downward_rounded,
                   color: Colors.grey.shade500,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  updatePost(
+                      postId,
+                      postTitle,
+                      postContent,
+                      postSource,
+                      postDate,
+                      postUpVote,
+                      postDownVote + 1,
+                      postUserId,
+                      postCommId);
+                },
               ),
               Text(
                 postDownVote.toString(),
