@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/Widgets/DropdownMenu.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
+
+const List<String> list = <String>['Delete'];
 
 class PostWidget extends StatefulWidget {
   PostWidget(
@@ -15,9 +18,11 @@ class PostWidget extends StatefulWidget {
       required this.username,
       required this.communityName,
       required this.postUserId,
-      required this.postCommId})
+      required this.postCommId,
+      required this.refreshPage})
       : super(key: keyPostWidget);
 
+  final Function() refreshPage;
   final int postId;
   final String postTitle;
   final String postContent;
@@ -68,7 +73,10 @@ class PostWidgetState extends State<PostWidget> {
                   Icons.more_vert,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  deletePost(widget.postId);
+                  widget.refreshPage();
+                },
               ))
         ],
       ),

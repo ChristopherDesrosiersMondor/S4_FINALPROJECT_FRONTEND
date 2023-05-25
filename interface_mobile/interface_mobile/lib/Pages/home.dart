@@ -7,8 +7,23 @@ import 'package:interface_mobile/utilities.dart';
 import '../Entities/post.dart';
 import '../config.dart';
 
-class Home extends StatelessWidget {
+const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
+
+class Home extends StatefulWidget {
   const Home({Key? keyHome}) : super(key: keyHome);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late Future<List<Post>> posts;
+
+  @override
+  void initState() {
+    super.initState();
+    posts = getAllPost();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +36,7 @@ class Home extends StatelessWidget {
               onPressed: () {}),
           title: const Align(
             alignment: Alignment.topLeft,
-            child: DropdownMenuApp(),
+            child: DropdownMenuApp(list: list),
           ),
           actions: <Widget>[
             IconButton(icon: const Icon(Icons.search), onPressed: () {}),
@@ -40,7 +55,7 @@ class Home extends StatelessWidget {
         ),
         backgroundColor: Configuration.appDarkBackgroundColor,
         body: FutureBuilder(
-          future: getAllPost(context),
+          future: getAllPost(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List<Post> posts = snapshot.data;
@@ -49,6 +64,7 @@ class Home extends StatelessWidget {
                   itemCount: posts.length,
                   itemBuilder: (BuildContext context, int index) {
                     return PostWidget(
+                        refreshPage: refresh,
                         postId: posts[index].id,
                         postTitle: posts[index].postTitle,
                         postContent: posts[index].postContent,
@@ -66,5 +82,11 @@ class Home extends StatelessWidget {
             }
           },
         ));
+  }
+
+  refresh() {
+    setState(() {
+      posts = getAllPost();
+    });
   }
 }

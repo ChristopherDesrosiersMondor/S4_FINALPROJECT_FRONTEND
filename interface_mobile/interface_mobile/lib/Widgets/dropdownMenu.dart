@@ -6,8 +6,6 @@ import '../config.dart';
 /// Sources:
 /// https://api.flutter.dev/flutter/material/DropdownButton-class.html
 
-const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
-
 class DropdownMenuApp extends StatelessWidget {
   const DropdownMenuApp({Key? keyDropdown, required this.list})
       : super(key: keyDropdown);
@@ -16,19 +14,29 @@ class DropdownMenuApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DropdownMenuExample();
+    return DropdownMenuExample(
+      list: list,
+    );
   }
 }
 
 class DropdownMenuExample extends StatefulWidget {
-  const DropdownMenuExample({super.key});
+  const DropdownMenuExample({super.key, required this.list});
+
+  final List<String> list;
 
   @override
   State<DropdownMenuExample> createState() => _DropdownMenuExampleState();
 }
 
 class _DropdownMenuExampleState extends State<DropdownMenuExample> {
-  String dropdownValue = list.first;
+  late String dropdownValue;
+
+  @override
+  void initState() {
+    super.initState();
+    dropdownValue = widget.list.first;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +62,7 @@ class _DropdownMenuExampleState extends State<DropdownMenuExample> {
                   dropdownValue = value!;
                 });
               },
-              items: list.map<DropdownMenuItem<String>>((String value) {
+              items: widget.list.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),

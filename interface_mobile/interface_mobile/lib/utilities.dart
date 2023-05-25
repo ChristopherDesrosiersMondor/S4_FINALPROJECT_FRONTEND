@@ -19,6 +19,7 @@ import 'Entities/post.dart';
 // https://docs.flutter.dev/cookbook/networking/fetch-data
 // https://www.geeksforgeeks.org/http-get-response-in-flutter/
 // https://www.digitalocean.com/community/tutorials/flutter-flutter-http
+// https://docs.flutter.dev/cookbook/networking/delete-data
 
 // Hash text
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
@@ -109,7 +110,7 @@ Future<Post> createPost(String postTitle, String? postContent,
   }
 }
 
-Future<List<Post>> getAllPost(BuildContext context) async {
+Future<List<Post>> getAllPost() async {
   String url;
   if (iOS) {
     url = 'http://127.0.0.1:8083/posts/view/all';
@@ -173,6 +174,28 @@ Future<Post> updatePost(
     return Post.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to update post.');
+  }
+}
+
+Future<Post> deletePost(int postId) async {
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/posts/delete/$postId';
+  } else {
+    url = 'http://10.0.2.2:8083/posts/delete/$postId';
+  }
+  final http.Response response = await http.delete(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+
+  if (response.statusCode == 200) {
+    Fluttertoast.showToast(msg: "Post deleted successfully!");
+    return Post.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to delete post.');
   }
 }
 
