@@ -209,6 +209,8 @@ class AddPostFormState extends State<AddPostForm> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextFormField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
                 controller: contentController..text = widget.getBody(),
                 cursorColor: Colors.black,
                 style: const TextStyle(color: Colors.white),

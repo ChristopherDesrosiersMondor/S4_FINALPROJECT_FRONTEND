@@ -59,7 +59,17 @@ class PostWidgetState extends State<PostWidget> {
               style: Configuration.secondContentTextForApp(
                   Colors.grey.shade400, 12),
             ),
-          )
+          ),
+          Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.height * 0.30),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.more_vert,
+                  color: Colors.white,
+                ),
+                onPressed: () {},
+              ))
         ],
       ),
       Container(
