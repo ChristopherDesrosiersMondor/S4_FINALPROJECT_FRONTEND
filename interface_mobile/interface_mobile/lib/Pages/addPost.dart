@@ -249,12 +249,6 @@ class AddPostFormState extends State<AddPostForm> {
                     hintStyle: TextStyle(color: Colors.white60),
                     hintText: "Lien vers l'image",
                   ),
-                  validator: (String? value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a link to an image';
-                    }
-                    return null;
-                  },
                 ),
               ),
             ],

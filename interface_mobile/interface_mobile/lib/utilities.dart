@@ -8,6 +8,7 @@ import 'package:http/http.dart';
 import 'package:interface_mobile/Entities/account.dart';
 import 'package:interface_mobile/Entities/community.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
+import 'package:intl/intl.dart';
 
 import 'Entities/post.dart';
 
@@ -106,8 +107,8 @@ Future<Account> createUser(String lastName, String firstName, String email,
   }
 }
 
-Future<Post> createPost(String postTitle, String postContent, String postSource,
-    int postIdUser, int postIdCom) async {
+Future<Post> createPost(String postTitle, String? postContent,
+    String? postSource, int postIdUser, int postIdCom) async {
   String url;
   if (iOS) {
     url = 'http://127.0.0.1:8083/posts/add';
@@ -123,7 +124,7 @@ Future<Post> createPost(String postTitle, String postContent, String postSource,
       "postTitle": postTitle,
       "postContent": postContent,
       "postSource": postSource,
-      "postDate": "2023-05-25",
+      "postDate": DateFormat('yyyy-MM-dd').format(DateTime.now()),
       "postIdUser": postIdUser,
       "postIdCom": postIdCom
     }),

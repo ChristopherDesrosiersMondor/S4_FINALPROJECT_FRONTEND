@@ -61,15 +61,20 @@ class PostWidget extends StatelessWidget {
             ),
           )),
       Container(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              postContent,
-              style: Configuration.mainContentTextForApp(Colors.white, 16),
-            ),
-          )),
-      Image(image: NetworkImage(postSource)),
+        padding: const EdgeInsets.only(bottom: 5),
+        child: postContent != ""
+            ? Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  postContent,
+                  style: Configuration.mainContentTextForApp(Colors.white, 16),
+                ),
+              )
+            : null,
+      ),
+      Container(
+          child:
+              postSource != "" ? Image(image: NetworkImage(postSource)) : null),
       Row(
         children: [
           Padding(
