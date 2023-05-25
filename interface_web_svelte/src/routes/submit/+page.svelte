@@ -3,23 +3,24 @@
 	import { ChevronDown, FileText, Image, Info, Link, ListOrdered, Plus, Tag } from 'lucide-svelte';
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
 	import { postBody, postTitle } from '../../stores';
+	import { goto } from '$app/navigation';
+	import { postUrl } from '$lib/config';
 	let postType = 'post';
-
-	let data = {
-		postTitle: $postTitle,
-		postContent: $postBody
-	};
 
 	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 	let doPost = async () => {
-		const res = await fetch('http://localhost:8083/posts/add', {
+		const res = await fetch(postUrl + 'posts/add', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 				// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: JSON.stringify(data)
+			body: JSON.stringify({
+				postTitle: $postTitle,
+				postContent: $postBody
+			})
 		});
+		goto('/');
 	};
 </script>
 
