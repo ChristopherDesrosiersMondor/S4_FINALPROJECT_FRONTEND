@@ -1,15 +1,26 @@
 <script>
 	import { Bold } from 'lucide-svelte';
 	import '../../app.css';
-	import { postBody } from '../../stores';
+	import { postBody, postSource } from '../../stores';
 </script>
 
 <div>
 	<div class="normal-post-container">
 		<div class="normal-post-layout">
 			<!-- Main body for text entry -->
-			<div>
-				<textarea class="normal-post-text" bind:value={$postBody} />
+			<div class="text-area-container">
+				<div>
+					<textarea class="normal-post-text" placeholder="Body" bind:value={$postBody} />
+				</div>
+			</div>
+		</div>
+
+		<div class="normal-post-layout">
+			<!-- Main body for text entry -->
+			<div class="text-area-container">
+				<div>
+					<textarea class="normal-post-text" placeholder="Image link" bind:value={$postSource} />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -18,7 +29,6 @@
 <style>
 	.normal-post-text {
 		width: 100%;
-		height: 100%;
 		resize: vertical;
 		outline: none;
 		border: none;
@@ -26,6 +36,9 @@
 	}
 
 	.normal-post-container {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
 		position: relative;
 	}
 
