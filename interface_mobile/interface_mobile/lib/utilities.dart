@@ -112,18 +112,18 @@ Future<Post> createPost(String postTitle, String postContent, String postSource,
   if (iOS) {
     url = 'http://127.0.0.1:8083/posts/add';
   } else {
-    url = 'http://10.0.2.2:8082/posts/add';
+    url = 'http://10.0.2.2:8083/posts/add';
   }
   final response = await http.post(
     Uri.parse(url),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode({
+    body: jsonEncode(<String, dynamic>{
       "postTitle": postTitle,
       "postContent": postContent,
       "postSource": postSource,
-      "postDate": DateTime.now().toString(),
+      "postDate": "2023-05-25",
       "postIdUser": postIdUser,
       "postIdCom": postIdCom
     }),
@@ -133,7 +133,8 @@ Future<Post> createPost(String postTitle, String postContent, String postSource,
     Fluttertoast.showToast(msg: "Post created successfully!");
     return Post.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to create user.');
+    log(response.body);
+    throw Exception('Failed to create post.');
   }
 }
 
