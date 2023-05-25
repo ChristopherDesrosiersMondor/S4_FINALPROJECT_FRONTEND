@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 
-class PostWidget extends StatelessWidget {
-  const PostWidget(
+class PostWidget extends StatefulWidget {
+  PostWidget(
       {Key? keyPostWidget,
       required this.postId,
       required this.postTitle,
@@ -23,13 +23,18 @@ class PostWidget extends StatelessWidget {
   final String postContent;
   final String postSource;
   final String postDate;
-  final int postUpVote;
-  final int postDownVote;
+  int postUpVote;
+  int postDownVote;
   final int postUserId;
   final int postCommId;
   final String username;
   final String communityName;
 
+  @override
+  State<PostWidget> createState() => PostWidgetState();
+}
+
+class PostWidgetState extends State<PostWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -42,7 +47,7 @@ class PostWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
             child: Text(
-              username,
+              widget.username,
               style:
                   Configuration.mainContentTextForApp(Colors.grey.shade400, 16),
             ),
@@ -50,7 +55,7 @@ class PostWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
             child: Text(
-              postDate,
+              widget.postDate,
               style: Configuration.secondContentTextForApp(
                   Colors.grey.shade400, 12),
             ),
@@ -62,25 +67,26 @@ class PostWidget extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              postTitle,
+              widget.postTitle,
               style: Configuration.textForApp(Colors.white, 16),
             ),
           )),
       Container(
         padding: const EdgeInsets.only(bottom: 5),
-        child: postContent != ""
+        child: widget.postContent != ""
             ? Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  postContent,
+                  widget.postContent,
                   style: Configuration.mainContentTextForApp(Colors.white, 16),
                 ),
               )
             : null,
       ),
       Container(
-          child:
-              postSource != "" ? Image(image: NetworkImage(postSource)) : null),
+          child: widget.postSource != ""
+              ? Image(image: NetworkImage(widget.postSource))
+              : null),
       Row(
         children: [
           Padding(
@@ -94,19 +100,22 @@ class PostWidget extends StatelessWidget {
                 ),
                 onPressed: () {
                   updatePost(
-                      postId,
-                      postTitle,
-                      postContent,
-                      postSource,
-                      postDate,
-                      postUpVote + 1,
-                      postDownVote,
-                      postUserId,
-                      postCommId);
+                      widget.postId,
+                      widget.postTitle,
+                      widget.postContent,
+                      widget.postSource,
+                      widget.postDate,
+                      widget.postUpVote + 1,
+                      widget.postDownVote,
+                      widget.postUserId,
+                      widget.postCommId);
+                  setState(() {
+                    widget.postUpVote += 1;
+                  });
                 },
               ),
               Text(
-                postUpVote.toString(),
+                widget.postUpVote.toString(),
                 style: Configuration.mainContentTextForApp(
                     Colors.grey.shade500, 14),
               )
@@ -123,19 +132,22 @@ class PostWidget extends StatelessWidget {
                 ),
                 onPressed: () {
                   updatePost(
-                      postId,
-                      postTitle,
-                      postContent,
-                      postSource,
-                      postDate,
-                      postUpVote,
-                      postDownVote + 1,
-                      postUserId,
-                      postCommId);
+                      widget.postId,
+                      widget.postTitle,
+                      widget.postContent,
+                      widget.postSource,
+                      widget.postDate,
+                      widget.postUpVote,
+                      widget.postDownVote + 1,
+                      widget.postUserId,
+                      widget.postCommId);
+                  setState(() {
+                    widget.postDownVote += 1;
+                  });
                 },
               ),
               Text(
-                postDownVote.toString(),
+                widget.postDownVote.toString(),
                 style: Configuration.mainContentTextForApp(
                     Colors.grey.shade500, 14),
               )

@@ -51,17 +51,10 @@ class AddCommunityToPostForm extends StatefulWidget {
   final String image;
 
   @override
-  State<AddCommunityToPostForm> createState() =>
-      AddCommunityToPostFormState(title, body, image);
+  State<AddCommunityToPostForm> createState() => AddCommunityToPostFormState();
 }
 
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
-  final String title;
-  final String body;
-  final String image;
-
-  AddCommunityToPostFormState(this.title, this.body, this.image);
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -76,9 +69,9 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
               return CommunityWidget(
                 communityId: communities[index].id,
                 communityName: communities[index].communityName,
-                title: title,
-                body: body,
-                image: image,
+                title: widget.title,
+                body: widget.body,
+                image: widget.image,
               );
             },
           );
