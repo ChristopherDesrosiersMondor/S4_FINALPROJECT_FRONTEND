@@ -21,6 +21,7 @@ class AddPostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Final publish page -> community has been selected
     if (communityId != null && communityName != null) {
       return Scaffold(
         backgroundColor: Configuration.appDarkBackgroundColor,
@@ -44,7 +45,7 @@ class AddPostPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
-                  onPressed: () => _key.currentState!.validateForm(),
+                  onPressed: () {},
                   child: Text(
                     'Publish',
                     style: Configuration.textForApp(Colors.white60, 14),
@@ -58,7 +59,9 @@ class AddPostPage extends StatelessWidget {
           key: _key,
         )),
       );
-    } else {
+    }
+    // First make post page -> community has NOT been selected
+    else {
       return Scaffold(
         backgroundColor: Configuration.appDarkBackgroundColor,
         appBar: AppBar(
