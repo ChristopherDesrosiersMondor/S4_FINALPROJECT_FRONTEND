@@ -1,6 +1,13 @@
 <script>
+	// @ts-nocheck
+
 	import { ArrowUp } from 'lucide-svelte';
 	import { ArrowDown } from 'lucide-svelte';
+
+	/**
+	 * @type {{ postTitle: any; }}
+	 */
+	export let propValue;
 </script>
 
 <div>
@@ -16,7 +23,7 @@
 						</span>
 					</button>
 
-					<div class="VoteCount">1.3k</div>
+					<div class="VoteCount">{propValue.postUpvote - propValue.postDownvote}</div>
 
 					<button>
 						<span class="VotesSpan">
@@ -29,11 +36,17 @@
 			</div>
 
 			<div class="ContentContainer">
-				<div class="PostUserCommunityInformations">TextTest</div>
+				{#if propValue.postIdCom != null}
+					<div class="PostUserCommunityInformations">TextTest</div>
+				{/if}
 
-				<div class="PostTitleAndText">TextTest</div>
+				<div class="PostTitleAndText">{propValue.postTitle}</div>
 
-				<div class="PostImage">TextTest</div>
+				<div class="PostTitleAndText">{propValue.postContent}</div>
+
+				{#if propValue.postSource != null}
+					<div class="PostImage">TextTest</div>
+				{/if}
 
 				<div class="PostInteractionBar">TextTest</div>
 			</div>
