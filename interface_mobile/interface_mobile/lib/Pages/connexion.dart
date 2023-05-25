@@ -4,6 +4,8 @@ import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
 
+import '../Main.dart';
+
 class ConnexionPage extends StatelessWidget {
   const ConnexionPage({Key? keyConnexion}) : super(key: keyConnexion);
 
@@ -110,6 +112,11 @@ class ConnexionFormState extends State<ConnexionForm> {
                     var pseudo = pseudoController.text;
                     var password = passwordController.text;
                     userConnect(context, pseudo, password);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HublotWidget()),
+                    );
                   }
                 },
                 child: const Text('Continue'),
