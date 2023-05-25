@@ -9,12 +9,14 @@ class CommunityWidget extends StatelessWidget {
       required this.communityId,
       required this.communityName,
       required this.title,
-      required this.body});
+      required this.body,
+      required this.image});
 
   final int communityId;
   final String communityName;
   final String title;
   final String body;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CommunityWidget extends StatelessWidget {
                       communityName: communityName,
                       title: title,
                       body: body,
+                      image: image,
                     )),
           );
         },

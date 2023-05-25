@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/addPostCommunity.dart';
 import 'package:interface_mobile/main.dart';
+import 'package:interface_mobile/utilities.dart';
 import '../config.dart';
 
 // Sources:
@@ -14,9 +15,15 @@ class AddPostPage extends StatelessWidget {
   final String? communityName;
   final String? title;
   final String? body;
+  final String? image;
 
   AddPostPage(
-      {super.key, this.communityId, this.communityName, this.title, this.body});
+      {super.key,
+      this.communityId,
+      this.communityName,
+      this.title,
+      this.body,
+      this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,9 @@ class AddPostPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _keyAddPostPage.currentState!.validateAndPublish();
+                  },
                   child: Text(
                     'Publish',
                     style: Configuration.textForApp(Colors.white60, 14),
@@ -56,11 +65,13 @@ class AddPostPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: AddPostForm(
-                keyAddPostForm: _keyAddPostPage,
-                getCommId: getCommunityId,
-                getCommName: getCommunityName,
-                getTitle: getTitle,
-                getBody: getBody)),
+          keyAddPostForm: _keyAddPostPage,
+          getCommId: getCommunityId,
+          getCommName: getCommunityName,
+          getTitle: getTitle,
+          getBody: getBody,
+          getImage: getImage,
+        )),
       );
     }
     // First make post page -> community has NOT been selected
@@ -99,11 +110,13 @@ class AddPostPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: AddPostForm(
-                keyAddPostForm: _keyAddPostPage,
-                getCommId: getCommunityId,
-                getCommName: getCommunityName,
-                getTitle: getTitle,
-                getBody: getBody)),
+          keyAddPostForm: _keyAddPostPage,
+          getCommId: getCommunityId,
+          getCommName: getCommunityName,
+          getTitle: getTitle,
+          getBody: getBody,
+          getImage: getImage,
+        )),
       );
     }
   }
@@ -132,6 +145,13 @@ class AddPostPage extends StatelessWidget {
     }
     return null;
   }
+
+  getImage() {
+    if (image != null) {
+      return image;
+    }
+    return null;
+  }
 }
 
 class AddPostForm extends StatefulWidget {
@@ -140,12 +160,14 @@ class AddPostForm extends StatefulWidget {
       required this.getCommId,
       required this.getCommName,
       required this.getTitle,
-      required this.getBody})
+      required this.getBody,
+      required this.getImage})
       : super(key: keyAddPostForm);
   final ValueGetter getCommId;
   final ValueGetter getCommName;
   final ValueGetter getTitle;
   final ValueGetter getBody;
+  final ValueGetter getImage;
 
   @override
   State<AddPostForm> createState() => AddPostFormState();
@@ -155,6 +177,7 @@ class AddPostFormState extends State<AddPostForm> {
   final GlobalKey<FormState> _formKeyAddPost = GlobalKey<FormState>();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController contentController = TextEditingController();
+  final TextEditingController imageController = TextEditingController();
 
   @override
   void dispose() {
@@ -215,7 +238,25 @@ class AddPostFormState extends State<AddPostForm> {
                     hintText: "body (optional)",
                   ),
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: imageController..text = widget.getImage(),
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration.collapsed(
+                    hintStyle: TextStyle(color: Colors.white60),
+                    hintText: "Lien vers l'image",
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a link to an image';
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ],
           ));
     }
@@ -255,7 +296,19 @@ class AddPostFormState extends State<AddPostForm> {
                     hintText: "body (optional)",
                   ),
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: imageController,
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration.collapsed(
+                    hintStyle: TextStyle(color: Colors.white60),
+                    hintText: "Lien vers l'image",
+                  ),
+                ),
+              ),
             ],
           ));
     }
@@ -269,6 +322,7 @@ class AddPostFormState extends State<AddPostForm> {
             builder: (context) => AddCommunityToPost(
                   title: titleController.text,
                   body: contentController.text,
+                  image: imageController.text,
                 )),
       );
     }
@@ -277,5 +331,16 @@ class AddPostFormState extends State<AddPostForm> {
   emptyInput() {
     titleController.clear();
     contentController.clear();
+  }
+
+  validateAndPublish() {
+    if (_formKeyAddPost.currentState!.validate()) {
+      createPost(titleController.text, contentController.text,
+          imageController.text, 1, widget.getCommId());
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const HublotWidget()),
+      );
+    }
   }
 }

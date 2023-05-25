@@ -5,6 +5,7 @@ import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:intl/intl.dart';
 
+import '../Main.dart';
 import 'Connexion.dart';
 
 // Sources
@@ -170,8 +171,13 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
                       var pseudo = widget.username;
                       var password = widget.password;
                       var birthday = birthdayController.text;
-                      createUser(context, lastName, firstName, email, pseudo,
-                          password, birthday);
+                      createUser(lastName, firstName, email, pseudo, password,
+                          birthday);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HublotWidget()),
+                      );
                     }
                   },
                   child: const Text('Create Account'),
