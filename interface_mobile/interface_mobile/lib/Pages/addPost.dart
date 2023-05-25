@@ -9,7 +9,8 @@ import '../config.dart';
 // https://stackoverflow.com/questions/48481590/how-to-set-update-state-of-statefulwidget-from-other-statefulwidget-in-flutter
 
 class AddPostPage extends StatelessWidget {
-  GlobalKey<AddPostFormState> _keyAddPostPage = GlobalKey<AddPostFormState>();
+  final GlobalKey<AddPostFormState> _keyAddPostPage =
+      GlobalKey<AddPostFormState>();
 
   final int? communityId;
   final String? communityName;
