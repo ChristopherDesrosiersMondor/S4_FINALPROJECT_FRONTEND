@@ -7,6 +7,8 @@ export const loggedIn = writable(false);
 export const isVisible = writable(true);
 
 
+export const userPseudo = writable('');
+
 export const postBody = writable('');
 export const postTitle = writable('');
 export const userId = writable('');

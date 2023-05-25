@@ -1,8 +1,8 @@
 <script lang="ts">
 	// @ts-nocheck
 	import '../app.css';
+	import { create_account_next_modal_shown, isVisible, loggedIn, userPseudo } from '../stores.js';
 	import './modals.css';
-	import { create_account_next_modal_shown } from '../stores.js';
 
 	export function show() {
 		$create_account_next_modal_shown = true;
@@ -34,6 +34,10 @@
 		const response = await fetch(`http://localhost:8082/accounts/add`, requestBody);
 		const data = await response.json();
 		console.log(data);
+		userPseudo.set(data.userPseudo);
+		$loggedIn = true;
+		$create_account_next_modal_shown = false;
+		$isVisible = !$isVisible;
 	};
 </script>
 

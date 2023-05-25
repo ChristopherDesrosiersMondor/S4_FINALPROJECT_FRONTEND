@@ -1,11 +1,10 @@
 <script lang="ts">
-	import * as config from '$lib/config';
 	import Login from '$lib/login.svelte';
 	import SearchBar from '$lib/search_bar.svelte';
+	import { Anchor, User } from 'lucide-svelte';
 	import '../app.css';
-	import { isVisible } from '../stores';
+	import { isVisible, userPseudo } from '../stores';
 	import Toggle from './toggle.svelte';
-	import { AlarmMinus, Anchor } from 'lucide-svelte';
 </script>
 
 <header>
@@ -35,8 +34,11 @@
 				<div class="header-right-container-level-3">
 					{#if $isVisible}
 						<Login />
+					{:else}
+					<div class="icon"><User /></div>
+					<div>Hi {$userPseudo}</div>
 					{/if}
-
+			
 					<!-- Toggle theme -->
 					<Toggle />
 				</div>
@@ -101,5 +103,9 @@
 	.anchor-icon {
 		padding-right: 10px;
 		color: var(--title);
+	}
+
+	.icon {
+		margin-right: 5px;
 	}
 </style>

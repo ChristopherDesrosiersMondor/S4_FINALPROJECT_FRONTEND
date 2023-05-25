@@ -1,11 +1,12 @@
 <script>
 	// @ts-nocheck
 
-	import BackToTopButton from '$lib/backToTopButton.svelte';
-	import sea1 from '$lib/images/sea-illustration-1.jpg';
-	import sea2 from '$lib/images/sea-illustration-2.jpg';
+	import pirate from '$lib/images/pirate.png';
 	import sea3 from '$lib/images/sea-illustration-3.jpg';
+	import sea from '$lib/images/sea.png';
 	import Post from '$lib/post.svelte';
+	import { isVisible } from '../stores';
+
 </script>
 
 <div class="ListingLayoutOuterContainer">
@@ -62,13 +63,119 @@
 				</div>
 			</div>
 			<div class="RightMainPanel">
-				<h2>Right main</h2>
+				{#if $isVisible}
+				<div></div>
+				{:else}
+				<div class="RightMainPanelBox">
+					<div><img class="mer" src={sea} alt="la mer" /></div>
+					<div class="RightMainPanelBoxInside">
+						<div style={'display: flex'} class="home"><img class="pirate" src={pirate} alt="pirate" />
+							<div class="home_title">Home</div></div>
+							<div class="text">Your personal Hublot frontpage. Come here to check in with your favorite communities.
+						
+							</div>
+							<hr />
+							<button class="btn" id="create_post_btn">Create Post</button>
+							<button class="btn" id="create_com_btn">Create Comumnity</button>
+					</div>
+				</div>
+
+				{/if}
 			</div>
 		</div>
 	</div>
 </div>
 
 <style>
+
+.btn {
+		border: var(--back-to-top-btn) 1px solid;
+		width: 100%;
+		font-size: small;
+		padding: 6%;
+		border-radius: 10%;
+		margin-bottom: 4%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 2.1em;
+		height: 36px;
+		font-weight: 500;
+	}
+
+	#create_post_btn {
+		background-color: var(--back-to-top-btn);
+		color: white;
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: unset;
+		line-height: 17px;;
+		padding: 4px 16px;
+		-ms-flex-align: center;
+		align-items: center;
+		border-radius: 9999px;
+		box-sizing: border-box;
+		justify-content: center;
+		text-align: center;
+		margin-top: 16px;
+
+	}
+
+	#create_com_btn{
+		background-color: var(--hublot-body);
+		color:var(--back-to-top-btn);
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: unset;
+		line-height: 17px;;
+		padding: 4px 16px;
+		-ms-flex-align: center;
+		align-items: center;
+		border-radius: 9999px;
+		box-sizing: border-box;
+		justify-content: center;
+		text-align: center;
+	}
+
+hr {
+	border: 1px solid var(--new-hublot-line);
+}
+
+.RightMainPanelBox {
+
+	background-color: var(--hublot-body);
+	border: 1px solid var(--new-hublot-line);
+}
+
+.RightMainPanelBoxInside {
+	margin: 10px;
+}
+
+.mer {
+	border-radius: 0;
+}
+
+.home {
+	color: var(--main-text);
+
+}
+
+.home_title {
+	padding-top: 8px;
+    padding-left: 7px;
+}
+
+.pirate {
+    height: 40px;
+    width: 40px;
+}
+
+.text {
+	font-size: small;
+	margin-top: 10px;
+	margin-bottom: 13px;
+}
+
 	.PopularPosts {
 		min-height: 1000px;
 		width: 100%;

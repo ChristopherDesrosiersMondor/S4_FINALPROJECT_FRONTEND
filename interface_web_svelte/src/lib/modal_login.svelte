@@ -6,8 +6,7 @@
 	import '../app.css';
 	import './modals.css';
 
-	import { login_modal_shown } from '../stores.js';
-	import { create_account_modal_shown, loggedIn, isVisible } from '../stores.js';
+	import { login_modal_shown, create_account_modal_shown, loggedIn, isVisible, userPseudo } from '../stores.js';
 
 	export function show() {
 		$login_modal_shown = true;
@@ -31,16 +30,14 @@
 			data = jsonData;
 			console.log('Status code:', statusCode);
 			if (statusCode == 200) {
-				console.log(data.userPseudo);
+				userPseudo.set(data.userPseudo);
 				$loggedIn = true;
+				$login_modal_shown = false;
+				$isVisible = false;
 			}
 		} catch (e) {
 			console.log('Error');
 			wrong_data = true;
-		}
-		if ($loggedIn) {
-			$login_modal_shown = false;
-			$isVisible = false;
 		}
 	}
 </script>
