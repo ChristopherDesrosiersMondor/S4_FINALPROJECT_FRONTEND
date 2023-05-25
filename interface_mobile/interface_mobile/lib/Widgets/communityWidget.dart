@@ -1,5 +1,6 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/Pages/addPost.dart';
 import '../config.dart';
 
 class CommunityWidget extends StatelessWidget {
@@ -18,7 +19,18 @@ class CommunityWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => AddPostPage(
+                      communityId: communityId,
+                      communityName: communityName,
+                      title: title,
+                      body: body,
+                    )),
+          );
+        },
         child: Container(
           padding: const EdgeInsets.all(10),
           child: Row(children: [

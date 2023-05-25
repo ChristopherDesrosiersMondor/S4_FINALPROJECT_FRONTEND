@@ -16,8 +16,11 @@ class AddPostPage extends StatelessWidget {
 
   final int? communityId;
   final String? communityName;
+  final String? title;
+  final String? body;
 
-  AddPostPage({super.key, this.communityId, this.communityName});
+  AddPostPage(
+      {super.key, this.communityId, this.communityName, this.title, this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +59,11 @@ class AddPostPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: AddPostForm(
-          key: _key,
-        )),
+                key: _key,
+                getCommId: getCommunityId,
+                getCommName: getCommunityName,
+                getTitle: getTitle,
+                getBody: getBody)),
       );
     }
     // First make post page -> community has NOT been selected
@@ -95,15 +101,53 @@ class AddPostPage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: AddPostForm(
-          key: _key,
-        )),
+                key: _key,
+                getCommId: getCommunityId,
+                getCommName: getCommunityName,
+                getTitle: getTitle,
+                getBody: getBody)),
       );
     }
+  }
+
+  getCommunityId() {
+    if (communityId != null) {
+      return communityId;
+    }
+    return null;
+  }
+
+  getCommunityName() {
+    if (communityName != null) {
+      return communityName;
+    }
+    return null;
+  }
+
+  getTitle() {
+    return title;
+  }
+
+  getBody() {
+    if (body != null) {
+      return body;
+    }
+    return null;
   }
 }
 
 class AddPostForm extends StatefulWidget {
-  const AddPostForm({Key? key}) : super(key: key);
+  const AddPostForm(
+      {Key? key,
+      required this.getCommId,
+      required this.getCommName,
+      required this.getTitle,
+      required this.getBody})
+      : super(key: key);
+  final ValueGetter getCommId;
+  final ValueGetter getCommName;
+  final ValueGetter getTitle;
+  final ValueGetter getBody;
 
   @override
   State<AddPostForm> createState() => AddPostFormState();
@@ -123,43 +167,157 @@ class AddPostFormState extends State<AddPostForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextFormField(
-                controller: titleController,
-                cursorColor: Colors.black,
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration.collapsed(
-                  hintStyle: Configuration.textForApp(Colors.white60, 22),
-                  hintText: "Title",
+    // Final publish page -> community has been selected
+    if (widget.getCommId() != null && widget.getCommName() != null) {
+      // User has written a body content
+      if (widget.getBody() != null) {
+        return Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.anchor,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          widget.getCommName(),
+                          style: Configuration.textForApp(Colors.white, 16),
+                        ),
+                      ],
+                    )),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: titleController..text = widget.getTitle(),
+                    cursorColor: Colors.black,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration.collapsed(
+                      hintStyle: Configuration.textForApp(Colors.white60, 22),
+                      hintText: "Title",
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a text';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a title';
-                  }
-                  return null;
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextFormField(
-                controller: contentController,
-                cursorColor: Colors.black,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration.collapsed(
-                  hintStyle: TextStyle(color: Colors.white60),
-                  hintText: "body (optional)",
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: contentController,
+                    cursorColor: Colors.black,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration.collapsed(
+                      hintStyle: TextStyle(color: Colors.white60),
+                      hintText: "body (optional)",
+                    ),
+                  ),
+                )
+              ],
+            ));
+      }
+      // User has NOT written a body content
+      else {
+        return Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.anchor,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          widget.getCommName(),
+                          style: Configuration.textForApp(Colors.white, 16),
+                        ),
+                      ],
+                    )),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: titleController..text = widget.getTitle(),
+                    cursorColor: Colors.black,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration.collapsed(
+                      hintStyle: Configuration.textForApp(Colors.white60, 22),
+                      hintText: "Title",
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a text';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    controller: contentController..text = widget.getBody(),
+                    cursorColor: Colors.black,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration.collapsed(
+                      hintStyle: TextStyle(color: Colors.white60),
+                      hintText: "body (optional)",
+                    ),
+                  ),
+                )
+              ],
+            ));
+      }
+    }
+    // First make post page -> community has NOT been selected
+    else {
+      return Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: titleController,
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration.collapsed(
+                    hintStyle: Configuration.textForApp(Colors.white60, 22),
+                    hintText: "Title",
+                  ),
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a text';
+                    }
+                    return null;
+                  },
                 ),
               ),
-            )
-          ],
-        ));
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextFormField(
+                  controller: contentController,
+                  cursorColor: Colors.black,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: const InputDecoration.collapsed(
+                    hintStyle: TextStyle(color: Colors.white60),
+                    hintText: "body (optional)",
+                  ),
+                ),
+              )
+            ],
+          ));
+    }
   }
 
   validateForm() {
