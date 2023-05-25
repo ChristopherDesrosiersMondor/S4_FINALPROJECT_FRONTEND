@@ -4,11 +4,12 @@
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
 	import { postBody, postTitle } from '../../stores';
 	import { goto } from '$app/navigation';
+	import { postUrl } from '$lib/config';
 	let postType = 'post';
 
 	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 	let doPost = async () => {
-		const res = await fetch('http://localhost:8083/posts/add', {
+		const res = await fetch(postUrl + 'posts/add', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
