@@ -7,11 +7,9 @@
 
 	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 	let doPost = async () => {
-		const res = await fetch('https://httpbin.org/post', {
+		const res = await fetch('http://localhost:8083/posts/add', {
 			method: 'POST',
-			mode: 'cors', // no-cors, *cors, same-origin
-			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-			credentials: 'same-origin', // include, *same-origin, omit
+			mode: 'no-cors', // no-cors, *cors, same-origin
 			headers: {
 				'Content-Type': 'application/json'
 				// 'Content-Type': 'application/x-www-form-urlencoded',
