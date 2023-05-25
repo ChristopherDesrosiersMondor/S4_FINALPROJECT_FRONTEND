@@ -8,10 +8,11 @@ import '../config.dart';
 
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
-void main() => runApp(const DropdownMenuApp());
-
 class DropdownMenuApp extends StatelessWidget {
-  const DropdownMenuApp({super.key});
+  const DropdownMenuApp({Key? keyDropdown, required this.list})
+      : super(key: keyDropdown);
+
+  final List<String> list;
 
   @override
   Widget build(BuildContext context) {

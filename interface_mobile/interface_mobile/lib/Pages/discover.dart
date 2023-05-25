@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DiscoverPage extends StatelessWidget {
-  const DiscoverPage({super.key});
+  const DiscoverPage({Key? keyDiscover}) : super(key: keyDiscover);
 
   @override
   Widget build(BuildContext context) {

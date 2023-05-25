@@ -8,12 +8,11 @@ import 'package:http/http.dart';
 import 'package:interface_mobile/Entities/account.dart';
 import 'package:interface_mobile/Entities/community.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
+import 'package:intl/intl.dart';
 
 import 'Entities/post.dart';
 
 // Sources:
-// How to use alert dialogs
-// https://www.javatpoint.com/flutter-alert-dialogs
 
 // Http request with flutter
 // https://docs.flutter.dev/cookbook/networking/send-data
@@ -25,34 +24,6 @@ import 'Entities/post.dart';
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
 
 bool iOS = false;
-
-showAlertDialog(BuildContext context, String text) {
-  // Create button
-  Widget okButton = ElevatedButton(
-    child: const Text("OK"),
-    onPressed: () {
-      Navigator.of(context).pop();
-    },
-  );
-
-  // Create AlertDialog
-  AlertDialog alert;
-  alert = AlertDialog(
-    title: const Text('Ohé!'),
-    content: Text(text),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
 
 // connecter un utilisateur
 Future<Account> userConnect(
@@ -106,24 +77,24 @@ Future<Account> createUser(String lastName, String firstName, String email,
   }
 }
 
-Future<Post> createPost(String postTitle, String postContent, String postSource,
-    int postIdUser, int postIdCom) async {
+Future<Post> createPost(String postTitle, String? postContent,
+    String? postSource, int postIdUser, int postIdCom) async {
   String url;
   if (iOS) {
     url = 'http://127.0.0.1:8083/posts/add';
   } else {
-    url = 'http://10.0.2.2:8082/posts/add';
+    url = 'http://10.0.2.2:8083/posts/add';
   }
   final response = await http.post(
     Uri.parse(url),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode({
+    body: jsonEncode(<String, dynamic>{
       "postTitle": postTitle,
       "postContent": postContent,
       "postSource": postSource,
-      "postDate": DateTime.now().toString(),
+      "postDate": DateFormat('yyyy-MM-dd').format(DateTime.now()),
       "postIdUser": postIdUser,
       "postIdCom": postIdCom
     }),
@@ -133,7 +104,8 @@ Future<Post> createPost(String postTitle, String postContent, String postSource,
     Fluttertoast.showToast(msg: "Post created successfully!");
     return Post.fromJson(jsonDecode(response.body));
   } else {
-    throw Exception('Failed to create user.');
+    log(response.body);
+    throw Exception('Failed to create post.');
   }
 }
 
@@ -161,6 +133,46 @@ Future<List<Post>> getAllPost(BuildContext context) async {
     return posts;
   } else {
     throw "Unable to retrieve posts";
+  }
+}
+
+Future<Post> updatePost(
+    int postId,
+    String postTitle,
+    String? postContent,
+    String? postSource,
+    String postDate,
+    int postUpvote,
+    int postDownVote,
+    int postIdUser,
+    int postIdCom) async {
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/posts/edit/$postId';
+  } else {
+    url = 'http://10.0.2.2:8083/posts/edit/$postId';
+  }
+  final response = await http.put(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, dynamic>{
+      "postTitle": postTitle,
+      "postContent": postContent,
+      "postSource": postSource,
+      "postDate": postDate,
+      "postUpvote": postUpvote,
+      "postDownvote": postDownVote,
+      "postIdUser": postIdUser,
+      "postIdCom": postIdCom
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    return Post.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to update post.');
   }
 }
 

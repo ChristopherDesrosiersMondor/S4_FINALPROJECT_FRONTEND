@@ -1,17 +1,16 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Entities/community.dart';
 import 'package:interface_mobile/Widgets/communityWidget.dart';
-import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/utilities.dart';
 import '../config.dart';
 
 class AddCommunityToPost extends StatelessWidget {
   const AddCommunityToPost(
-      {super.key,
+      {Key? keyCommPost,
       required this.title,
       required this.body,
-      required this.image});
+      required this.image})
+      : super(key: keyCommPost);
 
   final String title;
   final String body;
@@ -52,17 +51,10 @@ class AddCommunityToPostForm extends StatefulWidget {
   final String image;
 
   @override
-  State<AddCommunityToPostForm> createState() =>
-      AddCommunityToPostFormState(title, body, image);
+  State<AddCommunityToPostForm> createState() => AddCommunityToPostFormState();
 }
 
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
-  final String title;
-  final String body;
-  final String image;
-
-  AddCommunityToPostFormState(this.title, this.body, this.image);
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -77,9 +69,9 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
               return CommunityWidget(
                 communityId: communities[index].id,
                 communityName: communities[index].communityName,
-                title: title,
-                body: body,
-                image: image,
+                title: widget.title,
+                body: widget.body,
+                image: widget.image,
               );
             },
           );

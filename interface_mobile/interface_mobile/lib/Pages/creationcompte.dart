@@ -6,7 +6,7 @@ import 'package:interface_mobile/Pages/creationcompteNext.dart';
 import 'Connexion.dart';
 
 class CreationCompte extends StatelessWidget {
-  const CreationCompte({super.key});
+  const CreationCompte({Key? keyCreateCompte}) : super(key: keyCreateCompte);
 
   @override
   Widget build(BuildContext context) {
@@ -100,8 +100,6 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                 child: ElevatedButton(
                   style: Configuration.formButtonStyle(context),
                   onPressed: () {
-                    // Validate will return true if the form is valid, or false if
-                    // the form is invalid.
                     if (_formKeyAddUser.currentState!.validate()) {
                       Navigator.push(
                         context,
