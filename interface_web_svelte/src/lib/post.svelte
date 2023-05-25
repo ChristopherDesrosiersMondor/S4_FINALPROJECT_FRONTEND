@@ -1,21 +1,80 @@
 <script>
 	// @ts-nocheck
 
-	import { ArrowUp } from 'lucide-svelte';
+	import { ArrowUp, Menu } from 'lucide-svelte';
 	import { ArrowDown } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
+	import { postUrl } from './config';
 
 	/**
 	 * @type {{ postTitle: any; }}
 	 */
 	export let propValue;
+	let id = propValue.id;
+	let votes = propValue.postUpvote - propValue.postDownvote;
+
+	function hideAfterDelete() {
+		var x = document.getElementById(id);
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		} else {
+			x.style.display = 'none';
+		}
+	}
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+	let deletePost = async () => {
+		await fetch(postUrl + 'posts/delete/' + propValue.id, { method: 'DELETE' });
+		hideAfterDelete();
+	};
+
+	let upVote = async () => {
+		const timeElapsed = Date.now();
+		const today = new Date(timeElapsed);
+		const res = await fetch(postUrl + 'posts/edit/' + propValue.id, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify({
+				postTitle: propValue.postTitle,
+				postContent: propValue.postContent,
+				postSource: propValue.postSource,
+				postDate: propValue.postDate,
+				postUpvote: votes + 1
+			})
+		});
+		votes += 1;
+	};
+
+	let downVote = async () => {
+		const timeElapsed = Date.now();
+		const today = new Date(timeElapsed);
+		const res = await fetch(postUrl + 'posts/edit/' + propValue.id, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify({
+				postTitle: propValue.postTitle,
+				postContent: propValue.postContent,
+				postSource: propValue.postSource,
+				postDate: propValue.postDate,
+				postUpvote: votes - 1
+			})
+		});
+		votes -= 1;
+	};
 </script>
 
-<div>
+<div {id}>
 	<div>
 		<div class="PostContainer-component">
 			<div class="VotesContainer" style="width:40px;border-left:4px solid transparent">
 				<div class="VotesContainerInner">
-					<button class="VoteButton">
+					<button class="VoteButton" on:click={upVote}>
 						<span class="VotesSpan">
 							<i class="ArrowIcon">
 								<ArrowUp />
@@ -23,9 +82,9 @@
 						</span>
 					</button>
 
-					<div class="VoteCount">{propValue.postUpvote - propValue.postDownvote}</div>
+					<div class="VoteCount">{votes}</div>
 
-					<button>
+					<button on:click={downVote}>
 						<span class="VotesSpan">
 							<i class="ArrowIcon">
 								<ArrowDown />
@@ -37,24 +96,63 @@
 
 			<div class="ContentContainer">
 				{#if propValue.postIdCom != null}
-					<div class="PostUserCommunityInformations">TextTest</div>
+					<div class="PostUserCommunityInformations">Community</div>
+				{:else if propValue.postDate != null}
+					<div class="PostUserCommunityInformations">Community - {propValue.postDate}</div>
 				{/if}
 
 				<div class="PostTitleAndText">{propValue.postTitle}</div>
 
 				<div class="PostTitleAndText">{propValue.postContent}</div>
 
-				{#if propValue.postSource != null}
-					<div class="PostImage">TextTest</div>
+				{#if propValue.postSource != 'string'}
+					<div class="PostImage">
+						<img class="post-images" src={propValue.postSource} alt="postImage" />
+					</div>
 				{/if}
 
-				<div class="PostInteractionBar">TextTest</div>
+				<div class="PostInteractionBar">
+					<div class="PostInteractionBarLayout">
+						<div class="InteractionMenuContainer">
+							<div>
+								<button class="InteractionMenuButton" on:click={deletePost}>
+									<Menu />
+									Delete
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
 <style>
+	button:hover {
+		--_highlight-size: var(--size-0);
+	}
+
+	.InteractionMenuButton:hover {
+		background-color: var(--new-hublot-field) !important;
+	}
+
+	.InteractionMenuButton {
+		background-color: transparent;
+	}
+
+	.InteractionMenuContainer {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+
+	.post-images {
+		border-radius: var(--radius-0);
+	}
 	.VoteCount {
 		font-size: 12px;
 		font-weight: 700;
@@ -69,6 +167,22 @@
 		flex-direction: row;
 		min-height: 40px;
 		overflow-y: visible;
+	}
+
+	.PostInteractionBarLayout {
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 16px;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		overflow: hidden;
+		padding: 0 8px 0 4px;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
 	}
 
 	.PostImage {

@@ -12,5 +12,6 @@ export const userPseudo = writable('');
 
 export const postBody = writable('');
 export const postTitle = writable('');
+export const postSource = writable('');
 export const userId = writable('');
 export const comId = writable(0);

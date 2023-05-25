@@ -2,13 +2,15 @@
 	import '../../app.css';
 	import { ChevronDown, FileText, Image, Info, Link, ListOrdered, Plus, Tag } from 'lucide-svelte';
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
-	import { postBody, postTitle } from '../../stores';
+	import { postBody, postSource, postTitle } from '../../stores';
 	import { goto } from '$app/navigation';
 	import { postUrl } from '$lib/config';
 	let postType = 'post';
 
 	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 	let doPost = async () => {
+		const timeElapsed = Date.now();
+		const today = new Date(timeElapsed);
 		const res = await fetch(postUrl + 'posts/add', {
 			method: 'POST',
 			headers: {
@@ -17,7 +19,9 @@
 			},
 			body: JSON.stringify({
 				postTitle: $postTitle,
-				postContent: $postBody
+				postContent: $postBody,
+				postSource: $postSource,
+				postDate: new Date(Date.now())
 			})
 		});
 		goto('/');
