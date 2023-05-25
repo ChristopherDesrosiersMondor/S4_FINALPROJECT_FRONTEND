@@ -8,10 +8,14 @@ import '../config.dart';
 
 class AddCommunityToPost extends StatelessWidget {
   const AddCommunityToPost(
-      {super.key, required this.title, required this.body});
+      {super.key,
+      required this.title,
+      required this.body,
+      required this.image});
 
   final String title;
   final String body;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -27,28 +31,37 @@ class AddCommunityToPost extends StatelessWidget {
             }),
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: AddCommunityToPostForm(title: title, body: body),
+      body: AddCommunityToPostForm(
+        title: title,
+        body: body,
+        image: image,
+      ),
     );
   }
 }
 
 class AddCommunityToPostForm extends StatefulWidget {
   const AddCommunityToPostForm(
-      {super.key, required this.title, required this.body});
+      {super.key,
+      required this.title,
+      required this.body,
+      required this.image});
 
   final String title;
   final String body;
+  final String image;
 
   @override
   State<AddCommunityToPostForm> createState() =>
-      AddCommunityToPostFormState(title, body);
+      AddCommunityToPostFormState(title, body, image);
 }
 
 class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
   final String title;
   final String body;
+  final String image;
 
-  AddCommunityToPostFormState(this.title, this.body);
+  AddCommunityToPostFormState(this.title, this.body, this.image);
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +75,12 @@ class AddCommunityToPostFormState extends State<AddCommunityToPostForm> {
             itemCount: communities.length,
             itemBuilder: (context, index) {
               return CommunityWidget(
-                  communityId: communities[index].id,
-                  communityName: communities[index].communityName,
-                  title: title,
-                  body: body);
+                communityId: communities[index].id,
+                communityName: communities[index].communityName,
+                title: title,
+                body: body,
+                image: image,
+              );
             },
           );
         } else {

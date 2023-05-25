@@ -59,7 +59,7 @@ Future<Account> userConnect(
     BuildContext context, String pseudo, String password) async {
   String url;
   if (iOS) {
-    url = 'http://127.0.0.1:8083/accounts/view/by_pseudo/$pseudo/$password';
+    url = 'http://127.0.0.1:8082/accounts/view/by_pseudo/$pseudo/$password';
   } else {
     url = 'http://10.0.2.2:8082/accounts/view/by_pseudo/$pseudo/$password';
   }
@@ -75,17 +75,11 @@ Future<Account> userConnect(
 }
 
 // créer un nouvel utilisateur
-Future<Account> createUser(
-    BuildContext context,
-    String lastName,
-    String firstName,
-    String email,
-    String pseudo,
-    String password,
-    String birthday) async {
+Future<Account> createUser(String lastName, String firstName, String email,
+    String pseudo, String password, String birthday) async {
   String url;
   if (iOS) {
-    url = 'http://127.0.0.1:8083/accounts/add';
+    url = 'http://127.0.0.1:8082/accounts/add';
   } else {
     url = 'http://10.0.2.2:8082/accounts/add';
   }
@@ -105,8 +99,39 @@ Future<Account> createUser(
   );
 
   if (response.statusCode == 201) {
-    Fluttertoast.showToast(msg: "Compte créé avec succès");
+    Fluttertoast.showToast(msg: "Account created successfully!");
     return Account.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to create user.');
+  }
+}
+
+Future<Post> createPost(String postTitle, String postContent, String postSource,
+    int postIdUser, int postIdCom) async {
+  String url;
+  if (iOS) {
+    url = 'http://127.0.0.1:8083/posts/add';
+  } else {
+    url = 'http://10.0.2.2:8082/posts/add';
+  }
+  final response = await http.post(
+    Uri.parse(url),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode({
+      "postTitle": postTitle,
+      "postContent": postContent,
+      "postSource": postSource,
+      "postDate": DateTime.now().toString(),
+      "postIdUser": postIdUser,
+      "postIdCom": postIdCom
+    }),
+  );
+
+  if (response.statusCode == 201) {
+    Fluttertoast.showToast(msg: "Post created successfully!");
+    return Post.fromJson(jsonDecode(response.body));
   } else {
     throw Exception('Failed to create user.');
   }
