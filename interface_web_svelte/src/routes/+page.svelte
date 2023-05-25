@@ -7,9 +7,13 @@
 	import Post from '$lib/post.svelte';
 	import { create_community_modal_shown, isVisible } from '../stores.js';
 
+	let posts = null;
+
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let posts = data.posts;
+	if (data != null) {
+		posts = data.posts;
+	}
 </script>
 
 <div class="ListingLayoutOuterContainer">
@@ -55,7 +59,7 @@
 			<div class="LeftMainPanel">
 				<div class="PopularHeader">Popular posts</div>
 				<div class="PopularPosts">
-					{#if posts.length != 0}
+					{#if posts != null}
 						{#each posts as post}
 							<Post propValue={post} />
 						{/each}
