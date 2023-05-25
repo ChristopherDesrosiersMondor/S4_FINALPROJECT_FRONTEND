@@ -4,9 +4,23 @@
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
 	import { postBody, postTitle } from '../../stores';
 	let postType = 'post';
-	const printTest = async () => {
-		console.log($postBody);
-		console.log($postTitle);
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+	let doPost = async () => {
+		const res = await fetch('https://httpbin.org/post', {
+			method: 'POST',
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: 'same-origin', // include, *same-origin, omit
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify({
+				$postTitle,
+				$postBody
+			})
+		});
 	};
 </script>
 
@@ -92,7 +106,7 @@
 								<div class="post-form-save-draft-outer">
 									<div class="post-form-save-draft-inner">
 										<div class="post-form-post-button-container">
-											<button class="tag-buttons btn-post" on:click={printTest}> Post </button>
+											<button class="tag-buttons btn-post" on:click={doPost}> Post </button>
 										</div>
 										<div class="post-form-post-button-container">
 											<button class="tag-buttons"> Save draft </button>
