@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Entities/community.dart';
 import 'package:interface_mobile/Widgets/communityWidget.dart';
-import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/utilities.dart';
 import '../config.dart';
 
