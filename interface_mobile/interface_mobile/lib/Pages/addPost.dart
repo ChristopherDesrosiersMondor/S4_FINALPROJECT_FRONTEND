@@ -18,12 +18,13 @@ class AddPostPage extends StatelessWidget {
   final String? image;
 
   AddPostPage(
-      {super.key,
+      {Key? keyAddPost,
       this.communityId,
       this.communityName,
       this.title,
       this.body,
-      this.image});
+      this.image})
+      : super(key: keyAddPost);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,7 @@ class AddPostPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           child: AddPostForm(
-        keyAddPostForm: _keyAddPostPage,
+        keyPostForm: _keyAddPostPage,
         getCommId: getCommunityId,
         getCommName: getCommunityName,
         getTitle: getTitle,
@@ -129,13 +130,13 @@ class AddPostPage extends StatelessWidget {
 
 class AddPostForm extends StatefulWidget {
   const AddPostForm(
-      {Key? keyAddPostForm,
+      {Key? keyPostForm,
       required this.getCommId,
       required this.getCommName,
       required this.getTitle,
       required this.getBody,
       required this.getImage})
-      : super(key: keyAddPostForm);
+      : super(key: keyPostForm);
   final ValueGetter getCommId;
   final ValueGetter getCommName;
   final ValueGetter getTitle;

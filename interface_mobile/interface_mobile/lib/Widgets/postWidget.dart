@@ -3,7 +3,7 @@ import 'package:interface_mobile/config.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget(
-      {super.key,
+      {Key? keyPostWidget,
       required this.postId,
       required this.postTitle,
       required this.postContent,
@@ -12,7 +12,8 @@ class PostWidget extends StatelessWidget {
       required this.postUpVote,
       required this.postDownVote,
       required this.username,
-      required this.communityName});
+      required this.communityName})
+      : super(key: keyPostWidget);
 
   final int postId;
   final String postTitle;

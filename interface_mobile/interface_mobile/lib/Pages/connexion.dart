@@ -5,7 +5,7 @@ import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
 
 class ConnexionPage extends StatelessWidget {
-  const ConnexionPage({super.key});
+  const ConnexionPage({Key? keyConnexion}) : super(key: keyConnexion);
 
   @override
   Widget build(BuildContext context) {

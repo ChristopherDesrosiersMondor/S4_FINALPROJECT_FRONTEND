@@ -8,7 +8,7 @@ import '../Entities/post.dart';
 import '../config.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({Key? keyHome}) : super(key: keyHome);
 
   @override
   Widget build(BuildContext context) {

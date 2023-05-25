@@ -11,7 +11,7 @@ import 'package:interface_mobile/config.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? keyApp}) : super(key: keyApp);
 
   static const String _title = 'MVP Hublot';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HublotWidget extends StatefulWidget {
-  const HublotWidget({super.key});
+  const HublotWidget({Key? keyHublot}) : super(key: keyHublot);
 
   @override
   State<HublotWidget> createState() => _HublotWidgetState();

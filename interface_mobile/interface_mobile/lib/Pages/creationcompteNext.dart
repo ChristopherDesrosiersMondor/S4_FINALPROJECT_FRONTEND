@@ -14,7 +14,10 @@ import 'Connexion.dart';
 
 class CreationCompteNext extends StatelessWidget {
   const CreationCompteNext(
-      {super.key, required this.username, required this.password});
+      {Key? keyCreateCompteNext,
+      required this.username,
+      required this.password})
+      : super(key: keyCreateCompteNext);
 
   final String username;
   final String password;

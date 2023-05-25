@@ -6,10 +6,11 @@ import '../config.dart';
 
 class AddCommunityToPost extends StatelessWidget {
   const AddCommunityToPost(
-      {super.key,
+      {Key? keyCommPost,
       required this.title,
       required this.body,
-      required this.image});
+      required this.image})
+      : super(key: keyCommPost);
 
   final String title;
   final String body;

@@ -5,12 +5,13 @@ import '../config.dart';
 
 class CommunityWidget extends StatelessWidget {
   const CommunityWidget(
-      {super.key,
+      {Key? keyCommuWidget,
       required this.communityId,
       required this.communityName,
       required this.title,
       required this.body,
-      required this.image});
+      required this.image})
+      : super(key: keyCommuWidget);
 
   final int communityId;
   final String communityName;
