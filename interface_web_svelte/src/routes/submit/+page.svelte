@@ -5,21 +5,20 @@
 	import { postBody, postTitle } from '../../stores';
 	let postType = 'post';
 
+	let data = {
+		postTitle: $postTitle,
+		postContent: $postBody
+	};
+
 	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 	let doPost = async () => {
-		const res = await fetch('https://httpbin.org/post', {
+		const res = await fetch('http://localhost:8083/posts/add', {
 			method: 'POST',
-			mode: 'cors', // no-cors, *cors, same-origin
-			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-			credentials: 'same-origin', // include, *same-origin, omit
 			headers: {
 				'Content-Type': 'application/json'
 				// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
-			body: JSON.stringify({
-				$postTitle,
-				$postBody
-			})
+			body: JSON.stringify(data)
 		});
 	};
 </script>
