@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/Pages/addPost.dart';
-import 'package:interface_mobile/Pages/chat.dart';
-import 'package:interface_mobile/Pages/discover.dart';
-import 'package:interface_mobile/Pages/home.dart';
-import 'package:interface_mobile/Pages/inbox.dart';
+import 'package:interface_mobile/Pages/AddPost.dart';
+import 'package:interface_mobile/Pages/Chat.dart';
+import 'package:interface_mobile/Pages/Discover.dart';
+import 'package:interface_mobile/Pages/Home.dart';
+import 'package:interface_mobile/Pages/Inbox.dart';
 import 'package:interface_mobile/config.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
