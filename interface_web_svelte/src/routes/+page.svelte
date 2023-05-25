@@ -7,7 +7,7 @@
 	import Post from '$lib/post.svelte';
 	import { create_community_modal_shown, isVisible } from '../stores.js';
 
-		/** @type {import('./$types').PageData} */
+	/** @type {import('./$types').PageData} */
 	export let data;
 	let posts = data.posts;
 </script>
@@ -55,9 +55,11 @@
 			<div class="LeftMainPanel">
 				<div class="PopularHeader">Popular posts</div>
 				<div class="PopularPosts">
-					{#each posts as post}
-						<Post propValue={post} />
-					{/each}
+					{#if posts.length != 0}
+						{#each posts as post}
+							<Post propValue={post} />
+						{/each}
+					{/if}
 				</div>
 			</div>
 			<div class="RightMainPanel">
@@ -77,8 +79,12 @@
 							</div>
 							<hr />
 							<button class="btn" id="create_post_btn">Create Post</button>
-							<button class="btn" id="create_com_btn" on:click={() => ($create_community_modal_shown = !$create_community_modal_shown)}>Create Comumnity</button>
-							
+							<button
+								class="btn"
+								id="create_com_btn"
+								on:click={() => ($create_community_modal_shown = !$create_community_modal_shown)}
+								>Create Comumnity</button
+							>
 						</div>
 					</div>
 				{/if}
