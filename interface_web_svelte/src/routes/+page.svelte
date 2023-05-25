@@ -5,7 +5,7 @@
 	import sea3 from '$lib/images/sea-illustration-3.jpg';
 	import sea from '$lib/images/sea.png';
 	import Post from '$lib/post.svelte';
-	import { isVisible } from '../stores';
+	import { create_community_modal_shown, isVisible } from '../stores.js';
 
 </script>
 
@@ -76,7 +76,7 @@
 							</div>
 							<hr />
 							<button class="btn" id="create_post_btn">Create Post</button>
-							<button class="btn" id="create_com_btn">Create Comumnity</button>
+							<button class="btn" id="create_com_btn" on:click={() => ($create_community_modal_shown = !$create_community_modal_shown)}>Create Comumnity</button>
 					</div>
 				</div>
 
@@ -182,7 +182,7 @@ hr {
 	}
 
 	.TrendingPostsContainer {
-		padding: 0 16px 16px;
+		padding: 0 0px 16px;
 	}
 
 	.TrendingPostsSorter {

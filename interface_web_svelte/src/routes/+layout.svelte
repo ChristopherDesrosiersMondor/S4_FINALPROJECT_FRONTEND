@@ -1,16 +1,17 @@
 <script lang="ts">
 	import Header from './header.svelte';
 
-	import 'open-props/style';
-	import 'open-props/normalize';
-	import 'open-props/buttons';
 	import 'iconify-icon';
+	import 'open-props/buttons';
+	import 'open-props/normalize';
+	import 'open-props/style';
 
+	import ModalCreateAccount from '$lib/modal_create_account.svelte';
+	import ModalCreateAccountNext from '$lib/modal_create_account_next.svelte';
+	import ModalCreateCommunity from '$lib/modal_create_community.svelte';
+	import ModalLogin from '$lib/modal_login.svelte';
 	import '../app.css';
 	import Sidebar from '../lib/sidebar.svelte';
-	import ModalCreateAccount from '$lib/modal_create_account.svelte';
-	import ModalLogin from '$lib/modal_login.svelte';
-	import ModalCreateAccountNext from '$lib/modal_create_account_next.svelte';
 </script>
 
 <div id="2x-container">
@@ -21,6 +22,7 @@
 					<ModalCreateAccount />
 					<ModalLogin />
 					<ModalCreateAccountNext />
+					<ModalCreateCommunity />
 				</div>
 				<div class="">
 					<!-- Header -->
