@@ -1,6 +1,6 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/Pages/addPost.dart';
+import 'package:interface_mobile/Pages/AddPost.dart';
 import '../config.dart';
 
 class CommunityWidget extends StatelessWidget {
