@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/Pages/addPost.dart';
-import 'package:interface_mobile/Pages/chat.dart';
-import 'package:interface_mobile/Pages/discover.dart';
-import 'package:interface_mobile/Pages/home.dart';
-import 'package:interface_mobile/Pages/inbox.dart';
+import 'package:interface_mobile/Pages/AddPost.dart';
+import 'package:interface_mobile/Pages/Chat.dart';
+import 'package:interface_mobile/Pages/Discover.dart';
+import 'package:interface_mobile/Pages/Home.dart';
+import 'package:interface_mobile/Pages/Inbox.dart';
 import 'package:interface_mobile/config.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
@@ -11,7 +11,7 @@ import 'package:interface_mobile/config.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? keyApp}) : super(key: keyApp);
 
   static const String _title = 'MVP Hublot';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HublotWidget extends StatefulWidget {
-  const HublotWidget({super.key});
+  const HublotWidget({Key? keyHublot}) : super(key: keyHublot);
 
   @override
   State<HublotWidget> createState() => _HublotWidgetState();

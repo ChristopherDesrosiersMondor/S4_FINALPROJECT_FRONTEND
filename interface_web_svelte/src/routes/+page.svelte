@@ -7,6 +7,9 @@
 	import Post from '$lib/post.svelte';
 	import { create_community_modal_shown, isVisible } from '../stores.js';
 
+		/** @type {import('./$types').PageData} */
+	export let data;
+	let posts = data.posts;
 </script>
 
 <div class="ListingLayoutOuterContainer">
@@ -52,34 +55,32 @@
 			<div class="LeftMainPanel">
 				<div class="PopularHeader">Popular posts</div>
 				<div class="PopularPosts">
-					<Post />
-					<Post />
-					<Post />
-					<Post />
-					<Post />
-					<Post />
-					<Post />
-					<Post />
+					{#each posts as post}
+						<Post propValue={post} />
+					{/each}
 				</div>
 			</div>
 			<div class="RightMainPanel">
 				{#if $isVisible}
-				<div></div>
+					<div />
 				{:else}
-				<div class="RightMainPanelBox">
-					<div><img class="mer" src={sea} alt="la mer" /></div>
-					<div class="RightMainPanelBoxInside">
-						<div style={'display: flex'} class="home"><img class="pirate" src={pirate} alt="pirate" />
-							<div class="home_title">Home</div></div>
-							<div class="text">Your personal Hublot frontpage. Come here to check in with your favorite communities.
-						
+					<div class="RightMainPanelBox">
+						<div><img class="mer" src={sea} alt="la mer" /></div>
+						<div class="RightMainPanelBoxInside">
+							<div style={'display: flex'} class="home">
+								<img class="pirate" src={pirate} alt="pirate" />
+								<div class="home_title">Home</div>
+							</div>
+							<div class="text">
+								Your personal Hublot frontpage. Come here to check in with your favorite
+								communities.
 							</div>
 							<hr />
 							<button class="btn" id="create_post_btn">Create Post</button>
 							<button class="btn" id="create_com_btn" on:click={() => ($create_community_modal_shown = !$create_community_modal_shown)}>Create Comumnity</button>
+							
+						</div>
 					</div>
-				</div>
-
 				{/if}
 			</div>
 		</div>
@@ -87,8 +88,7 @@
 </div>
 
 <style>
-
-.btn {
+	.btn {
 		border: var(--back-to-top-btn) 1px solid;
 		width: 100%;
 		font-size: small;
@@ -109,7 +109,7 @@
 		font-size: 14px;
 		font-weight: 700;
 		letter-spacing: unset;
-		line-height: 17px;;
+		line-height: 17px;
 		padding: 4px 16px;
 		-ms-flex-align: center;
 		align-items: center;
@@ -118,16 +118,15 @@
 		justify-content: center;
 		text-align: center;
 		margin-top: 16px;
-
 	}
 
-	#create_com_btn{
+	#create_com_btn {
 		background-color: var(--hublot-body);
-		color:var(--back-to-top-btn);
+		color: var(--back-to-top-btn);
 		font-size: 14px;
 		font-weight: 700;
 		letter-spacing: unset;
-		line-height: 17px;;
+		line-height: 17px;
 		padding: 4px 16px;
 		-ms-flex-align: center;
 		align-items: center;
@@ -137,44 +136,42 @@
 		text-align: center;
 	}
 
-hr {
-	border: 1px solid var(--new-hublot-line);
-}
+	hr {
+		border: 1px solid var(--new-hublot-line);
+	}
 
-.RightMainPanelBox {
+	.RightMainPanelBox {
+		background-color: var(--hublot-body);
+		border: 1px solid var(--new-hublot-line);
+	}
 
-	background-color: var(--hublot-body);
-	border: 1px solid var(--new-hublot-line);
-}
+	.RightMainPanelBoxInside {
+		margin: 10px;
+	}
 
-.RightMainPanelBoxInside {
-	margin: 10px;
-}
+	.mer {
+		border-radius: 0;
+	}
 
-.mer {
-	border-radius: 0;
-}
+	.home {
+		color: var(--main-text);
+	}
 
-.home {
-	color: var(--main-text);
+	.home_title {
+		padding-top: 8px;
+		padding-left: 7px;
+	}
 
-}
+	.pirate {
+		height: 40px;
+		width: 40px;
+	}
 
-.home_title {
-	padding-top: 8px;
-    padding-left: 7px;
-}
-
-.pirate {
-    height: 40px;
-    width: 40px;
-}
-
-.text {
-	font-size: small;
-	margin-top: 10px;
-	margin-bottom: 13px;
-}
+	.text {
+		font-size: small;
+		margin-top: 10px;
+		margin-bottom: 13px;
+	}
 
 	.PopularPosts {
 		min-height: 1000px;

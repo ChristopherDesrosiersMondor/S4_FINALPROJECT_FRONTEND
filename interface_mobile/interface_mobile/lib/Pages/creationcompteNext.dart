@@ -5,7 +5,8 @@ import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:intl/intl.dart';
 
-import 'connexion.dart';
+import '../Main.dart';
+import 'Connexion.dart';
 
 // Sources
 // Datepicker in Flutter
@@ -13,7 +14,10 @@ import 'connexion.dart';
 
 class CreationCompteNext extends StatelessWidget {
   const CreationCompteNext(
-      {super.key, required this.username, required this.password});
+      {Key? keyCreateCompteNext,
+      required this.username,
+      required this.password})
+      : super(key: keyCreateCompteNext);
 
   final String username;
   final String password;
@@ -170,8 +174,13 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
                       var pseudo = widget.username;
                       var password = widget.password;
                       var birthday = birthdayController.text;
-                      createUser(context, lastName, firstName, email, pseudo,
-                          password, birthday);
+                      createUser(lastName, firstName, email, pseudo, password,
+                          birthday);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HublotWidget()),
+                      );
                     }
                   },
                   child: const Text('Create Account'),

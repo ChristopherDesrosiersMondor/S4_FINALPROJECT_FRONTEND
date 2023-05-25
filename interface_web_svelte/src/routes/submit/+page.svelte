@@ -3,10 +3,24 @@
 	import { ChevronDown, FileText, Image, Info, Link, ListOrdered, Plus, Tag } from 'lucide-svelte';
 	import SubmitContent from '$lib/submit-components/submit_content.svelte';
 	import { postBody, postTitle } from '../../stores';
+	import { goto } from '$app/navigation';
+	import { postUrl } from '$lib/config';
 	let postType = 'post';
-	const printTest = async () => {
-		console.log($postBody);
-		console.log($postTitle);
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+	let doPost = async () => {
+		const res = await fetch(postUrl + 'posts/add', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			body: JSON.stringify({
+				postTitle: $postTitle,
+				postContent: $postBody
+			})
+		});
+		goto('/');
 	};
 </script>
 
@@ -92,7 +106,7 @@
 								<div class="post-form-save-draft-outer">
 									<div class="post-form-save-draft-inner">
 										<div class="post-form-post-button-container">
-											<button class="tag-buttons btn-post" on:click={printTest}> Post </button>
+											<button class="tag-buttons btn-post" on:click={doPost}> Post </button>
 										</div>
 										<div class="post-form-post-button-container">
 											<button class="tag-buttons"> Save draft </button>

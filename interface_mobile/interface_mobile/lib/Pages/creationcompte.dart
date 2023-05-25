@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/Pages/creationcompteNext.dart';
 
-import 'connexion.dart';
+import 'Connexion.dart';
 
 class CreationCompte extends StatelessWidget {
-  const CreationCompte({super.key});
+  const CreationCompte({Key? keyCreateCompte}) : super(key: keyCreateCompte);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class CreationCompteForm extends StatefulWidget {
 }
 
 class CreationCompteFormState extends State<CreationCompteForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKeyAddUser = GlobalKey<FormState>();
   final TextEditingController pseudoController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -73,7 +73,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _formKeyAddUser,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -102,7 +102,7 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                   onPressed: () {
                     // Validate will return true if the form is valid, or false if
                     // the form is invalid.
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKeyAddUser.currentState!.validate()) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(

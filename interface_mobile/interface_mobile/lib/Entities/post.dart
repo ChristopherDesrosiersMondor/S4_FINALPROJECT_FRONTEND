@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Post {
   final int id;
   final String postTitle;
@@ -24,11 +22,11 @@ class Post {
       required this.postIdCom});
 
   factory Post.fromJson(Map<String, dynamic> json) {
-    if (json['postUpVote'] == null) {
-      json['postUpVote'] = 0;
+    if (json['postUpvote'] == null) {
+      json['postUpvote'] = 0;
     }
-    if (json['postDownVote'] == null) {
-      json['postDownVote'] = 0;
+    if (json['postDownvote'] == null) {
+      json['postDownvote'] = 0;
     }
     return Post(
         id: json['id'] as int,
@@ -36,8 +34,8 @@ class Post {
         postContent: json['postContent'] as String,
         postSource: json['postSource'] as String,
         postDate: json['postDate'] as String,
-        postUpVote: json['postUpVote'] as int,
-        postDownVote: json['postDownVote'] as int,
+        postUpVote: json['postUpvote'] as int,
+        postDownVote: json['postDownvote'] as int,
         postIdUser: json['postIdUser'] as int,
         postIdCom: json['postIdCom'] as int);
   }

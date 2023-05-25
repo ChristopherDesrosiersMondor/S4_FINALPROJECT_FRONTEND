@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interface_mobile/Pages/connexion.dart';
+import 'package:interface_mobile/Pages/Connexion.dart';
 import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
 import 'package:interface_mobile/utilities.dart';
@@ -8,7 +8,7 @@ import '../Entities/post.dart';
 import '../config.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({Key? keyHome}) : super(key: keyHome);
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +56,8 @@ class Home extends StatelessWidget {
                         postDate: posts[index].postDate.toString(),
                         postUpVote: posts[index].postUpVote,
                         postDownVote: posts[index].postDownVote,
+                        postUserId: posts[index].postIdUser,
+                        postCommId: posts[index].postIdCom,
                         username: posts[index].username,
                         communityName: posts[index].postIdCom.toString());
                   });
