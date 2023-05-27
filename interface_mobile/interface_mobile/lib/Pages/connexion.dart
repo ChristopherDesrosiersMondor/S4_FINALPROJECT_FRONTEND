@@ -112,12 +112,14 @@ class ConnexionFormState extends State<ConnexionForm> {
                   if (_formKey.currentState!.validate()) {
                     var pseudo = pseudoController.text;
                     var password = passwordController.text;
-                    Future<Account> account =
-                        userConnect(context, pseudo, password);
+                    Account account =
+                        userConnect(context, pseudo, password) as Account;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HublotWidget()),
+                          builder: (context) => HublotWidget(
+                                userConnectId: account.id,
+                              )),
                     );
                   }
                 },
