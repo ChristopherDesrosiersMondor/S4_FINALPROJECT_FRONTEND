@@ -24,7 +24,7 @@ import 'Entities/post.dart';
 // Hash text
 // https://medium.flutterdevs.com/explore-encrypt-decrypt-data-in-flutter-576425347439
 
-bool iOS = false;
+bool iOS = true;
 
 // connecter un utilisateur
 Future<Account> userConnect(
