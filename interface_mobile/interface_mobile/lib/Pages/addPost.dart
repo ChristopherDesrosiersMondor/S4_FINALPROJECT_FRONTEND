@@ -261,7 +261,7 @@ class AddPostFormState extends State<AddPostForm> {
           imageController.text, 1, widget.getCommId());
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HublotWidget()),
+        MaterialPageRoute(builder: (context) => const MyApp()),
       );
     }
   }

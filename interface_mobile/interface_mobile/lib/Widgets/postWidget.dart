@@ -67,7 +67,7 @@ class PostWidgetState extends State<PostWidget> {
           ),
           Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.height * 0.30),
+                  left: MediaQuery.of(context).size.height * 0.25),
               child: IconButton(
                 icon: const Icon(
                   Icons.more_vert,

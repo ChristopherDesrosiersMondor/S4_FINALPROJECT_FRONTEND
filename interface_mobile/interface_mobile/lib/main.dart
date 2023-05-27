@@ -4,6 +4,7 @@ import 'package:interface_mobile/Pages/Chat.dart';
 import 'package:interface_mobile/Pages/Discover.dart';
 import 'package:interface_mobile/Pages/Home.dart';
 import 'package:interface_mobile/Pages/Inbox.dart';
+import 'package:interface_mobile/Pages/connexion.dart';
 import 'package:interface_mobile/config.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
@@ -25,7 +26,9 @@ class MyApp extends StatelessWidget {
 }
 
 class HublotWidget extends StatefulWidget {
-  const HublotWidget({Key? keyHublot}) : super(key: keyHublot);
+  const HublotWidget({Key? keyHublot, this.userConnectId})
+      : super(key: keyHublot);
+  final int? userConnectId;
 
   @override
   State<HublotWidget> createState() => _HublotWidgetState();
@@ -33,13 +36,28 @@ class HublotWidget extends StatefulWidget {
 
 class _HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    DiscoverPage(),
-    AddPostPage(),
-    ChatPage(),
-    InboxPage()
-  ];
+  late List<Widget> _widgetOptions;
+  @override
+  void initState() {
+    super.initState();
+    if (widget.userConnectId != null) {
+      _widgetOptions = <Widget>[
+        Home(),
+        DiscoverPage(),
+        AddPostPage(),
+        ChatPage(),
+        InboxPage()
+      ];
+    } else {
+      _widgetOptions = <Widget>[
+        Home(),
+        DiscoverPage(),
+        ConnexionPage(),
+        ConnexionPage(),
+        ConnexionPage()
+      ];
+    }
+  }
 
   void _onItemTapped(int index) {
     setState(() {

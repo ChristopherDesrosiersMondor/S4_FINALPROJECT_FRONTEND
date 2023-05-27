@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:interface_mobile/Entities/account.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
@@ -111,7 +112,8 @@ class ConnexionFormState extends State<ConnexionForm> {
                   if (_formKey.currentState!.validate()) {
                     var pseudo = pseudoController.text;
                     var password = passwordController.text;
-                    userConnect(context, pseudo, password);
+                    Future<Account> account =
+                        userConnect(context, pseudo, password);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
