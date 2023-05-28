@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class InboxPage extends StatelessWidget {
-  const InboxPage({Key? keyInbox}) : super(key: keyInbox);
+  const InboxPage({Key? keyInbox, this.userConnectId}) : super(key: keyInbox);
+
+  final int? userConnectId;
 
   @override
   Widget build(BuildContext context) {

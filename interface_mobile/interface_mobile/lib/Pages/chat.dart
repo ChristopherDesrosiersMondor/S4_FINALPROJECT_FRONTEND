@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? keyChat}) : super(key: keyChat);
+  const ChatPage({Key? keyChat, this.userConnectId}) : super(key: keyChat);
+
+  final int? userConnectId;
 
   @override
   Widget build(BuildContext context) {

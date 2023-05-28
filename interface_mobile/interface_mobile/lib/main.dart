@@ -52,9 +52,9 @@ class _HublotWidgetState extends State<HublotWidget> {
       _widgetOptions = <Widget>[
         Home(),
         DiscoverPage(),
-        ConnexionPage(),
-        ConnexionPage(),
-        ConnexionPage()
+        AddPostPage(),
+        ChatPage(),
+        InboxPage()
       ];
     }
   }

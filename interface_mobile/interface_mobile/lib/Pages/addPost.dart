@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/addPostCommunity.dart';
+import 'package:interface_mobile/Pages/connexion.dart';
 import 'package:interface_mobile/main.dart';
 import 'package:interface_mobile/utilities.dart';
 import '../config.dart';
@@ -12,6 +13,7 @@ class AddPostPage extends StatelessWidget {
   final GlobalKey<AddPostFormState> _keyAddPostPage =
       GlobalKey<AddPostFormState>();
 
+  final int? userConnectId;
   final int? communityId;
   final String? communityName;
   final String? title;
@@ -24,73 +26,92 @@ class AddPostPage extends StatelessWidget {
       this.communityName,
       this.title,
       this.body,
-      this.image})
+      this.image,
+      this.userConnectId})
       : super(key: keyAddPost);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Configuration.appDarkBackgroundColor,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              _keyAddPostPage.currentState!.emptyInput();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HublotWidget()),
-              );
-            }),
-        actions: <Widget>[
-          Padding(
-              padding: const EdgeInsets.all(10),
-              // Final publish page -> community has been selected
-              child: (communityId != null && communityName != null)
-                  ? TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 51, 50, 50),
-                        minimumSize: const Size(80, 20),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      onPressed: () {
-                        _keyAddPostPage.currentState!.validateAndPublish();
-                      },
-                      child: Text(
-                        'Publish',
-                        style: Configuration.textForApp(Colors.white60, 14),
-                      ),
-                    )
-                  // First make post page -> community has NOT been selected
-                  : TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 51, 50, 50),
-                        minimumSize: const Size(80, 20),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      onPressed: () =>
-                          _keyAddPostPage.currentState!.validateForm(),
-                      child: Text(
-                        'Next',
-                        style: Configuration.textForApp(Colors.white60, 14),
-                      ),
-                    ))
-        ],
+    if (userConnectId != null) {
+      return Scaffold(
         backgroundColor: Configuration.appDarkBackgroundColor,
-      ),
-      body: SingleChildScrollView(
-          child: AddPostForm(
-        keyPostForm: _keyAddPostPage,
-        getCommId: getCommunityId,
-        getCommName: getCommunityName,
-        getTitle: getTitle,
-        getBody: getBody,
-        getImage: getImage,
-      )),
-    );
+        appBar: AppBar(
+          leading: IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                _keyAddPostPage.currentState!.emptyInput();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HublotWidget()),
+                );
+              }),
+          actions: <Widget>[
+            Padding(
+                padding: const EdgeInsets.all(10),
+                // Final publish page -> community has been selected
+                child: (communityId != null && communityName != null)
+                    ? TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 51, 50, 50),
+                          minimumSize: const Size(80, 20),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        onPressed: () {
+                          _keyAddPostPage.currentState!.validateAndPublish();
+                        },
+                        child: Text(
+                          'Publish',
+                          style: Configuration.textForApp(Colors.white60, 14),
+                        ),
+                      )
+                    // First make post page -> community has NOT been selected
+                    : TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 51, 50, 50),
+                          minimumSize: const Size(80, 20),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                        ),
+                        onPressed: () =>
+                            _keyAddPostPage.currentState!.validateForm(),
+                        child: Text(
+                          'Next',
+                          style: Configuration.textForApp(Colors.white60, 14),
+                        ),
+                      ))
+          ],
+          backgroundColor: Configuration.appDarkBackgroundColor,
+        ),
+        body: SingleChildScrollView(
+            child: AddPostForm(
+          keyPostForm: _keyAddPostPage,
+          getCommId: getCommunityId,
+          getCommName: getCommunityName,
+          getTitle: getTitle,
+          getBody: getBody,
+          getImage: getImage,
+        )),
+      );
+    } else {
+      return Scaffold(
+        backgroundColor: Configuration.appDarkBackgroundColor,
+        body: ElevatedButton(
+          style: Configuration.formButtonStyle(context),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ConnexionPage()),
+            );
+          },
+          child: const Text("Connect to have access to all our features"),
+        ),
+      );
+    }
   }
 
   getCommunityId() {
