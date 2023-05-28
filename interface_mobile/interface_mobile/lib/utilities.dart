@@ -260,7 +260,7 @@ Future<Account> getAccountById(int id) async {
   }
 }
 
-Future<String> getUsernameById(int id) async {
+Future<String> getUsernameById(dynamic id) async {
   Account account = await getAccountById(id);
   return account.userPseudo;
 }

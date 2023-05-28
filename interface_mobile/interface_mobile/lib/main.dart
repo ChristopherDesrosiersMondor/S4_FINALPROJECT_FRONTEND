@@ -42,22 +42,44 @@ class _HublotWidgetState extends State<HublotWidget> {
     super.initState();
     if (widget.userConnectId != null) {
       _widgetOptions = <Widget>[
-        Home(),
-        DiscoverPage(),
-        AddPostPage(),
-        ChatPage(),
-        InboxPage()
+        const Home(),
+        const DiscoverPage(),
+        AddPostPage(userConnectId: widget.userConnectId),
+        ChatPage(userConnectId: widget.userConnectId),
+        InboxPage(userConnectId: widget.userConnectId)
       ];
     } else {
       _widgetOptions = <Widget>[
-        Home(),
-        DiscoverPage(),
+        const Home(),
+        const DiscoverPage(),
         AddPostPage(),
-        ChatPage(),
-        InboxPage()
+        const ChatPage(),
+        const InboxPage()
       ];
     }
   }
+
+  // @override
+  // void setState(VoidCallback fn) {
+  //   if (widget.userConnectId != null) {
+  //     _widgetOptions = <Widget>[
+  //       const Home(),
+  //       const DiscoverPage(),
+  //       AddPostPage(userConnectId: widget.userConnectId),
+  //       ChatPage(userConnectId: widget.userConnectId),
+  //       InboxPage(userConnectId: widget.userConnectId)
+  //     ];
+  //   } else {
+  //     _widgetOptions = <Widget>[
+  //       const Home(),
+  //       const DiscoverPage(),
+  //       AddPostPage(),
+  //       const ChatPage(),
+  //       const InboxPage()
+  //     ];
+  //   }
+  //   super.setState(fn);
+  // }
 
   void _onItemTapped(int index) {
     setState(() {

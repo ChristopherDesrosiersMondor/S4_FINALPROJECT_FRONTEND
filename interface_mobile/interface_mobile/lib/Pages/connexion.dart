@@ -48,13 +48,14 @@ class ConnexionPage extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: ConnexionForm()),
+      body: SingleChildScrollView(child: ConnexionForm()),
     );
   }
 }
 
 class ConnexionForm extends StatefulWidget {
-  const ConnexionForm({super.key});
+  ConnexionForm({super.key, this.userConnectId});
+  int? userConnectId;
 
   @override
   State<ConnexionForm> createState() => ConnexionFormState();
@@ -112,13 +113,17 @@ class ConnexionFormState extends State<ConnexionForm> {
                   if (_formKey.currentState!.validate()) {
                     var pseudo = pseudoController.text;
                     var password = passwordController.text;
-                    Account account =
-                        userConnect(context, pseudo, password) as Account;
+                    userConnect(context, pseudo, password)
+                        .then((Account result) {
+                      setState(() {
+                        widget.userConnectId = result.id;
+                      });
+                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => HublotWidget(
-                                userConnectId: account.id,
+                                userConnectId: widget.userConnectId,
                               )),
                     );
                   }

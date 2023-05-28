@@ -10,7 +10,9 @@ import '../config.dart';
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
 class Home extends StatefulWidget {
-  const Home({Key? keyHome}) : super(key: keyHome);
+  const Home({Key? keyHome, this.userConnectId}) : super(key: keyHome);
+
+  final int? userConnectId;
 
   @override
   State<Home> createState() => _HomeState();
@@ -18,11 +20,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future<List<Post>> posts;
+  dynamic username;
 
   @override
   void initState() {
     super.initState();
     posts = getAllPost();
+    if (widget.userConnectId != null) {
+      username = getUsernameById(widget.userConnectId);
+    }
   }
 
   @override
@@ -40,6 +46,10 @@ class _HomeState extends State<Home> {
           ),
           actions: <Widget>[
             IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+            (widget.userConnectId != null)
+                ? Padding(
+                    padding: EdgeInsets.all(5), child: Text("Hi $username"))
+                : Padding(padding: EdgeInsets.all(5), child: Text("Hi!")),
             IconButton(
               icon: const Icon(Icons.account_circle),
               onPressed: () {

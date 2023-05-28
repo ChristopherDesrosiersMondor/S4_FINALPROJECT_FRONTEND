@@ -99,18 +99,23 @@ class AddPostPage extends StatelessWidget {
       );
     } else {
       return Scaffold(
-        backgroundColor: Configuration.appDarkBackgroundColor,
-        body: ElevatedButton(
-          style: Configuration.formButtonStyle(context),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ConnexionPage()),
-            );
-          },
-          child: const Text("Connect to have access to all our features"),
-        ),
-      );
+          backgroundColor: Configuration.appDarkBackgroundColor,
+          body: Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Center(
+                child: ElevatedButton(
+                  style: Configuration.formButtonStyle(context),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ConnexionPage()),
+                    );
+                  },
+                  child:
+                      const Text("Connect to have access to all our features"),
+                ),
+              )));
     }
   }
 
