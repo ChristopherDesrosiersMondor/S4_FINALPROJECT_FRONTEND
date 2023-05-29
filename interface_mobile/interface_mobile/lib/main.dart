@@ -40,7 +40,9 @@ class _HublotWidgetState extends State<HublotWidget> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      const Home(),
+      Home(
+        connectUser: connectUser,
+      ),
       const DiscoverPage(),
       AddPostPage(),
       const ChatPage(),
@@ -48,7 +50,7 @@ class _HublotWidgetState extends State<HublotWidget> {
     ];
   }
 
-  connectUser(int id) {
+  void connectUser(int id) {
     setState(() {
       widget.userConnectId = id;
       _widgetOptions = <Widget>[
