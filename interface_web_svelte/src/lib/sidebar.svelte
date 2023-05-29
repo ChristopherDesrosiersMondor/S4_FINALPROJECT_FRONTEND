@@ -22,7 +22,7 @@
 			<span class="sidebar-items-text">Popular</span>
 		</a>
 		<div class="sidebar-menu-section-title">Recent</div>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="/">
 			<i class="sidebar-icons icon"><Trophy /></i>
 			<span class="sidebar-items-text">h/NoStupidQuestion</span>
 		</a>
