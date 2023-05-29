@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
       : super(key: keyHome);
 
   final int? userConnectId;
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   @override
   State<Home> createState() => _HomeState();
