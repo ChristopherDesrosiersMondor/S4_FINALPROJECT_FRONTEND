@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
       home: HublotWidget(),
     );
@@ -26,9 +26,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HublotWidget extends StatefulWidget {
-  const HublotWidget({Key? keyHublot, this.userConnectId})
-      : super(key: keyHublot);
-  final int? userConnectId;
+  HublotWidget({Key? keyHublot, this.userConnectId}) : super(key: keyHublot);
+  int? userConnectId;
 
   @override
   State<HublotWidget> createState() => _HublotWidgetState();
@@ -40,7 +39,18 @@ class _HublotWidgetState extends State<HublotWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.userConnectId != null) {
+    _widgetOptions = <Widget>[
+      const Home(),
+      const DiscoverPage(),
+      AddPostPage(),
+      const ChatPage(),
+      const InboxPage()
+    ];
+  }
+
+  connectUser(int id) {
+    setState(() {
+      widget.userConnectId = id;
       _widgetOptions = <Widget>[
         const Home(),
         const DiscoverPage(),
@@ -48,38 +58,8 @@ class _HublotWidgetState extends State<HublotWidget> {
         ChatPage(userConnectId: widget.userConnectId),
         InboxPage(userConnectId: widget.userConnectId)
       ];
-    } else {
-      _widgetOptions = <Widget>[
-        const Home(),
-        const DiscoverPage(),
-        AddPostPage(),
-        const ChatPage(),
-        const InboxPage()
-      ];
-    }
+    });
   }
-
-  // @override
-  // void setState(VoidCallback fn) {
-  //   if (widget.userConnectId != null) {
-  //     _widgetOptions = <Widget>[
-  //       const Home(),
-  //       const DiscoverPage(),
-  //       AddPostPage(userConnectId: widget.userConnectId),
-  //       ChatPage(userConnectId: widget.userConnectId),
-  //       InboxPage(userConnectId: widget.userConnectId)
-  //     ];
-  //   } else {
-  //     _widgetOptions = <Widget>[
-  //       const Home(),
-  //       const DiscoverPage(),
-  //       AddPostPage(),
-  //       const ChatPage(),
-  //       const InboxPage()
-  //     ];
-  //   }
-  //   super.setState(fn);
-  // }
 
   void _onItemTapped(int index) {
     setState(() {

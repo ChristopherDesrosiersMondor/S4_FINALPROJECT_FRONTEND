@@ -10,9 +10,11 @@ import '../config.dart';
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
 class Home extends StatefulWidget {
-  const Home({Key? keyHome, this.userConnectId}) : super(key: keyHome);
+  const Home({Key? keyHome, this.userConnectId, required this.connectUser})
+      : super(key: keyHome);
 
   final int? userConnectId;
+  final VoidCallback connectUser;
 
   @override
   State<Home> createState() => _HomeState();
