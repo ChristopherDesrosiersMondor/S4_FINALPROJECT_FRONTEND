@@ -17,10 +17,10 @@
 			class="align-items-center display-inline-flex
 				   flex-direction-row flex-grow-1"
 		>
-			<a href="./" class="anchor-icon">
+			<a href="/" class="anchor-icon">
 				<Anchor />
 			</a>
-			<a href="./" class="title">Hublot</a>
+			<a href="/" class="title">Hublot</a>
 			<div class="search-margin-container">
 				<SearchBar />
 			</div>
@@ -35,10 +35,10 @@
 					{#if $isVisible}
 						<Login />
 					{:else}
-					<div class="icon"><User /></div>
-					<div>Hi {$userPseudo}</div>
+						<div class="icon"><User /></div>
+						<div>Hi {$userPseudo}</div>
 					{/if}
-			
+
 					<!-- Toggle theme -->
 					<Toggle />
 				</div>

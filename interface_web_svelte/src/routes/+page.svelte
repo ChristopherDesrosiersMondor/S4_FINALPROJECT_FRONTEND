@@ -9,7 +9,6 @@
 
 	let posts = null;
 
-
 	/** @type {import('./$types').PageData} */
 	export let data;
 	if (data != null) {
@@ -24,36 +23,36 @@
 				<div data-scroller-first>
 					<div>
 						{#if $isCommunityPage}
-						<div />
+							<div />
 						{:else}
-						<div class="TrendingContainer">
-							<div class="TrendingSeparationContainer">
-								<div class="TrendingHeader">
-									<div class="TrendingHeaderText">Trending today</div>
-								</div>
-								<div class="TrendingPostsContainer">
-									<div class="TrendingPostsSorter">
-										<div class="TrendingPosts">
-											<div class="PostContainer">
-												<img src={sea3} alt="TestPost" />
-											</div>
+							<div class="TrendingContainer">
+								<div class="TrendingSeparationContainer">
+									<div class="TrendingHeader">
+										<div class="TrendingHeaderText">Trending today</div>
+									</div>
+									<div class="TrendingPostsContainer">
+										<div class="TrendingPostsSorter">
+											<div class="TrendingPosts">
+												<div class="PostContainer">
+													<img src={sea3} alt="TestPost" />
+												</div>
 
-											<div class="PostContainer">
-												<img src={sea3} alt="TestPost" />
-											</div>
+												<div class="PostContainer">
+													<img src={sea3} alt="TestPost" />
+												</div>
 
-											<div class="PostContainer">
-												<img src={sea3} alt="TestPost" />
-											</div>
+												<div class="PostContainer">
+													<img src={sea3} alt="TestPost" />
+												</div>
 
-											<div class="PostContainer">
-												<img src={sea3} alt="TestPost" />
+												<div class="PostContainer">
+													<img src={sea3} alt="TestPost" />
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						{/if}
 					</div>
 				</div>
@@ -61,34 +60,27 @@
 		</div>
 
 		<div style="max-width: 100%;" class="MainPopularPanel">
-
 			{#if $isCommunityPage}
-			<div class="main_body">
-				<div class="big_first_line">
-					<div class="first_line">
-						<h1>Community name</h1>
-						<button class="btn" id="join_btn"><span>Joined</span></button>
-					
+				<div class="main_body">
+					<div class="big_first_line">
+						<div class="first_line">
+							<h1>Community name</h1>
+							<button class="btn" id="join_btn"><span>Joined</span></button>
+						</div>
+						<span class="subtitle">h/communityname</span>
 					</div>
-					<span class="subtitle">h/communityname</span>
-			
 				</div>
-				
-			
-
-			</div>
-			
 			{:else}
-			<div class="LeftMainPanel">
-				<div class="PopularHeader">Popular posts</div>
-				<div class="PopularPosts">
-					{#if posts != null}
-						{#each posts as post}
-							<Post propValue={post} />
-						{/each}
-					{/if}
+				<div class="LeftMainPanel">
+					<div class="PopularHeader">Popular posts</div>
+					<div class="PopularPosts">
+						{#if posts != null}
+							{#each posts as post}
+								<Post propValue={post} />
+							{/each}
+						{/if}
+					</div>
 				</div>
-			</div>
 			{/if}
 			<div class="RightMainPanel">
 				{#if $isVisible || $isCommunityPage}
@@ -106,7 +98,9 @@
 								communities.
 							</div>
 							<hr />
-							<button class="btn" id="create_post_btn">Create Post</button>
+							<button class="btn" id="create_post_btn">
+								<a href="/submit">Create Post</a>
+							</button>
 							<button
 								class="btn"
 								id="create_com_btn"
@@ -122,7 +116,6 @@
 </div>
 
 <style>
-
 	.subtitle {
 		font-size: 12px;
 		padding: 8px 0px 0px 12px;
@@ -139,11 +132,11 @@
 
 	#join_btn {
 		background-color: var(--hublot-body);
-		color:var(--back-to-top-btn);
+		color: var(--back-to-top-btn);
 		font-size: 14px;
 		font-weight: 700;
 		letter-spacing: unset;
-		line-height: 17px;;
+		line-height: 17px;
 		padding: 4px 16px;
 		-ms-flex-align: center;
 		align-items: center;
@@ -151,21 +144,22 @@
 		box-sizing: border-box;
 		justify-content: center;
 		text-align: center;
-        width: fit-content;
+		width: fit-content;
 		margin-left: 20px;
-    margin-top: 5px;
+		margin-top: 5px;
 	}
 
-	#join_btn:hover span{
+	#join_btn:hover span {
 		display: none;
 	}
 
 	#join_btn:hover:before {
-  		content: "Leave"
-}
+		content: 'Leave';
+	}
 
-.big_first_line
-{ background-color: var(--hublot-body);}
+	.big_first_line {
+		background-color: var(--hublot-body);
+	}
 
 	.first_line {
 		display: flex;
