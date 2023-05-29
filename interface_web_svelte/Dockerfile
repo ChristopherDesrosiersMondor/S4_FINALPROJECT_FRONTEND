@@ -1,13 +1,16 @@
-FROM node:18-alpine AS build
+# Dockerfile
+
+FROM node:16-alpine
+
+RUN npm install -g pnpm
 
 WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+RUN npx prisma generate
 
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install
-COPY . ./
-RUN npm prisma generate
-RUN npm run dev
+COPY . .
+RUN pnpm build
 
-FROM nginx:1.19-alpine
-COPY --from=build /app/public /usr/share/nginx/html
+EXPOSE 3000
+CMD ["node", "build"]
