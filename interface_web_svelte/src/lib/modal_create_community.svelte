@@ -1,4 +1,8 @@
 <script>
+// @ts-nocheck
+
+	import { time_ranges_to_array } from 'svelte/internal';
+
 	// @ts-nocheck
 
 	import '../app.css';
@@ -11,17 +15,47 @@
 		$create_community_modal_shown = false;
 	}
 
-	const handleClick = async () => {
+	let inputCommunityName;
+	let inputCommunityDescription;
+	let creationDate;
+
+	const createCommunity = async () => {
 		try {
+			creationDate = Date.now();
 			const requestBody = {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' }
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					communityName: inputCommunityName,
+					communityDescription: inputCommunityDescription,
+					communityCreatedOnDate: creationDate,
+				})
 			};
+			const response = await fetch 
 		} catch (error) {}
 	};
 
-	let communityName;
-	let communityDescription;
+
+	// let doPost = async () => {
+	// 	const timeElapsed = Date.now();
+	// 	const today = new Date(timeElapsed);
+	// 	const res = await fetch(postUrl + 'posts/add', {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			'Content-Type': 'application/json'
+	// 			// 'Content-Type': 'application/x-www-form-urlencoded',
+	// 		},
+	// 		body: JSON.stringify({
+	// 			postTitle: $postTitle,
+	// 			postContent: $postBody,
+	// 			postSource: $postSource,
+	// 			postDate: new Date(Date.now())
+	// 		})
+	// 	});
+	// 	goto('/');
+	// };
+
+
 </script>
 
 {#if $create_community_modal_shown}
@@ -36,18 +70,17 @@
 			<div>Name</div>
 			<div class="subtitle">Community names including capitalization cannot be changed.</div>
 			<br />
-			<input type="text" bind:value={communityName} />
+			<input type="text" bind:value={inputCommunityName} />
 			<br /><br />
 			<div>Description</div>
 			<br />
-			<textarea class="description" rows="4" cols="50" bind:value={communityDescription} />
+			<textarea class="description" rows="4" cols="50" bind:value={inputCommunityDescription} />
 			<div class="buttons">
 				<button on:click={() => hide()} class="btn" id="cancel_btn">Cancel</button>
 				<button
 					on:click={() => {
 						hide();
-						$isCommunityPage = true;
-						handleClick;
+						createCommunity;
 					}}
 					class="btn"
 					id="create_commu_btn">Create a community</button

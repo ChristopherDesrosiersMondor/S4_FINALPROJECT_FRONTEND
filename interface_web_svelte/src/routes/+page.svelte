@@ -3,7 +3,6 @@
 
 	import pirate from '$lib/images/pirate.png';
 	import sea3 from '$lib/images/sea-illustration-3.jpg';
-	import sea from '$lib/images/sea.png';
 	import Post from '$lib/post.svelte';
 	import { create_community_modal_shown, isCommunityPage, isVisible } from '../stores.js';
 
@@ -22,72 +21,56 @@
 			<div>
 				<div data-scroller-first>
 					<div>
-						{#if $isCommunityPage}
-							<div />
-						{:else}
-							<div class="TrendingContainer">
-								<div class="TrendingSeparationContainer">
-									<div class="TrendingHeader">
-										<div class="TrendingHeaderText">Trending today</div>
-									</div>
-									<div class="TrendingPostsContainer">
-										<div class="TrendingPostsSorter">
-											<div class="TrendingPosts">
-												<div class="PostContainer">
-													<img src={sea3} alt="TestPost" />
-												</div>
+						<div class="TrendingContainer">
+							<div class="TrendingSeparationContainer">
+								<div class="TrendingHeader">
+									<div class="TrendingHeaderText">Trending today</div>
+								</div>
+								<div class="TrendingPostsContainer">
+									<div class="TrendingPostsSorter">
+										<div class="TrendingPosts">
+											<div class="PostContainer">
+												<img src={sea3} alt="TestPost" />
+											</div>
 
-												<div class="PostContainer">
-													<img src={sea3} alt="TestPost" />
-												</div>
+											<div class="PostContainer">
+												<img src={sea3} alt="TestPost" />
+											</div>
 
-												<div class="PostContainer">
-													<img src={sea3} alt="TestPost" />
-												</div>
+											<div class="PostContainer">
+												<img src={sea3} alt="TestPost" />
+											</div>
 
-												<div class="PostContainer">
-													<img src={sea3} alt="TestPost" />
-												</div>
+											<div class="PostContainer">
+												<img src={sea3} alt="TestPost" />
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						{/if}
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div style="max-width: 100%;" class="MainPopularPanel">
-			{#if $isCommunityPage}
-				<div class="main_body">
-					<div class="big_first_line">
-						<div class="first_line">
-							<h1>Community name</h1>
-							<button class="btn" id="join_btn"><span>Joined</span></button>
-						</div>
-						<span class="subtitle">h/communityname</span>
-					</div>
+			<div class="LeftMainPanel">
+				<div class="PopularHeader">Popular posts</div>
+				<div class="PopularPosts">
+					{#if posts != null}
+						{#each posts as post}
+							<Post propValue={post} />
+						{/each}
+					{/if}
 				</div>
-			{:else}
-				<div class="LeftMainPanel">
-					<div class="PopularHeader">Popular posts</div>
-					<div class="PopularPosts">
-						{#if posts != null}
-							{#each posts as post}
-								<Post propValue={post} />
-							{/each}
-						{/if}
-					</div>
-				</div>
-			{/if}
+			</div>
+
 			<div class="RightMainPanel">
-				{#if $isVisible || $isCommunityPage}
+				{#if $isVisible}
 					<div />
 				{:else}
 					<div class="RightMainPanelBox">
-						<div><img class="mer" src={sea} alt="la mer" /></div>
 						<div class="RightMainPanelBoxInside">
 							<div style={'display: flex'} class="home">
 								<img class="pirate" src={pirate} alt="pirate" />
