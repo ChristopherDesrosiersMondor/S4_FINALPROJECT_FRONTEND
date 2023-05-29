@@ -6,64 +6,64 @@
 </script>
 
 {#if $isCommunityPage}
-<div />
+	<div />
 {:else}
-<div class="sidebar-container">
-	<div role="menu" class="sidebar-menu-container">
-		<div class="sidebar-menu-section-title">Feeds</div>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Home /></i>
-			<span class="sidebar-items-text">Home</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><TrendingUp /></i>
-			<span class="sidebar-items-text">Popular</span>
-		</a>
-		<div class="sidebar-menu-section-title">Recent</div>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Trophy /></i>
-			<span class="sidebar-items-text">r/NoStupidQuestion</span>
-		</a>
-		<div class="sidebar-menu-section-title">Topics</div>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Gamepad2 /></i>
-			<span class="sidebar-items-text">Gaming</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Trophy /></i>
-			<span class="sidebar-items-text">Sports</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><LineChart /></i>
-			<span class="sidebar-items-text">Business, Economics, and finance</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Currency /></i>
-			<span class="sidebar-items-text">Crypto</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Tv /></i>
-			<span class="sidebar-items-text">Television</span>
-		</a>
-		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
-			<i class="sidebar-icons icon"><Star /></i>
-			<span class="sidebar-items-text">Celebrity</span>
-		</a>
-	</div>
-
-	{#if $isVisible}
-		<div class="sidebar-footer-container">
-			<div class="simple-divider-line-container" />
-			<div class="l">
-				<p>
-					Create an account to follow your favorite communities and participate in conversations.
-				</p>
-				<br />
-				<AccountCreation />
-			</div>
+	<div class="sidebar-container">
+		<div role="menu" class="sidebar-menu-container">
+			<div class="sidebar-menu-section-title">Feeds</div>
+			<a href="/" role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./">
+				<i class="sidebar-icons icon"><Home /></i>
+				<span class="sidebar-items-text">Home</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><TrendingUp /></i>
+				<span class="sidebar-items-text">Popular</span>
+			</a>
+			<div class="sidebar-menu-section-title">Recent</div>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Trophy /></i>
+				<span class="sidebar-items-text">h/NoStupidQuestion</span>
+			</a>
+			<div class="sidebar-menu-section-title">Topics</div>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Gamepad2 /></i>
+				<span class="sidebar-items-text">Gaming</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Trophy /></i>
+				<span class="sidebar-items-text">Sports</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><LineChart /></i>
+				<span class="sidebar-items-text">Business, Economics, and finance</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Currency /></i>
+				<span class="sidebar-items-text">Crypto</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Tv /></i>
+				<span class="sidebar-items-text">Television</span>
+			</a>
+			<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
+				<i class="sidebar-icons icon"><Star /></i>
+				<span class="sidebar-items-text">Celebrity</span>
+			</a>
 		</div>
-	{/if}
-</div>
+
+		{#if $isVisible}
+			<div class="sidebar-footer-container">
+				<div class="simple-divider-line-container" />
+				<div class="l">
+					<p>
+						Create an account to follow your favorite communities and participate in conversations.
+					</p>
+					<br />
+					<AccountCreation />
+				</div>
+			</div>
+		{/if}
+	</div>
 {/if}
 
 <!-- Source: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
