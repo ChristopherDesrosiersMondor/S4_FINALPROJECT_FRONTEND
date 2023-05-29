@@ -10,6 +10,7 @@
       - [Texte](#texte)
       - [Plusieurs pages](#plusieurs-pages)
       - [Api calls](#api-calls)
+  - [Sources](#sources)
 
 
 ## Pour avoir plusieurs projets dans le meme repo qui ont chacun leurs devcontainer
@@ -265,3 +266,8 @@
     }
     }
     ```
+
+## Sources
+https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#findfirst
+
+https://sveltesociety.dev/recipes/publishing-and-deploying/dockerize-a-svelte-app

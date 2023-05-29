@@ -1,8 +1,13 @@
 <script>
 	// @ts-nocheck
 
+	import { goto } from '$app/navigation';
+	// @ts-nocheck
+
+	// @ts-nocheck
+
 	import '../app.css';
-	import { create_community_modal_shown, isCommunityPage } from '../stores.js';
+	import { create_community_modal_shown, userPseudo } from '../stores.js';
 
 	export function show() {
 		$create_community_modal_shown = true;
@@ -11,17 +16,27 @@
 		$create_community_modal_shown = false;
 	}
 
-	const handleClick = async () => {
-		try {
-			const requestBody = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' }
-			};
-		} catch (error) {}
-	};
+	let inputCommunityName;
+	let inputCommunityDescription;
+	let creationDate;
 
-	let communityName;
-	let communityDescription;
+	const handleClick = async () => {
+		const requestBody = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				communityName: inputCommunityName,
+				communityDescription: inputCommunityDescription,
+				communityCreatedOnDate: creationDate,
+				communityCreatorName: $userPseudo
+			})
+		};
+		const response = await fetch(`http://localhost:8081/communities/add`, requestBody);
+		const data = await response.json();
+		console.log(data);
+		$create_community_modal_shown = false;
+		// goto(`/h/${inputCommunityName}`);
+	};
 </script>
 
 {#if $create_community_modal_shown}
@@ -36,22 +51,14 @@
 			<div>Name</div>
 			<div class="subtitle">Community names including capitalization cannot be changed.</div>
 			<br />
-			<input type="text" bind:value={communityName} />
+			<input type="text" bind:value={inputCommunityName} />
 			<br /><br />
 			<div>Description</div>
 			<br />
-			<textarea class="description" rows="4" cols="50" bind:value={communityDescription} />
+			<textarea class="description" rows="4" cols="50" bind:value={inputCommunityDescription} />
 			<div class="buttons">
 				<button on:click={() => hide()} class="btn" id="cancel_btn">Cancel</button>
-				<button
-					on:click={() => {
-						hide();
-						$isCommunityPage = true;
-						handleClick;
-					}}
-					class="btn"
-					id="create_commu_btn">Create a community</button
-				>
+				<button on:click={handleClick} class="btn" id="create_commu_btn">Create a community</button>
 			</div>
 		</div>
 	</div>
