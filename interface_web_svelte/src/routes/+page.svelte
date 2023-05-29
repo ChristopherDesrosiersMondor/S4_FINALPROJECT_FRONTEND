@@ -99,57 +99,6 @@
 </div>
 
 <style>
-	.subtitle {
-		font-size: 12px;
-		padding: 8px 0px 0px 12px;
-	}
-
-	.main_body {
-		width: 640;
-	}
-
-	h1 {
-		font-size: 20px;
-		padding: 8px 0px 0px 12px;
-	}
-
-	#join_btn {
-		background-color: var(--hublot-body);
-		color: var(--back-to-top-btn);
-		font-size: 14px;
-		font-weight: 700;
-		letter-spacing: unset;
-		line-height: 17px;
-		padding: 4px 16px;
-		-ms-flex-align: center;
-		align-items: center;
-		border-radius: 9999px;
-		box-sizing: border-box;
-		justify-content: center;
-		text-align: center;
-		width: fit-content;
-		margin-left: 20px;
-		margin-top: 5px;
-	}
-
-	#join_btn:hover span {
-		display: none;
-	}
-
-	#join_btn:hover:before {
-		content: 'Leave';
-	}
-
-	.big_first_line {
-		background-color: var(--hublot-body);
-	}
-
-	.first_line {
-		display: flex;
-		background-color: var(--hublot-body);
-		width: 640px;
-		height: 35px;
-	}
 	.btn {
 		border: var(--back-to-top-btn) 1px solid;
 		width: 100%;
@@ -209,10 +158,6 @@
 
 	.RightMainPanelBoxInside {
 		margin: 10px;
-	}
-
-	.mer {
-		border-radius: 0;
 	}
 
 	.home {
