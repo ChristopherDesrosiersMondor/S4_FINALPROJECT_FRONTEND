@@ -6,6 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"postinstall": "npx prisma generate",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -24,8 +25,9 @@
 		"prisma": "^4.14.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
+		"ts-node": "^10.9.1",
 		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
+		"typescript": "^5.0.4",
 		"vite": "^4.3.0"
 	},
 	"type": "module",

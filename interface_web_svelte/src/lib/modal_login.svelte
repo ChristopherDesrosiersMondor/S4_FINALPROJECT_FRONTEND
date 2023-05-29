@@ -6,7 +6,13 @@
 	import '../app.css';
 	import './modals.css';
 
-	import { login_modal_shown, create_account_modal_shown, loggedIn, isVisible, userPseudo } from '../stores.js';
+	import {
+		login_modal_shown,
+		create_account_modal_shown,
+		loggedIn,
+		isVisible,
+		userPseudo
+	} from '../stores.js';
 
 	export function show() {
 		$login_modal_shown = true;
