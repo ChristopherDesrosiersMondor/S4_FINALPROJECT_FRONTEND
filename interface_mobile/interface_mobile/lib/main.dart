@@ -118,5 +118,7 @@ class HublotWidgetState extends State<HublotWidget> {
     setState(() {
       widget.userConnectId = id;
     });
+    Home.of(context).updateUserConnectId(id);
+    ChatPage.of(context).updateUserConnectId(id);
   }
 }

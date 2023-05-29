@@ -21,14 +21,14 @@
 	let creationDate;
 
 	const handleClick = async () => {
+		creationDate = Date.now();
 		const requestBody = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
 				communityName: inputCommunityName,
 				communityDescription: inputCommunityDescription,
-				communityCreatedOnDate: creationDate,
-				communityCreatorName: $userPseudo
+				communityCreatedOnDate: creationDate
 			})
 		};
 		const response = await fetch(`http://localhost:8081/communities/add`, requestBody);

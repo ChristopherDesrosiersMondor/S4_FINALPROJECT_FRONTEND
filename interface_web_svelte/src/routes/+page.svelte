@@ -98,6 +98,10 @@
 </div>
 
 <style>
+	a:visited {
+		color: white;
+	}
+
 	.btn {
 		border: var(--back-to-top-btn) 1px solid;
 		width: 100%;
