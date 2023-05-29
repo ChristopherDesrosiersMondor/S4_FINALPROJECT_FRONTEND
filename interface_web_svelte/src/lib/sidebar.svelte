@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import AccountCreation from '$lib/create_account.svelte';
 	import { Currency, Gamepad2, Home, LineChart, Star, TrendingUp, Trophy, Tv } from 'lucide-svelte';
 	import '../app.css';

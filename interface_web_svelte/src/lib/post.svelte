@@ -1,5 +1,6 @@
 <script>
 	// @ts-nocheck
+	// I could make it dynamic for the front page trending see https://www.twilio.com/blog/dynamically-render-svelte-components
 
 	import { ArrowUp, Menu } from 'lucide-svelte';
 	import { ArrowDown } from 'lucide-svelte';
