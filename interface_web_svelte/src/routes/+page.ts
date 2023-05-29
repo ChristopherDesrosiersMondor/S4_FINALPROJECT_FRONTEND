@@ -3,7 +3,7 @@ import { postUrl } from '$lib/config.js';
 export async function load() {
     try {
         const response = await fetch(postUrl + 'posts/view/all');
-        const posts = await response.json();
+        const posts: string[] = await response.json();
         return {
             posts
         };

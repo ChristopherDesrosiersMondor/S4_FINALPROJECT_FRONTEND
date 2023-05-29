@@ -3,6 +3,11 @@
 	import { Currency, Gamepad2, Home, LineChart, Star, TrendingUp, Trophy, Tv } from 'lucide-svelte';
 	import '../app.css';
 	import { isVisible } from '../stores';
+
+	/**
+	 * @type {any}
+	 */
+	export let propValue;
 </script>
 
 <div class="sidebar-container">
@@ -21,6 +26,21 @@
 			<i class="sidebar-icons icon"><Trophy /></i>
 			<span class="sidebar-items-text">h/NoStupidQuestion</span>
 		</a>
+		{#if propValue != null}
+			{#each propValue as community}
+				<a
+					role="menuitem"
+					class="sidebar-menu-link"
+					tabindex="-1"
+					aria-label="./"
+					href="/h/{community.communityName}"
+				>
+					<i class="sidebar-icons icon"><Trophy /></i>
+					<span class="sidebar-items-text">h/{community.communityName}</span>
+				</a>
+			{/each}
+		{/if}
+
 		<div class="sidebar-menu-section-title">Topics</div>
 		<a role="menuitem" class="sidebar-menu-link" tabindex="-1" aria-label="./" href="./">
 			<i class="sidebar-icons icon"><Gamepad2 /></i>

@@ -12,6 +12,13 @@
 	import ModalLogin from '$lib/modal_login.svelte';
 	import '../app.css';
 	import Sidebar from '../lib/sidebar.svelte';
+
+	let communities: any;
+	/** @type {import('./$types').PageData} */
+	export let data;
+	if (data != null) {
+		communities = data.communities;
+	}
 </script>
 
 <div id="2x-container">
@@ -33,7 +40,7 @@
 					<div class="main-container">
 						<div>
 							<!-- Side bar -->
-							<Sidebar />
+							<Sidebar propValue={communities} />
 						</div>
 						<div>
 							<!-- Main-Content -->

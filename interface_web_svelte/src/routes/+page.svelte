@@ -7,7 +7,6 @@
 	import { create_community_modal_shown, isVisible } from '../stores.js';
 
 	let posts = null;
-
 	/** @type {import('./$types').PageData} */
 	export let data;
 	if (data != null) {
