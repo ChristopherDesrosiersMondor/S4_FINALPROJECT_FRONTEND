@@ -6,7 +6,9 @@ import 'package:interface_mobile/Pages/creationcompteNext.dart';
 import 'Connexion.dart';
 
 class CreationCompte extends StatelessWidget {
-  const CreationCompte({Key? keyCreateCompte}) : super(key: keyCreateCompte);
+  const CreationCompte({Key? keyCreateCompte, this.connectUserOnApp})
+      : super(key: keyCreateCompte);
+  final void Function(int id)? connectUserOnApp;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class CreationCompte extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ConnexionPage(
-                                  connectUser: connectUser,
+                                  connectUserOnApp: connectUserOnApp,
                                 )),
                       );
                     }),
@@ -48,13 +50,17 @@ class CreationCompte extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: const SingleChildScrollView(child: CreationCompteForm()),
+      body: SingleChildScrollView(
+          child: CreationCompteForm(
+        connectUserOnApp: connectUserOnApp,
+      )),
     );
   }
 }
 
 class CreationCompteForm extends StatefulWidget {
-  const CreationCompteForm({super.key});
+  const CreationCompteForm({super.key, this.connectUserOnApp});
+  final void Function(int id)? connectUserOnApp;
 
   @override
   State<CreationCompteForm> createState() => CreationCompteFormState();
@@ -108,7 +114,8 @@ class CreationCompteFormState extends State<CreationCompteForm> {
                         MaterialPageRoute(
                             builder: (context) => CreationCompteNext(
                                 username: pseudoController.text,
-                                password: passwordController.text)),
+                                password: passwordController.text,
+                                connectUserOnApp: widget.connectUserOnApp)),
                       );
                     }
                   },

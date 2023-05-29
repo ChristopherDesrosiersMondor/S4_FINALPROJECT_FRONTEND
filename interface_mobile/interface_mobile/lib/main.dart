@@ -41,44 +41,26 @@ class _HublotWidgetState extends State<HublotWidget> {
     super.initState();
     _widgetOptions = <Widget>[
       Home(
-        connectUser: connectUser,
+        connectUserOnApp: connectUserOnApp,
       ),
       const DiscoverPage(),
       AddPostPage(
-        connectUser: connectUser,
+        connectUserOnApp: connectUserOnApp,
       ),
       ChatPage(
-        connectUser: connectUser,
+        connectUserOnApp: connectUserOnApp,
       ),
       InboxPage(
-        connectUser: connectUser,
+        connectUserOnApp: connectUserOnApp,
       )
     ];
   }
 
-  void connectUser(int id) {
+  void connectUserOnApp(int id) {
     setState(() {
       widget.userConnectId = id;
-      _widgetOptions = <Widget>[
-        Home(
-          userConnectId: widget.userConnectId,
-          connectUser: connectUser,
-        ),
-        const DiscoverPage(),
-        AddPostPage(
-          userConnectId: widget.userConnectId,
-          connectUser: connectUser,
-        ),
-        ChatPage(
-          userConnectId: widget.userConnectId,
-          connectUser: connectUser,
-        ),
-        InboxPage(
-          userConnectId: widget.userConnectId,
-          connectUser: connectUser,
-        )
-      ];
     });
+    Home.of(context).updateUserConnectId(id);
   }
 
   void _onItemTapped(int index) {

@@ -13,13 +13,13 @@ class AddPostPage extends StatelessWidget {
   final GlobalKey<AddPostFormState> _keyAddPostPage =
       GlobalKey<AddPostFormState>();
 
-  final int? userConnectId;
+  int? userConnectId;
   final int? communityId;
   final String? communityName;
   final String? title;
   final String? body;
   final String? image;
-  final void Function(int id)? connectUser;
+  final void Function(int id)? connectUserOnApp;
 
   AddPostPage(
       {Key? keyAddPost,
@@ -29,7 +29,7 @@ class AddPostPage extends StatelessWidget {
       this.body,
       this.image,
       this.userConnectId,
-      this.connectUser})
+      this.connectUserOnApp})
       : super(key: keyAddPost);
 
   @override
@@ -112,7 +112,7 @@ class AddPostPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => ConnexionPage(
-                                connectUser: connectUser,
+                                connectUserOnApp: connectUserOnApp,
                               )),
                     );
                   },

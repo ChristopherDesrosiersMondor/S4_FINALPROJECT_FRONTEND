@@ -8,9 +8,9 @@ import 'package:interface_mobile/utilities.dart';
 import '../Main.dart';
 
 class ConnexionPage extends StatelessWidget {
-  const ConnexionPage({Key? keyConnexion, this.connectUser})
+  const ConnexionPage({Key? keyConnexion, this.connectUserOnApp})
       : super(key: keyConnexion);
-  final void Function(int id)? connectUser;
+  final void Function(int id)? connectUserOnApp;
 
   @override
   Widget build(BuildContext context) {
@@ -52,15 +52,15 @@ class ConnexionPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           child: ConnexionForm(
-        connectUser: connectUser,
+        connectUserOnApp: connectUserOnApp,
       )),
     );
   }
 }
 
 class ConnexionForm extends StatefulWidget {
-  const ConnexionForm({super.key, this.connectUser});
-  final void Function(int id)? connectUser;
+  const ConnexionForm({super.key, this.connectUserOnApp});
+  final void Function(int id)? connectUserOnApp;
 
   @override
   State<ConnexionForm> createState() => ConnexionFormState();
@@ -120,7 +120,7 @@ class ConnexionFormState extends State<ConnexionForm> {
                     var password = passwordController.text;
                     userConnect(context, pseudo, password)
                         .then((Account result) {
-                      widget.connectUser!(result.id);
+                      widget.connectUserOnApp!(result.id);
                     });
                     Navigator.push(
                       context,

@@ -3,17 +3,21 @@ import 'package:interface_mobile/Pages/Connexion.dart';
 
 import '../config.dart';
 
-class InboxPage extends StatelessWidget {
-  const InboxPage(
-      {Key? keyInbox, this.userConnectId, required this.connectUser})
+class InboxPage extends StatefulWidget {
+  InboxPage({Key? keyInbox, this.userConnectId, required this.connectUserOnApp})
       : super(key: keyInbox);
 
-  final int? userConnectId;
-  final void Function(int id) connectUser;
+  int? userConnectId;
+  final void Function(int id) connectUserOnApp;
 
   @override
+  State<StatefulWidget> createState() => _InboxState();
+}
+
+class _InboxState extends State<InboxPage> {
+  @override
   Widget build(BuildContext context) {
-    if (userConnectId != null) {
+    if (widget.userConnectId != null) {
       return Scaffold(
           backgroundColor: Configuration.appDarkBackgroundColor,
           body: Center(
@@ -35,7 +39,7 @@ class InboxPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => ConnexionPage(
-                                connectUser: connectUser,
+                                connectUserOnApp: widget.connectUserOnApp,
                               )),
                     );
                   },

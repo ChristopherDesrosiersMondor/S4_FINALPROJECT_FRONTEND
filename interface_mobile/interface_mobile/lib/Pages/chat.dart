@@ -3,16 +3,21 @@ import 'package:interface_mobile/Pages/Connexion.dart';
 
 import '../config.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? keyChat, this.userConnectId, this.connectUser})
+class ChatPage extends StatefulWidget {
+  ChatPage({Key? keyChat, this.userConnectId, this.connectUserOnApp})
       : super(key: keyChat);
 
-  final int? userConnectId;
-  final void Function(int id)? connectUser;
+  int? userConnectId;
+  final void Function(int id)? connectUserOnApp;
 
   @override
+  State<StatefulWidget> createState() => _ChatState();
+}
+
+class _ChatState extends State<ChatPage> {
+  @override
   Widget build(BuildContext context) {
-    if (userConnectId != null) {
+    if (widget.userConnectId != null) {
       return Scaffold(
           backgroundColor: Configuration.appDarkBackgroundColor,
           body: Center(
@@ -34,7 +39,7 @@ class ChatPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => ConnexionPage(
-                                connectUser: connectUser,
+                                connectUserOnApp: widget.connectUserOnApp,
                               )),
                     );
                   },

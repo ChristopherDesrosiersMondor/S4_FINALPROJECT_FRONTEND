@@ -16,11 +16,13 @@ class CreationCompteNext extends StatelessWidget {
   const CreationCompteNext(
       {Key? keyCreateCompteNext,
       required this.username,
-      required this.password})
+      required this.password,
+      this.connectUserOnApp})
       : super(key: keyCreateCompteNext);
 
   final String username;
   final String password;
+  final void Function(int id)? connectUserOnApp;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class CreationCompteNext extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => ConnexionPage(
-                                  connectUser: connectUser,
+                                  connectUserOnApp: connectUserOnApp,
                                 )),
                       );
                     }),
@@ -180,8 +182,7 @@ class CreationCompteNextFormState extends State<CreationCompteNextForm> {
                           birthday);
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const HublotWidget()),
+                        MaterialPageRoute(builder: (context) => HublotWidget()),
                       );
                     }
                   },

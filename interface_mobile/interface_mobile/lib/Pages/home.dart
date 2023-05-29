@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/Connexion.dart';
 import 'package:interface_mobile/Widgets/dropdownMenu.dart';
 import 'package:interface_mobile/Widgets/postWidget.dart';
+import 'package:interface_mobile/main.dart';
 import 'package:interface_mobile/utilities.dart';
 
 import '../Entities/post.dart';
@@ -10,11 +11,16 @@ import '../config.dart';
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
 class Home extends StatefulWidget {
-  const Home({Key? keyHome, this.userConnectId, required this.connectUser})
-      : super(key: keyHome);
+  Home({
+    Key? keyHome,
+    this.userConnectId,
+    this.connectUserOnApp,
+  }) : super(key: keyHome);
 
-  final int? userConnectId;
-  final void Function(int id)? connectUser;
+  static of(BuildContext context) =>
+      context.findAncestorStateOfType<_HomeState>();
+  int? userConnectId;
+  final void Function(int id)? connectUserOnApp;
 
   @override
   State<Home> createState() => _HomeState();
@@ -31,6 +37,12 @@ class _HomeState extends State<Home> {
     if (widget.userConnectId != null) {
       username = getUsernameById(widget.userConnectId);
     }
+  }
+
+  void updateUserConnectId(int id) {
+    setState(() {
+      widget.userConnectId = id;
+    });
   }
 
   @override
@@ -59,7 +71,7 @@ class _HomeState extends State<Home> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ConnexionPage(
-                            connectUser: widget.connectUser,
+                            connectUserOnApp: widget.connectUserOnApp,
                           )),
                 );
               },
