@@ -19,6 +19,7 @@ class AddPostPage extends StatelessWidget {
   final String? title;
   final String? body;
   final String? image;
+  final VoidCallback connectUser;
 
   AddPostPage(
       {Key? keyAddPost,
@@ -27,7 +28,8 @@ class AddPostPage extends StatelessWidget {
       this.title,
       this.body,
       this.image,
-      this.userConnectId})
+      this.userConnectId,
+      required this.connectUser})
       : super(key: keyAddPost);
 
   @override
@@ -42,7 +44,7 @@ class AddPostPage extends StatelessWidget {
                 _keyAddPostPage.currentState!.emptyInput();
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HublotWidget()),
+                  MaterialPageRoute(builder: (context) => HublotWidget()),
                 );
               }),
           actions: <Widget>[

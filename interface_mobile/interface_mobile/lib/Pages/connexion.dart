@@ -8,7 +8,9 @@ import 'package:interface_mobile/utilities.dart';
 import '../Main.dart';
 
 class ConnexionPage extends StatelessWidget {
-  const ConnexionPage({Key? keyConnexion}) : super(key: keyConnexion);
+  const ConnexionPage({Key? keyConnexion, required this.connectUser})
+      : super(key: keyConnexion);
+  final VoidCallback connectUser;
 
   @override
   Widget build(BuildContext context) {

@@ -4,9 +4,12 @@ import 'package:interface_mobile/Pages/Connexion.dart';
 import '../config.dart';
 
 class InboxPage extends StatelessWidget {
-  const InboxPage({Key? keyInbox, this.userConnectId}) : super(key: keyInbox);
+  const InboxPage(
+      {Key? keyInbox, this.userConnectId, required this.connectUser})
+      : super(key: keyInbox);
 
   final int? userConnectId;
+  final VoidCallback connectUser;
 
   @override
   Widget build(BuildContext context) {
