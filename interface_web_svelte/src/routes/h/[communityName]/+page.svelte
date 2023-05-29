@@ -5,27 +5,23 @@
 	<div class="MainOuterLayer">
 		<div style="max-width: 100%;">
 			<div>
-				<div data-scroller-first>
-					
-					</div>
-				</div>
+				<div data-scroller-first />
 			</div>
 		</div>
+	</div>
 
-		<div style="max-width: 100%;" class="MainPopularPanel">
-		
-				<div class="main_body">
-					<div class="big_first_line">
-						<div class="first_line">
-							<h1>Community name</h1>
-							<button class="btn" id="join_btn"><span>Joined</span></button>
-						</div>
-						<span class="subtitle">h/communityname</span>
-					</div>
+	<div style="max-width: 100%;" class="MainPopularPanel">
+		<div class="main_body">
+			<div class="big_first_line">
+				<div class="first_line">
+					<h1>Community name</h1>
+					<button class="btn" id="join_btn"><span>Joined</span></button>
 				</div>
-			<div class="RightMainPanel">
-					<div />
+				<span class="subtitle">h/communityname</span>
 			</div>
+		</div>
+		<div class="RightMainPanel">
+			<div />
 		</div>
 	</div>
 </div>

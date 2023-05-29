@@ -4,7 +4,7 @@
 	import pirate from '$lib/images/pirate.png';
 	import sea3 from '$lib/images/sea-illustration-3.jpg';
 	import Post from '$lib/post.svelte';
-	import { create_community_modal_shown, isCommunityPage, isVisible } from '../stores.js';
+	import { create_community_modal_shown, isVisible } from '../stores.js';
 
 	let posts = null;
 
