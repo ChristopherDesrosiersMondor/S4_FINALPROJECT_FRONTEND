@@ -30,10 +30,10 @@ class HublotWidget extends StatefulWidget {
   int? userConnectId;
 
   @override
-  State<HublotWidget> createState() => _HublotWidgetState();
+  State<HublotWidget> createState() => HublotWidgetState();
 }
 
-class _HublotWidgetState extends State<HublotWidget> {
+class HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
   late List<Widget> _widgetOptions;
   @override
@@ -54,13 +54,6 @@ class _HublotWidgetState extends State<HublotWidget> {
         connectUserOnApp: connectUserOnApp,
       )
     ];
-  }
-
-  void connectUserOnApp(int id) {
-    setState(() {
-      widget.userConnectId = id;
-    });
-    Home.of(context).updateUserConnectId(id);
   }
 
   void _onItemTapped(int index) {
@@ -119,5 +112,13 @@ class _HublotWidgetState extends State<HublotWidget> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  void connectUserOnApp(int id) {
+    setState(() {
+      widget.userConnectId = id;
+    });
+    Home.of(context).updateUserConnectId(id);
+    ChatPage.of(context).updateUserConnectId(id);
   }
 }

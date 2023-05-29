@@ -11,22 +11,23 @@ import '../config.dart';
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
 class Home extends StatefulWidget {
+  static of(BuildContext context) =>
+      context.findAncestorStateOfType<HomeState>();
+
   Home({
     Key? keyHome,
     this.userConnectId,
     this.connectUserOnApp,
   }) : super(key: keyHome);
 
-  static of(BuildContext context) =>
-      context.findAncestorStateOfType<_HomeState>();
   int? userConnectId;
   final void Function(int id)? connectUserOnApp;
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Home> createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   late Future<List<Post>> posts;
   dynamic username;
 
@@ -34,14 +35,12 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     posts = getAllPost();
-    if (widget.userConnectId != null) {
-      username = getUsernameById(widget.userConnectId);
-    }
   }
 
   void updateUserConnectId(int id) {
     setState(() {
       widget.userConnectId = id;
+      username = getUsernameById(widget.userConnectId);
     });
   }
 

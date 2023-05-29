@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Pages/Connexion.dart';
 
+import '../Main.dart';
 import '../config.dart';
 
 class ChatPage extends StatefulWidget {
   ChatPage({Key? keyChat, this.userConnectId, this.connectUserOnApp})
       : super(key: keyChat);
 
+  static of(BuildContext context) =>
+      context.findAncestorStateOfType<HublotWidgetState>();
   int? userConnectId;
   final void Function(int id)? connectUserOnApp;
 
@@ -15,6 +18,12 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatState extends State<ChatPage> {
+  void updateUserConnectId(int id) {
+    setState(() {
+      widget.userConnectId = id;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget.userConnectId != null) {
