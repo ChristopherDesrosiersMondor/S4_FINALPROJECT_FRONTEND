@@ -4,11 +4,11 @@ import 'package:interface_mobile/Pages/Connexion.dart';
 import '../config.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? keyChat, this.userConnectId, required this.connectUser})
+  const ChatPage({Key? keyChat, this.userConnectId, this.connectUser})
       : super(key: keyChat);
 
   final int? userConnectId;
-  final void Function(int id) connectUser;
+  final void Function(int id)? connectUser;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,9 @@ class ChatPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ConnexionPage()),
+                          builder: (context) => ConnexionPage(
+                                connectUser: connectUser,
+                              )),
                     );
                   },
                   child:

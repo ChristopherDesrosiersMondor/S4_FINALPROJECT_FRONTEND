@@ -47,10 +47,10 @@ class _HublotWidgetState extends State<HublotWidget> {
       AddPostPage(
         connectUser: connectUser,
       ),
-      const ChatPage(
+      ChatPage(
         connectUser: connectUser,
       ),
-      const InboxPage(
+      InboxPage(
         connectUser: connectUser,
       )
     ];
@@ -60,11 +60,23 @@ class _HublotWidgetState extends State<HublotWidget> {
     setState(() {
       widget.userConnectId = id;
       _widgetOptions = <Widget>[
-        const Home(),
+        Home(
+          userConnectId: widget.userConnectId,
+          connectUser: connectUser,
+        ),
         const DiscoverPage(),
-        AddPostPage(userConnectId: widget.userConnectId),
-        ChatPage(userConnectId: widget.userConnectId),
-        InboxPage(userConnectId: widget.userConnectId)
+        AddPostPage(
+          userConnectId: widget.userConnectId,
+          connectUser: connectUser,
+        ),
+        ChatPage(
+          userConnectId: widget.userConnectId,
+          connectUser: connectUser,
+        ),
+        InboxPage(
+          userConnectId: widget.userConnectId,
+          connectUser: connectUser,
+        )
       ];
     });
   }
