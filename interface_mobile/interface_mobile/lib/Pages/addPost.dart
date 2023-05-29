@@ -19,7 +19,7 @@ class AddPostPage extends StatelessWidget {
   final String? title;
   final String? body;
   final String? image;
-  final VoidCallback connectUser;
+  final void Function(int id)? connectUser;
 
   AddPostPage(
       {Key? keyAddPost,
@@ -29,7 +29,7 @@ class AddPostPage extends StatelessWidget {
       this.body,
       this.image,
       this.userConnectId,
-      required this.connectUser})
+      this.connectUser})
       : super(key: keyAddPost);
 
   @override
@@ -111,7 +111,9 @@ class AddPostPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ConnexionPage()),
+                          builder: (context) => ConnexionPage(
+                                connectUser: connectUser,
+                              )),
                     );
                   },
                   child:

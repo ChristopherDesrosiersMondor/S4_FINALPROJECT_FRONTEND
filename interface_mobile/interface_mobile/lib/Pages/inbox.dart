@@ -9,7 +9,7 @@ class InboxPage extends StatelessWidget {
       : super(key: keyInbox);
 
   final int? userConnectId;
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,9 @@ class InboxPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ConnexionPage()),
+                          builder: (context) => ConnexionPage(
+                                connectUser: connectUser,
+                              )),
                     );
                   },
                   child:

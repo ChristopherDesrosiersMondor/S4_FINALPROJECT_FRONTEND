@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model accounts {
+  id              BigInt    @id
+  user_birthday   DateTime? @db.Date
+  user_email      String?   @db.VarChar(255)
+  user_first_name String?   @db.VarChar(255)
+  user_last_name  String?   @db.VarChar(255)
+  user_password   String?   @db.VarChar(255)
+  user_pseudo     String?   @db.VarChar(255)
+}
+
+model community {
+  id                     Int       @id
+  ammount_of_members     Int?      @map("ammount of members")
+  ammount_of_posts       Int?      @map("ammount of posts")
+  created_on             DateTime? @map("created on") @db.Date
+  community_creator_id   Int?      @map("community creator id")
+  description            String?   @db.VarChar(255)
+  community_header_image String?   @map("community header image") @db.VarChar(255)
+  community_logo         String?   @map("community logo") @db.VarChar(255)
+  community_name         String?   @map("community name") @db.VarChar(255)
+}
+
+model moderators {
+  id                BigInt  @id
+  moderator_com_id  BigInt?
+  moderator_user_id BigInt?
+}
+
+model post {
+  id            BigInt    @id
+  post_content  String?   @db.VarChar(255)
+  post_date     DateTime? @db.Date
+  post_downvote Int?
+  post_id_com   Int?
+  post_id_user  BigInt?
+  post_source   String?   @db.VarChar(255)
+  post_title    String?   @db.VarChar(255)
+  post_upvote   Int?
+}

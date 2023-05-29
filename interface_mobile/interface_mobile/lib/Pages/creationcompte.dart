@@ -38,7 +38,9 @@ class CreationCompte extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ConnexionPage()),
+                            builder: (context) => ConnexionPage(
+                                  connectUser: connectUser,
+                                )),
                       );
                     }),
             ])),
