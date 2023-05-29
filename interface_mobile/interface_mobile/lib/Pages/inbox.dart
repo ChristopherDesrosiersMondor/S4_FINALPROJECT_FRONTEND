@@ -9,7 +9,7 @@ class InboxPage extends StatelessWidget {
       : super(key: keyInbox);
 
   final int? userConnectId;
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   @override
   Widget build(BuildContext context) {

@@ -44,9 +44,15 @@ class _HublotWidgetState extends State<HublotWidget> {
         connectUser: connectUser,
       ),
       const DiscoverPage(),
-      AddPostPage(),
-      const ChatPage(),
-      const InboxPage()
+      AddPostPage(
+        connectUser: connectUser,
+      ),
+      const ChatPage(
+        connectUser: connectUser,
+      ),
+      const InboxPage(
+        connectUser: connectUser,
+      )
     ];
   }
 

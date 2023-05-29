@@ -19,7 +19,7 @@ class AddPostPage extends StatelessWidget {
   final String? title;
   final String? body;
   final String? image;
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   AddPostPage(
       {Key? keyAddPost,

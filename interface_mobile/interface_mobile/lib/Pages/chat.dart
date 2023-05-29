@@ -8,7 +8,7 @@ class ChatPage extends StatelessWidget {
       : super(key: keyChat);
 
   final int? userConnectId;
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   @override
   Widget build(BuildContext context) {

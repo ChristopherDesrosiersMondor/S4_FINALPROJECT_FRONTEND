@@ -10,7 +10,7 @@ import '../Main.dart';
 class ConnexionPage extends StatelessWidget {
   const ConnexionPage({Key? keyConnexion, required this.connectUser})
       : super(key: keyConnexion);
-  final VoidCallback connectUser;
+  final void Function(int id) connectUser;
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +50,17 @@ class ConnexionPage extends StatelessWidget {
         ],
         backgroundColor: Configuration.appDarkBackgroundColor,
       ),
-      body: SingleChildScrollView(child: ConnexionForm()),
+      body: SingleChildScrollView(
+          child: ConnexionForm(
+        connectUser: connectUser,
+      )),
     );
   }
 }
 
 class ConnexionForm extends StatefulWidget {
-  ConnexionForm({super.key, this.userConnectId});
-  int? userConnectId;
+  const ConnexionForm({super.key, required this.connectUser});
+  final void Function(int id) connectUser;
 
   @override
   State<ConnexionForm> createState() => ConnexionFormState();
@@ -117,16 +120,11 @@ class ConnexionFormState extends State<ConnexionForm> {
                     var password = passwordController.text;
                     userConnect(context, pseudo, password)
                         .then((Account result) {
-                      setState(() {
-                        widget.userConnectId = result.id;
-                      });
+                      widget.connectUser(result.id);
                     });
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => HublotWidget(
-                                userConnectId: widget.userConnectId,
-                              )),
+                      MaterialPageRoute(builder: (context) => HublotWidget()),
                     );
                   }
                 },
