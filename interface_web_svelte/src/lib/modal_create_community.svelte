@@ -1,6 +1,8 @@
 <script>
+// @ts-nocheck
+
     import '../app.css';
-    import { create_community_modal_shown } from '../stores.js';
+    import { create_community_modal_shown, isCommunityPage } from '../stores.js';
 
     export function show() {
 		$create_community_modal_shown = true;
@@ -8,6 +10,24 @@
 	export function hide() {
 		$create_community_modal_shown = false;
 	}
+
+    const handleClick = async () => {
+        try {
+            const requestBody = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    communityName: 
+                })
+            }
+            
+        } catch (error) {
+            
+        }
+    }
+
+    let communityName;
+    let communityDescription;
 
 </script>
 
@@ -23,14 +43,14 @@
                 <div>Name</div>
                 <div class="subtitle">Community names including capitalization cannot be changed.</div>			
                 <br />
-                <input type="text">
+                <input type="text" bind:value={communityName}>
                 <br /><br />
                 <div>Description</div>
                 <br />
-                <textarea class="description" rows="4" cols="50"></textarea>
+                <textarea class="description" rows="4" cols="50" bind:value={communityDescription}></textarea>
                 <div class="buttons">
-                    <button class="btn" id="cancel_btn">Cancel</button>
-                    <button class="btn" id="create_commu_btn">Create a community</button>
+                    <button on:click={ () => hide()} class="btn" id="cancel_btn">Cancel</button>
+                    <button on:click={ () => {hide(); $isCommunityPage = true; handleClick}} class="btn" id="create_commu_btn">Create a community</button>
     
                 </div>
         </div>

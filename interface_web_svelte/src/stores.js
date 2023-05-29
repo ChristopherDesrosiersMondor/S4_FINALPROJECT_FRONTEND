@@ -5,6 +5,7 @@ export const create_account_modal_shown = writable(false);
 export const create_account_next_modal_shown = writable(false);
 export const loggedIn = writable(false);
 export const isVisible = writable(true);
+export const isCommunityPage = writable(false);
 export const create_community_modal_shown = writable(false);
 
 

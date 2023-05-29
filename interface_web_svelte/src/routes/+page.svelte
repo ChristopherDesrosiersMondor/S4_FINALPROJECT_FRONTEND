@@ -5,9 +5,10 @@
 	import sea3 from '$lib/images/sea-illustration-3.jpg';
 	import sea from '$lib/images/sea.png';
 	import Post from '$lib/post.svelte';
-	import { create_community_modal_shown, isVisible } from '../stores.js';
+	import { create_community_modal_shown, isCommunityPage, isVisible } from '../stores.js';
 
 	let posts = null;
+
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -22,6 +23,9 @@
 			<div>
 				<div data-scroller-first>
 					<div>
+						{#if $isCommunityPage}
+						<div />
+						{:else}
 						<div class="TrendingContainer">
 							<div class="TrendingSeparationContainer">
 								<div class="TrendingHeader">
@@ -50,12 +54,31 @@
 								</div>
 							</div>
 						</div>
+						{/if}
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div style="max-width: 100%;" class="MainPopularPanel">
+
+			{#if $isCommunityPage}
+			<div class="main_body">
+				<div class="big_first_line">
+					<div class="first_line">
+						<h1>Community name</h1>
+						<button class="btn" id="join_btn"><span>Joined</span></button>
+					
+					</div>
+					<span class="subtitle">h/communityname</span>
+			
+				</div>
+				
+			
+
+			</div>
+			
+			{:else}
 			<div class="LeftMainPanel">
 				<div class="PopularHeader">Popular posts</div>
 				<div class="PopularPosts">
@@ -66,8 +89,9 @@
 					{/if}
 				</div>
 			</div>
+			{/if}
 			<div class="RightMainPanel">
-				{#if $isVisible}
+				{#if $isVisible || $isCommunityPage}
 					<div />
 				{:else}
 					<div class="RightMainPanelBox">
@@ -98,6 +122,57 @@
 </div>
 
 <style>
+
+	.subtitle {
+		font-size: 12px;
+		padding: 8px 0px 0px 12px;
+	}
+
+	.main_body {
+		width: 640;
+	}
+
+	h1 {
+		font-size: 20px;
+		padding: 8px 0px 0px 12px;
+	}
+
+	#join_btn {
+		background-color: var(--hublot-body);
+		color:var(--back-to-top-btn);
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: unset;
+		line-height: 17px;;
+		padding: 4px 16px;
+		-ms-flex-align: center;
+		align-items: center;
+		border-radius: 9999px;
+		box-sizing: border-box;
+		justify-content: center;
+		text-align: center;
+        width: fit-content;
+		margin-left: 20px;
+    margin-top: 5px;
+	}
+
+	#join_btn:hover span{
+		display: none;
+	}
+
+	#join_btn:hover:before {
+  		content: "Leave"
+}
+
+.big_first_line
+{ background-color: var(--hublot-body);}
+
+	.first_line {
+		display: flex;
+		background-color: var(--hublot-body);
+		width: 640px;
+		height: 35px;
+	}
 	.btn {
 		border: var(--back-to-top-btn) 1px solid;
 		width: 100%;

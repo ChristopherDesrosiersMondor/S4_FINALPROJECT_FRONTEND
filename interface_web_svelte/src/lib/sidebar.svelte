@@ -1,17 +1,13 @@
 <script>
-	import { Home } from 'lucide-svelte';
-	import { TrendingUp } from 'lucide-svelte';
-	import { Gamepad2 } from 'lucide-svelte';
-	import { Trophy } from 'lucide-svelte';
-	import { LineChart } from 'lucide-svelte';
-	import { Currency } from 'lucide-svelte';
-	import { Tv } from 'lucide-svelte';
-	import { Star } from 'lucide-svelte';
 	import AccountCreation from '$lib/create_account.svelte';
+	import { Currency, Gamepad2, Home, LineChart, Star, TrendingUp, Trophy, Tv } from 'lucide-svelte';
 	import '../app.css';
-	import { loggedIn, isVisible } from '../stores';
+	import { isCommunityPage, isVisible } from '../stores';
 </script>
 
+{#if $isCommunityPage}
+<div />
+{:else}
 <div class="sidebar-container">
 	<div role="menu" class="sidebar-menu-container">
 		<div class="sidebar-menu-section-title">Feeds</div>
@@ -68,6 +64,7 @@
 		</div>
 	{/if}
 </div>
+{/if}
 
 <!-- Source: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
 
