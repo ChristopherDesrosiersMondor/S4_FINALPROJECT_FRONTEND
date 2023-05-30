@@ -17,7 +17,7 @@
 				<div class="first_line">
 					<h1>{data.community.communityName}</h1>
 					<button class="btn" id="join_btn"
-						><span>Joined : {data.community.communityAmmountOfMembers}</span></button
+						><span>Joined : {data.community.communityAmmountOfMembers + 1}</span></button
 					>
 				</div>
 				<span class="subtitle">h/{data.community.communityName}</span>

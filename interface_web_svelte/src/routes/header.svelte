@@ -3,8 +3,16 @@
 	import SearchBar from '$lib/search_bar.svelte';
 	import { Anchor, User } from 'lucide-svelte';
 	import '../app.css';
-	import { isVisible, userPseudo } from '../stores';
+	import { isVisible, userPseudo, loggedIn } from '../stores';
 	import Toggle from './toggle.svelte';
+	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
+
+	function log_out() {
+		$loggedIn = false;
+		$isVisible = !$isVisible;
+		goto('/');
+	}
 </script>
 
 <header>
@@ -37,6 +45,7 @@
 					{:else}
 						<div class="icon"><User /></div>
 						<div>Hi {$userPseudo}</div>
+						<button class="log_out" on:click={log_out}>Log out</button>
 					{/if}
 
 					<!-- Toggle theme -->
@@ -50,6 +59,24 @@
 <!-- Source: https://www.reddit.com -->
 
 <style>
+	.log_out {
+		margin-left: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #ff4500;
+		border: 1px solid transparent;
+		border-radius: 1.25em;
+		box-shadow: none;
+		box-sizing: border-box;
+		height: 32px;
+		position: relative;
+		min-width: 72px;
+		width: 120px;
+		color: white;
+		font-weight: bold;
+	}
+
 	.header-right-container-level-2 {
 		display: flex;
 		align-items: center;
