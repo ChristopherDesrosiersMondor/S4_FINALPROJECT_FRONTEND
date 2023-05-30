@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	// @ts-nocheck
 
 	import { goto } from '$app/navigation';
@@ -35,7 +35,8 @@
 		const data = await response.json();
 		console.log(data);
 		$create_community_modal_shown = false;
-		// goto(`/h/${inputCommunityName}`);
+		let url = '/h/' + inputCommunityName;
+		goto(url);
 	};
 </script>
 
