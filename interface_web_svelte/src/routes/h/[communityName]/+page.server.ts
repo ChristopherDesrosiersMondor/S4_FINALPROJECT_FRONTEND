@@ -1,21 +1,16 @@
-import { PrismaClient, type community } from '@prisma/client'
-const prisma = new PrismaClient()
+import { communityUrl } from '$lib/config';
 
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
-    async function getCommunityById() {
-        const a_community:community = await prisma.community.findFirst({
-            where: { community_name: params.communityName },
-          }, )
-        return a_community;
-    }
+    let community = null;
+    const url = communityUrl + 'communities/get/' + params.communityName;
+    const response = await fetch(url);
+    community = await response.json();        
+    console.log(community);
     
-    try {
-        const community = getCommunityById();
-        return community;
-    } catch (e) {
-        return null as unknown;
-    }
+    return {
+        community
+    };
 
 }

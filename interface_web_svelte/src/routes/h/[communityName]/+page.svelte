@@ -1,9 +1,5 @@
 <script lang="ts">
-	import type { community } from '@prisma/client';
-
-	/** @type {import('./$types').PageData} */
-	export let data: community;
-	$: a_community = data;
+	export let data;
 </script>
 
 <div class="ListingLayoutOuterContainer">
@@ -19,12 +15,12 @@
 		<div class="main_body">
 			<div class="big_first_line">
 				<div class="first_line">
-					<h1>{a_community.community_name}</h1>
+					<h1>{data.community.communityName}</h1>
 					<button class="btn" id="join_btn"
-						><span>Joined : {a_community.ammount_of_members}</span></button
+						><span>Joined : {data.community.communityAmmountOfMembers}</span></button
 					>
 				</div>
-				<span class="subtitle">h/{a_community.community_name}</span>
+				<span class="subtitle">h/{data.community.communityName}</span>
 			</div>
 		</div>
 		<div class="RightMainPanel">
