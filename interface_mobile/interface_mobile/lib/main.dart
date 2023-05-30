@@ -57,7 +57,6 @@ class HublotWidget extends StatefulWidget {
 class HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
   late List<Widget> _widgetOptions;
-  dynamic userConnectId;
 
   @override
   void initState() {
@@ -138,17 +137,7 @@ class HublotWidgetState extends State<HublotWidget> {
   }
 
   void connectUserOnApp(int id) {
-    // setState(() {
-    //   userConnectId = id;
-    // });
     var userProvider = context.read<ConnectUser>();
     userProvider.updateUserId(id);
-  }
-
-  getUserId() {
-    if (userConnectId != null) {
-      return userConnectId;
-    }
-    return null;
   }
 }

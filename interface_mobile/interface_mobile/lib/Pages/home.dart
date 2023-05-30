@@ -29,23 +29,11 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   late Future<List<Post>> posts;
-  dynamic username;
-  dynamic userConnectId;
 
   @override
   void initState() {
     super.initState();
     posts = getAllPost();
-  }
-
-  void updateUserConnectId(int id) {
-    getUsernameById(id).then((value) {
-      username = value;
-    });
-    setState(() {
-      userConnectId = id;
-      username = username;
-    });
   }
 
   @override
@@ -91,7 +79,7 @@ class HomeState extends State<Home> {
                           ? Padding(
                               padding: const EdgeInsets.all(5),
                               child: Text(
-                                "Welcome " + value.username,
+                                "Hi " + value.username,
                                 style: Configuration.mainContentTextForApp(
                                     Colors.white, 20),
                               ))

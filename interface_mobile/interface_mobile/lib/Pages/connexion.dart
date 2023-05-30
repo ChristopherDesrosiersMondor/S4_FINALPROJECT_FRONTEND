@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:interface_mobile/Entities/account.dart';
+import 'package:interface_mobile/Pages/home.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
@@ -129,7 +130,8 @@ class ConnexionFormState extends State<ConnexionForm> {
                     });
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HublotWidget()),
+                      MaterialPageRoute(
+                          builder: (context) => const HublotWidget()),
                     );
                   }
                 },
