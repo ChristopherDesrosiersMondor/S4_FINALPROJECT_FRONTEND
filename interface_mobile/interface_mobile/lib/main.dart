@@ -69,12 +69,8 @@ class HublotWidgetState extends State<HublotWidget> {
       AddPostPage(
         connectUserOnApp: connectUserOnApp,
       ),
-      ChatPage(
-        connectUserOnApp: connectUserOnApp,
-      ),
-      InboxPage(
-        connectUserOnApp: connectUserOnApp,
-      )
+      ChatPage(),
+      InboxPage()
     ];
   }
 
