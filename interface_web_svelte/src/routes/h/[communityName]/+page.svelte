@@ -43,7 +43,7 @@
 		font-size: small;
 	}
 	.about_com {
-		background-color: #ff4500;
+		background-color: var(--back-to-top-btn);
 	}
 	.description {
 		padding: 8px 0px 8px 12px;
