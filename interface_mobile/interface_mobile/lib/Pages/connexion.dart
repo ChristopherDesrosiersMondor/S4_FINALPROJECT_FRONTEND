@@ -4,6 +4,7 @@ import 'package:interface_mobile/Entities/account.dart';
 import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/Pages/creationcompte.dart';
 import 'package:interface_mobile/utilities.dart';
+import 'package:provider/provider.dart';
 
 import '../Main.dart';
 
@@ -120,6 +121,10 @@ class ConnexionFormState extends State<ConnexionForm> {
                     var password = passwordController.text;
                     userConnect(context, pseudo, password)
                         .then((Account result) {
+                      // Provider.of<ConnectUser>(context, listen: false)
+                      //     .updateUserId(result.id);
+                      // var userProvider = context.read<ConnectUser>();
+                      // userProvider.updateUserId(result.id);
                       widget.connectUserOnApp!(result.id);
                     });
                     Navigator.push(

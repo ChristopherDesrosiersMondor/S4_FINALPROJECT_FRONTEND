@@ -4,12 +4,15 @@ import 'package:interface_mobile/Pages/Chat.dart';
 import 'package:interface_mobile/Pages/Discover.dart';
 import 'package:interface_mobile/Pages/Home.dart';
 import 'package:interface_mobile/Pages/Inbox.dart';
-import 'package:interface_mobile/Pages/connexion.dart';
 import 'package:interface_mobile/config.dart';
+import 'package:interface_mobile/utilities.dart';
+import 'package:provider/provider.dart';
 
 // Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      const MyApp(),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? keyApp}) : super(key: keyApp);
@@ -18,16 +21,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: HublotWidget(),
-    );
+    return ChangeNotifierProvider<ConnectUser>(
+        create: (_) => ConnectUser(),
+        child: Consumer<ConnectUser>(
+          builder: (context, provider, child) => const MaterialApp(
+            title: _title,
+            home: HublotWidget(),
+          ),
+        ));
+  }
+}
+
+class ConnectUser with ChangeNotifier {
+  dynamic userId;
+  dynamic username = "";
+
+  void updateUserId(int id) {
+    userId = id;
+    if (userId != null) {
+      getUsernameById(id).then((value) {
+        username = value;
+      });
+    }
+    notifyListeners();
   }
 }
 
 class HublotWidget extends StatefulWidget {
-  HublotWidget({Key? keyHublot, this.userConnectId}) : super(key: keyHublot);
-  int? userConnectId;
+  const HublotWidget({Key? keyHublot}) : super(key: keyHublot);
 
   @override
   State<HublotWidget> createState() => HublotWidgetState();
@@ -36,6 +57,8 @@ class HublotWidget extends StatefulWidget {
 class HublotWidgetState extends State<HublotWidget> {
   int _selectedIndex = 0;
   late List<Widget> _widgetOptions;
+  dynamic userConnectId;
+
   @override
   void initState() {
     super.initState();
@@ -115,10 +138,17 @@ class HublotWidgetState extends State<HublotWidget> {
   }
 
   void connectUserOnApp(int id) {
-    setState(() {
-      widget.userConnectId = id;
-    });
-    Home.of(context).updateUserConnectId(id);
-    ChatPage.of(context).updateUserConnectId(id);
+    // setState(() {
+    //   userConnectId = id;
+    // });
+    var userProvider = context.read<ConnectUser>();
+    userProvider.updateUserId(id);
+  }
+
+  getUserId() {
+    if (userConnectId != null) {
+      return userConnectId;
+    }
+    return null;
   }
 }
