@@ -5,13 +5,11 @@
 	import '../app.css';
 	import { isVisible, userPseudo, loggedIn } from '../stores';
 	import Toggle from './toggle.svelte';
-	import { redirect } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
 
 	function log_out() {
 		$loggedIn = false;
 		$isVisible = !$isVisible;
-		goto('/');
 	}
 </script>
 

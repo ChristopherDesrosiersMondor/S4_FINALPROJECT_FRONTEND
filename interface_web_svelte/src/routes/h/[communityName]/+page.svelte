@@ -24,12 +24,31 @@
 			</div>
 		</div>
 		<div class="RightMainPanel">
-			<div />
+			<div>
+				<div class="about_com">
+					<h2>About community</h2>
+				</div>
+				<div class="description">
+					{data.community.communityDescription}
+					<hr />
+					<span class="date">Created on : {data.community.communityCreatedOnDate}</span>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <style>
+	.date {
+		font-size: small;
+	}
+	.about_com {
+		background-color: #ff4500;
+	}
+	.description {
+		padding: 8px 0px 8px 12px;
+		background-color: white;
+	}
 	.subtitle {
 		font-size: 12px;
 		padding: 8px 0px 0px 12px;
@@ -39,9 +58,15 @@
 		width: 640;
 	}
 
+	h2 {
+		font-size: 16px;
+		color: white;
+		padding: 8px 0px 8px 12px;
+	}
+
 	h1 {
 		font-size: 20px;
-		padding: 8px 0px 0px 12px;
+		padding: 8px 0px 8px 12px;
 	}
 
 	#join_btn {
@@ -120,7 +145,6 @@
 
 	.RightMainPanel {
 		margin-left: 24px;
-		margin-top: 28px;
 		flex: 0 0 312px;
 		width: 312px;
 	}
