@@ -30,7 +30,7 @@
 				and <a href="./">Privacy Policy</a>.
 			</p>
 			<br />
-			<input type="checkbox" />
+			<input class="checkbox" type="checkbox" />
 			<span class="text"> I agree to get emails about cool stuff on Hublot.</span><br />
 			<div class="btn_container">
 				<button class="btn"><Mail />Continue with Google</button>

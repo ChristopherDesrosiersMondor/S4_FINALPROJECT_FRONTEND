@@ -43,11 +43,11 @@
 		font-size: small;
 	}
 	.about_com {
-		background-color: var(--back-to-top-btn);
+		background-color: #ff4500;
 	}
 	.description {
 		padding: 8px 0px 8px 12px;
-		background-color: white;
+		background-color: var(--hublot-body);
 	}
 	.subtitle {
 		font-size: 12px;

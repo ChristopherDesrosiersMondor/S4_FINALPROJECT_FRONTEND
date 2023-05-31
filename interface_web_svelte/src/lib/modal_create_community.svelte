@@ -127,14 +127,14 @@
 		height: 455px;
 		border-radius: 4px;
 		padding: 2%;
-		background-color: var(--hublot-body);
+		background-color: white;
 		position: fixed;
 		top: 50%;
 		left: 50%;
 	}
 	.first-line {
 		display: flex;
-		color: var(--title);
+		color: var(--black-text);
 		font-weight: bold;
 		margin-bottom: 3%;
 	}

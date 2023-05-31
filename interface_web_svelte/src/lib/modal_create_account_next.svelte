@@ -66,7 +66,7 @@
 			<input class="pseudo_input" placeholder="Pseudo" bind:value={pseudo_input} />
 			<input class="pwd_input" type="password" placeholder="Password" bind:value={pwd_input} />
 			<div style={'margin-bottom: 25px'}>
-				<input type="checkbox" />
+				<input class="checkbox" type="checkbox" />
 				<span class="text">I am not a robot.</span><br />
 			</div>
 
@@ -74,3 +74,4 @@
 		</div>
 	</div>
 {/if}
+

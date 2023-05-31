@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Header from './header.svelte';
+	import Header from '../lib/header.svelte';
 
 	import 'iconify-icon';
 	import 'open-props/buttons';
