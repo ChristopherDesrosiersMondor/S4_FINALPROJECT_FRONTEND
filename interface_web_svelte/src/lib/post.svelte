@@ -161,6 +161,7 @@
 
 	.post-images {
 		border-radius: var(--radius-0);
+		width: 100%;
 	}
 	.VoteCount {
 		font-size: 12px;
