@@ -5,7 +5,8 @@
 	import { ArrowUp, Menu } from 'lucide-svelte';
 	import { ArrowDown } from 'lucide-svelte';
 	import { goto } from '$app/navigation';
-	import { postUrl } from './config';
+	import { communityUrl, postUrl } from './config';
+	import { onMount } from 'svelte';
 
 	/**
 	 * @type {{ postTitle: any; }}
@@ -68,6 +69,13 @@
 		});
 		votes -= 1;
 	};
+	let communityName = null;
+	let url = communityUrl + 'communities/view/' + propValue.postIdCom;
+	fetch(url)
+		.then((response) => response.json())
+		.then((community) => {
+			communityName = community.communityName;
+		});
 </script>
 
 <div {id}>
@@ -97,7 +105,7 @@
 
 			<div class="ContentContainer">
 				{#if propValue.postIdCom != null}
-					<div class="PostUserCommunityInformations">Community</div>
+					<div class="PostUserCommunityInformations">h/{communityName} - {propValue.postDate}</div>
 				{:else if propValue.postDate != null}
 					<div class="PostUserCommunityInformations">Community - {propValue.postDate}</div>
 				{/if}
@@ -106,7 +114,7 @@
 
 				<div class="PostTitleAndText">{propValue.postContent}</div>
 
-				{#if propValue.postSource != 'string'}
+				{#if propValue.postSource != ''}
 					<div class="PostImage">
 						<img class="post-images" src={propValue.postSource} alt="postImage" />
 					</div>

@@ -6,8 +6,7 @@ export async function load({ params }) {
     let community = null;
     const url = communityUrl + 'communities/get/' + params.communityName;
     const response = await fetch(url);
-    community = await response.json();        
-    console.log(community);
+    community = await response.json();
     
     return {
         community
