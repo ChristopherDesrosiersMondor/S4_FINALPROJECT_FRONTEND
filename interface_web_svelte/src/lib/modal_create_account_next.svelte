@@ -50,7 +50,7 @@
 			<span class="close" on:click={() => hide()}>&times;</span>
 			<p class="title">Next step</p>
 			<p class="text">
-				Reddit is anonymous, so we'll know you by your nickname here. Choose wisely, because once
+				Hublot is anonymous, so we'll know you by your nickname here. Choose wisely, because once
 				you have your name, you can't change it.
 			</p>
 			<br />
@@ -74,4 +74,3 @@
 		</div>
 	</div>
 {/if}
-
