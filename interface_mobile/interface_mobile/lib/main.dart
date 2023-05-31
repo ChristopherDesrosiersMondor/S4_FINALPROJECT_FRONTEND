@@ -8,7 +8,8 @@ import 'package:interface_mobile/config.dart';
 import 'package:interface_mobile/utilities.dart';
 import 'package:provider/provider.dart';
 
-// Source: https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
+// Source:
+// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 
 void main() => runApp(
       const MyApp(),
