@@ -7,6 +7,8 @@
 	import Toggle from './toggle.svelte';
 	import { goto } from '$app/navigation';
 
+	import logo from '$lib/images/hublot-logo.png';
+
 	function log_out() {
 		$loggedIn = false;
 		$isVisible = !$isVisible;
@@ -24,7 +26,7 @@
 				   flex-direction-row flex-grow-1"
 		>
 			<a href="/" class="anchor-icon">
-				<Anchor />
+				<img src={logo} alt="logo" class="logo" />
 			</a>
 			<a href="/" class="title">Hublot</a>
 			<div class="search-margin-container">
@@ -57,6 +59,13 @@
 <!-- Source: https://www.reddit.com -->
 
 <style>
+	.logo {
+		max-height: 50px;
+		max-width: 50px;
+		min-height: 30px;
+		min-width: 30px;
+	}
+
 	.log_out {
 		margin-left: 20px;
 		display: flex;
