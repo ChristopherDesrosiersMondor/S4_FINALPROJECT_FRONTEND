@@ -11,7 +11,9 @@ import '../config.dart';
 
 // Sources
 // How to put a future builer inside a colum
-//https://stackoverflow.com/questions/52335903/flutter-put-futurebuilder-widget-inside-a-column
+// https://stackoverflow.com/questions/52335903/flutter-put-futurebuilder-widget-inside-a-column
+// Provider & Change notifier
+// https://github.com/flutter/samples/blob/main/provider_counter/lib/main.dart
 
 const List<String> list = <String>['Home', 'Popular', 'News', 'New on Hublot!'];
 
