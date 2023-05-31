@@ -16,9 +16,13 @@
 			<div class="big_first_line">
 				<div class="first_line">
 					<h1>{data.community.communityName}</h1>
-					<button class="btn" id="join_btn"
-						><span>Joined : {data.community.communityAmmountOfMembers + 1}</span></button
-					>
+					<button class="btn" id="join_btn">
+						{#if data.community.communityAmmountOfMembers != null}
+							<span>Joined : {data.community.communityAmmountOfMembers}</span>
+						{:else}
+							<span>Joined : 0</span>
+						{/if}
+					</button>
 				</div>
 				<span class="subtitle">h/{data.community.communityName}</span>
 			</div>
