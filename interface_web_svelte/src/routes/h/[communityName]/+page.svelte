@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Post from '$lib/post.svelte';
+
 	export let data;
 </script>
 
@@ -25,6 +27,17 @@
 					</button>
 				</div>
 				<span class="subtitle">h/{data.community.communityName}</span>
+			</div>
+
+			<div class="LeftMainPanel">
+				<div class="PopularHeader">Popular posts</div>
+				<div class="PopularPosts">
+					{#if data.returnPosts != null}
+						{#each data.returnPosts as post}
+							<Post propValue={post} />
+						{/each}
+					{/if}
+				</div>
 			</div>
 		</div>
 		<div class="RightMainPanel">
