@@ -33,6 +33,9 @@ class Community {
     if (json['communityAmmountOfPosts'] == null) {
       json['communityAmmountOfPosts'] = 0;
     }
+        if (json['communityCreatorId'] == null) {
+      json['communityCreatorId'] = 0;
+    }
     return Community(
         id: json['id'],
         communityName: json['communityName'],

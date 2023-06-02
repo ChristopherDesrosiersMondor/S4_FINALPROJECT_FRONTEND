@@ -28,6 +28,9 @@ class Post {
     if (json['postDownvote'] == null) {
       json['postDownvote'] = 0;
     }
+        if (json['postIdCom'] == null) {
+      json['postIdCom'] = 0;
+    }
     return Post(
         id: json['id'] as int,
         postTitle: json['postTitle'] as String,
