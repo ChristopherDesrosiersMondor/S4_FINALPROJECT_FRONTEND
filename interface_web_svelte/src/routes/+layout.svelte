@@ -45,6 +45,7 @@
 						<div>
 							<!-- Main-Content -->
 							<slot />
+				
 						</div>
 					</div>
 				</div>

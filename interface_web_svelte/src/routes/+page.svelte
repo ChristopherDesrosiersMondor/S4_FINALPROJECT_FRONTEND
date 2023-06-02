@@ -1,4 +1,6 @@
 <script>
+	import BackToTopButton from '$lib/backToTopButton.svelte';
+
 	// @ts-nocheck
 
 	import pirate from '$lib/images/pirate.png';
@@ -66,6 +68,7 @@
 			</div>
 
 			<div class="RightMainPanel">
+				<BackToTopButton />
 				{#if $isVisible}
 					<div />
 				{:else}
